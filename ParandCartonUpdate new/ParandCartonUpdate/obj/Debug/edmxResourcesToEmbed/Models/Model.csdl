@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ParandCartondbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CartonTechnicalInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderInfoId" Type="Int32" Nullable="false" />
+    <Property Name="type" Type="Boolean" />
+    <Property Name="CartonType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CartonCount" Type="Int32" />
+    <Property Name="CartonLength" Type="Int32" />
+    <Property Name="CartonWidth" Type="Int32" />
+    <Property Name="CartonHeight" Type="Int32" />
+    <Property Name="CartonWeight" Type="Int32" />
+    <Property Name="IsCold" Type="Boolean" />
+    <Property Name="IsTemplate" Type="Boolean" />
+    <Property Name="CartonEmpty" Type="Boolean" />
+    <Property Name="ConnectorType" Type="Int32" />
+    <Property Name="Whosave" Type="Int32" Nullable="false" />
+    <Property Name="CartonInsideType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SheatCount" Type="Int32" />
+    <Property Name="SheatLength" Type="Int32" />
+    <Property Name="SheatWidth" Type="Int32" />
+    <Property Name="SheatType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OrderInfo" Relationship="Self.FK_CartonTechnicalInfo_CartonTechnicalInfo" FromRole="CartonTechnicalInfo" ToRole="OrderInfo" />
+  </EntityType>
+  <EntityType Name="InsideProduct">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KelisheForm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Layer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RCT" Type="Double" Nullable="false" />
+    <Property Name="Garmazh" Type="Int32" Nullable="false" />
+    <Property Name="Width" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="IsAvailabe" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LogesticInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderInfoId" Type="Int32" Nullable="false" />
+    <Property Name="PrintInfoId" Type="Int32" Nullable="false" />
+    <Property Name="LayoutType" Type="Boolean" />
+    <Property Name="LayoutCount" Type="Int32" />
+    <Property Name="TypeOfUse" Type="Boolean" />
+    <Property Name="ProductDistance" Type="Int32" />
+    <Property Name="DeliveryMethod" Type="Boolean" />
+    <Property Name="AnbareshTime" Type="Int32" />
+    <Property Name="SendMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LogesticTypeSelection" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Humidity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UseAddress" Type="Boolean" />
+    <Property Name="OtherAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WhoSave" Type="Int32" />
+    <NavigationProperty Name="OrderInfo" Relationship="Self.FK_LogesticInfo_OrderInfo" FromRole="LogesticInfo" ToRole="OrderInfo" />
+  </EntityType>
+  <EntityType Name="OrderInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderCode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="CreateDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SaleExpertCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SaleExpertName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NationalCode" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PostalCode" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="EnterPriceInterfaceName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EnconomicCode" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Tell" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="EnterPriceInterfaceTell" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Whosave" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CartonTechnicalInfoes" Relationship="Self.FK_CartonTechnicalInfo_CartonTechnicalInfo" FromRole="OrderInfo" ToRole="CartonTechnicalInfo" />
+    <NavigationProperty Name="LogesticInfoes" Relationship="Self.FK_LogesticInfo_OrderInfo" FromRole="OrderInfo" ToRole="LogesticInfo" />
+    <NavigationProperty Name="PrintInfoes" Relationship="Self.FK_PrintInfo_OrderInfo" FromRole="OrderInfo" ToRole="PrintInfo" />
+  </EntityType>
+  <EntityType Name="PriceInfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="whosave" Type="Int32" Nullable="false" />
+    <Property Name="costpervaragh" Type="Double" />
+    <Property Name="costofall" Type="Double" />
+    <Property Name="malyat" Type="Double" />
+    <Property Name="takhfif" Type="Double" />
+    <Property Name="sumofall" Type="Double" />
+    <Property Name="ProductInfoId" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PrintInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderInfoId" Type="Int32" Nullable="false" />
+    <Property Name="CartonTechnicalId" Type="Int32" Nullable="false" />
+    <Property Name="PrintType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ColorCount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrintTypeSelection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PrintAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsKelishe" Type="Boolean" />
+    <Property Name="IsTemplate" Type="Boolean" />
+    <Property Name="kelisheNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TemplateNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Whosave" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="OrderInfo" Relationship="Self.FK_PrintInfo_OrderInfo" FromRole="PrintInfo" ToRole="OrderInfo" />
+    <NavigationProperty Name="PrintInfo1" Relationship="Self.FK_PrintInfo_PrintInfo" FromRole="PrintInfo" ToRole="PrintInfo1" />
+    <NavigationProperty Name="PrintInfo2" Relationship="Self.FK_PrintInfo_PrintInfo" FromRole="PrintInfo1" ToRole="PrintInfo" />
+  </EntityType>
+  <EntityType Name="ProductInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogesticInfoId" Type="Int32" Nullable="false" />
+    <Property Name="TheAmountOfSheetsUsedForEachCarton" Type="Double" />
+    <Property Name="MinimumBCT" Type="Double" />
+    <Property Name="WasteRate" Type="Double" />
+    <Property Name="DeliverTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LayerCount" Type="Boolean" />
+    <Property Name="Layer1" Type="Int32" />
+    <Property Name="Layer2" Type="Int32" />
+    <Property Name="FloatType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Layer3" Type="Int32" />
+    <Property Name="Layer4" Type="Int32" />
+    <Property Name="FloatType2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Layer5" Type="Int32" />
+    <Property Name="BCT" Type="Double" />
+    <Property Name="ECT" Type="Double" />
+    <Property Name="Whosave" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StandardInfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StandardId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserFamily" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserAccess" Type="Int32" />
+    <Property Name="NationalCode" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_CartonTechnicalInfo_CartonTechnicalInfo">
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CartonTechnicalInfo" Type="Self.CartonTechnicalInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CartonTechnicalInfo">
+        <PropertyRef Name="OrderInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LogesticInfo_OrderInfo">
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="LogesticInfo" Type="Self.LogesticInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LogesticInfo">
+        <PropertyRef Name="OrderInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrintInfo_OrderInfo">
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PrintInfo" Type="Self.PrintInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrintInfo">
+        <PropertyRef Name="OrderInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrintInfo_PrintInfo">
+    <End Role="PrintInfo" Type="Self.PrintInfo" Multiplicity="1" />
+    <End Role="PrintInfo1" Type="Self.PrintInfo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="PrintInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrintInfo1">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ParandCartondbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CartonTechnicalInfoes" EntityType="Self.CartonTechnicalInfo" />
+    <EntitySet Name="InsideProducts" EntityType="Self.InsideProduct" />
+    <EntitySet Name="KelisheForms" EntityType="Self.KelisheForm" />
+    <EntitySet Name="Layers" EntityType="Self.Layer" />
+    <EntitySet Name="LogesticInfoes" EntityType="Self.LogesticInfo" />
+    <EntitySet Name="OrderInfoes" EntityType="Self.OrderInfo" />
+    <EntitySet Name="PriceInfoes" EntityType="Self.PriceInfo" />
+    <EntitySet Name="PrintInfoes" EntityType="Self.PrintInfo" />
+    <EntitySet Name="ProductInfoes" EntityType="Self.ProductInfo" />
+    <EntitySet Name="StandardInfoes" EntityType="Self.StandardInfo" />
+    <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
+    <AssociationSet Name="FK_CartonTechnicalInfo_CartonTechnicalInfo" Association="Self.FK_CartonTechnicalInfo_CartonTechnicalInfo">
+      <End Role="OrderInfo" EntitySet="OrderInfoes" />
+      <End Role="CartonTechnicalInfo" EntitySet="CartonTechnicalInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LogesticInfo_OrderInfo" Association="Self.FK_LogesticInfo_OrderInfo">
+      <End Role="OrderInfo" EntitySet="OrderInfoes" />
+      <End Role="LogesticInfo" EntitySet="LogesticInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrintInfo_OrderInfo" Association="Self.FK_PrintInfo_OrderInfo">
+      <End Role="OrderInfo" EntitySet="OrderInfoes" />
+      <End Role="PrintInfo" EntitySet="PrintInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrintInfo_PrintInfo" Association="Self.FK_PrintInfo_PrintInfo">
+      <End Role="PrintInfo" EntitySet="PrintInfoes" />
+      <End Role="PrintInfo1" EntitySet="PrintInfoes" />
+    </AssociationSet>
+    <EntitySet Name="CartonTypes" EntityType="ParandCartondbModel.CartonType" />
+    <EntitySet Name="ResultViews" EntityType="ParandCartondbModel.ResultView" />
+  </EntityContainer>
+  <EntityType Name="CartonType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CartonTypeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ResultView">
+    <Key>
+      <PropertyRef Name="Whosave" />
+      <PropertyRef Name="CartonTechnicalId" />
+      <PropertyRef Name="ProductInfoId" />
+    </Key>
+    <Property Name="OrderCode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SaleExpertCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SaleExpertName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NationalCode" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PostalCode" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="EnterPriceInterfaceName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EnconomicCode" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Tell" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="EnterPriceInterfaceTell" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Whosave" Type="Int32" Nullable="false" />
+    <Property Name="type" Type="Boolean" />
+    <Property Name="CartonType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CartonCount" Type="Int32" />
+    <Property Name="CartonLength" Type="Int32" />
+    <Property Name="CartonWidth" Type="Int32" />
+    <Property Name="CartonHeight" Type="Int32" />
+    <Property Name="CartonWeight" Type="Int32" />
+    <Property Name="IsCold" Type="Boolean" />
+    <Property Name="IsTemplate" Type="Boolean" />
+    <Property Name="CartonEmpty" Type="Boolean" />
+    <Property Name="ConnectorType" Type="Int32" />
+    <Property Name="CartonInsideType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SheatCount" Type="Int32" />
+    <Property Name="SheatLength" Type="Int32" />
+    <Property Name="SheatWidth" Type="Int32" />
+    <Property Name="SheatType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrintType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CartonTechnicalId" Type="Int32" Nullable="false" />
+    <Property Name="ColorCount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrintTypeSelection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PrintAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsKelishe" Type="Boolean" />
+    <Property Name="PrintIsTemplate" Type="Boolean" />
+    <Property Name="kelisheNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TemplateNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LayoutType" Type="Boolean" />
+    <Property Name="LayoutCount" Type="Int32" />
+    <Property Name="TypeOfUse" Type="Boolean" />
+    <Property Name="ProductDistance" Type="Int32" />
+    <Property Name="DeliveryMethod" Type="Boolean" />
+    <Property Name="AnbareshTime" Type="Int32" />
+    <Property Name="SendMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LogesticTypeSelection" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Humidity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UseAddress" Type="Boolean" />
+    <Property Name="OtherAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TheAmountOfSheetsUsedForEachCarton" Type="Double" />
+    <Property Name="MinimumBCT" Type="Double" />
+    <Property Name="WasteRate" Type="Double" />
+    <Property Name="DeliverTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LayerCount" Type="Boolean" />
+    <Property Name="Layer1" Type="Int32" />
+    <Property Name="Layer2" Type="Int32" />
+    <Property Name="FloatType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Layer3" Type="Int32" />
+    <Property Name="Layer4" Type="Int32" />
+    <Property Name="FloatType2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BCT" Type="Double" />
+    <Property Name="Layer5" Type="Int32" />
+    <Property Name="ECT" Type="Double" />
+    <Property Name="costpervaragh" Type="Double" />
+    <Property Name="costofall" Type="Double" />
+    <Property Name="malyat" Type="Double" />
+    <Property Name="takhfif" Type="Double" />
+    <Property Name="sumofall" Type="Double" />
+    <Property Name="ProductInfoId" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,169 @@
+﻿<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 offset-md-1 form-1-box ">
+        <fieldset class="form-group border-2 border border-dark p-3">
+            <legend class="w-auto px-2">اطلاعات سفارش</legend>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>کد سفارش:</label>
+                        <input class="form-control border-danger border" id="Ordercode" value="@ViewBag.sefareshcode" />
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>تاریخ : </label>
+                        <input class="border form-control border-danger" id="CreateDate" readonly value="@ViewBag.time" />
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>کد مشتری:</label>
+                        <input class="border form-control border-danger" id="txtCustomerCode" />
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>نام مشتری:</label>
+                        <input class="border form-control border-danger" id="txtCustomerName" />
+                    </div>
+                </div>
+                <div class="col-md-1">
+
+                </div>
+                <div id="modalcustomer" class="col-md-2 pull-right">
+
+                </div>
+
+                <div class="col-md-2 pull-right">
+                    <label>کد کارشناس فروش:</label>
+                    <input class="form-control border border-danger" type="number" readonly id="txtSalePersonCode" value="@ViewBag.usercode" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>کد محصول:</label>
+                        <input class="border form-control border-danger" id="txtProductCode" />
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>نام محصول:</label>
+                        <input id="txtProductName" class="border border-danger form-control" />
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div id="modalproduct" class="col-md-2">
+
+
+                </div>
+                <div class="col-md-2 pull-right">
+                    <label>نام کارشناس فروش:</label>
+                    <input class="form-control border border-danger" readonly id="txtSalePersonName" value="@ViewBag.username" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-8 pull-right">
+                    <div class="form-group">
+                        <label>آدرس:</label>
+                        <input class="border form-control" id="txtAddress" />
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>کد ملی:</label>
+                        <input class="form-control border" type="number" id="txtnationalcode" />
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>کد پستی:</label>
+                        <input class="border form-control" type="number" id="txtPostalCode" />
+                    </div>
+                </div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>رابط سازمانی مشتری:</label>
+                        <input class="border form-control" id="txtrabetsazmani" />
+                    </div>
+                </div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>کد اقتصادی:</label>
+                        <input class="border form-control" type="number" id="txtEconomicCode" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>تلفن:</label>
+                        <input class="border form-control" type="number" id="txtTell" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>تلفن رابط سازمانی:</label>
+                        <input class="border form-control" type="number" id="txtTellrabetsazmani" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>ایمیل مشتری:</label>
+                        <input class="border form-control" id="txtCustomerEmail" />
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="row">
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+<br />
+<script type="text/javascript">
+        $(document).ready(function () {
+            $(".ms-wikicontent").removeAttr("style");
+            loadmodal();
+            let ordercode = document.getElementById("Ordercode");
+            ordercode.addEventListener("keydown", function (e) {
+                if (e.code === "Enter") {
+                    GetDataFromOC($("#Ordercode").val());
+                }
+            });
+        });
+    function loadmodal() {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("loadmodalcustomer","Home")',
+            datatype: "json",
+            success: function (data) {
+                $("#modalcustomer").html(data)
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("loadmodalproduct","Home")',
+            datatype: "json",
+            success: function (data) {
+                $("#modalproduct").html(data)
+            }
+        });
+    }
+</script>

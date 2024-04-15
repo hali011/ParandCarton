@@ -1,0 +1,257 @@
+﻿<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 offset-md-1 form-1-box ">
+        <fieldset class="form-group border-2 border border-dark p-3">
+            <legend class="w-auto px-2">اطلاعات فنی کارتن</legend>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-3 pull-right">
+                    <div class="form-group">
+                        <label>نوع سفارش</label>
+                        <div class="form-check">
+                            <input type="radio" checked="checked" style="accent-color:red;" id="carton" onchange="typeofsuggest(1)" value="1" />
+                            <label for="carton">کارتن</label>
+                            <input type="radio" onchange="typeofsuggest(0)" style="accent-color:red;"  id="varagh" value="0" />
+                            <label for="varagh">ورق</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div id="karaton">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3 pull-right">
+                        <div class="form-group">
+                            @(Html.Kendo().ComboBox()
+                            .Name("cartontype")
+                            .Label(label => label.Content("نوع کارتن*"))
+                            .DataTextField("Text")
+                            .DataValueField("Value")
+                            .Rounded(Rounded.Full)
+                            .FillMode(FillMode.Outline)
+                            .SelectedIndex(0)
+                            .Suggest(true)
+                            )
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3 pull-right">
+                        <div class="form-group">
+                            <label>تعداد کارتن:</label>
+                            <input class="form-control border border-danger" type="number" id="cartoncount" />
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2 pull-right">
+                        <div class="form-group">
+                            <label>طول:</label>
+                            <input placeholder="بر حسب میلی متر" class="form-control border border-danger" type="number" id="CartonLength" />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3 pull-right">
+                        <div class="form-group">
+                            <label>وزن کالای داخل کارتن:</label>
+                            <input placeholder="بر حسب کیلوگرم" id="CartonWeight" class="border border-danger form-control" type="number" />
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3 pull-right">
+                        <div class="form-group">
+                            @(Html.Kendo().ComboBox()
+                            .Name("contenttype")
+                            .Label(label => label.Content("محصول داخل کارتن*"))
+                            .DataTextField("Text")
+                            .Rounded(Rounded.Full)
+                            .FillMode(FillMode.Outline)
+                            .DataValueField("Value")
+                            .SelectedIndex(0)
+                            .Suggest(true)
+                            )
+                        </div>
+                    </div>
+
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2 pull-right">
+                        <div class="form-group">
+                            <label>عرض:</label>
+                            <input placeholder="بر حسب میلی متر" class="border border-danger form-control" type="number" id="CartonWidth" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9"></div>
+                    <div class="col-md-2 pull-right">
+                        <div class="form-group">
+                            <label>ارتفاع:</label>
+                            <input placeholder="بر حسب میلی متر" class="border border-danger form-control" type="number" onchange="calchidemanroyeham($('#CartonHeight').val())" id="CartonHeight" />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2 pull-right">
+                        <div class="form-group">
+                            <label>سردخانه ای:</label>
+                            <div class="form-check">
+                                <input type="radio" checked="checked" id="Syes" onchange="sardkhaneChange(1)" value="1" />
+                                <label for="Syes">بله</label>
+                                <input type="radio" onchange="sardkhaneChange(0)" id="Sno" value="0" />
+                                <label for="Sno">خیر</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 pull-right">
+                        <div class="form-group">
+                            <label>نمونه:</label>
+                            <div class="form-check">
+                                <input type="radio" checked="checked" id="Nyes" onchange="nemonechange(1)" value="1" />
+                                <label for="Nyes">بله</label>
+                                <input type="radio" id="Nno" onchange="nemonechange(0)" value="0" />
+                                <label for="Nno">خیر</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 pull-right">
+                        <div class="form-group">
+                            <label>نحوه اتصال:</label>
+                            <div class="form-check">
+                                <input type="radio" checked="checked" id="chasb" onchange="conection(1)" value="1" />
+                                <label for="chasb">لب چسب</label>
+                                <input type="radio" id="mangene" onchange="conection(2)" value="2" />
+                                <label for="mangene">منگنه</label>
+                                <input type="radio" id="ghofli" onchange="conection(3)" value="3" />
+                                <label for="ghofli">قفلی</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>فضای خالی در کارتن:</label>
+                            <div class="form-check">
+                                <input type="radio" id="havespace" checked="checked" value="1" onchange="space(1)" />
+                                <label for="havespace">بله</label>
+                                <input type="radio" id="donthavespace" value="0" onchange="space(0)" />
+                                <label for="donthavespace">خیر</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            </div>
+            <div id="varaq">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2 pull-right">
+                        <div class="form-group">
+                            <label>تعداد شیت:</label>
+                            <input class="form-control border border-danger" type="number" id="sheetcount" />
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2 pull-right">
+                        <div class="form-group">
+                            <label>طول شیت:</label>
+                            <input class="form-control border border-danger" type="number" placeholder="بر حسب میلی متر" id="sheettoal" />
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2 pull-right">
+                        <div class="form-group">
+                            <label>عرض شیت:</label>
+                            <input class="form-control border border-danger" type="number" placeholder="بر حسب میلی متر" id="sheetarz" />
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2 pull-right">
+                        <div class="form-group">
+                            <label>وزن روی ورق:</label>
+                            <input class="form-control border border-danger" type="number" placeholder="بر حسب کیلوگرم" id="sheetweight" />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>نوع شیت:</label>
+                            <div class="form-check">
+                                <input type="radio" id="samplesheet" value="شیت ساده" onchange="sheettype(1)" />
+                                <label for="samplesheet">شیت ساده</label>
+                                <input type="radio" id="notsamplesheet" checked value="شیت خط دار" onchange="sheettype(0)" />
+                                <label for="notsamplesheet">شیت خط دار</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="divshtoolcarton" class="col-md-2">
+                        <div class="form-group">
+                            <label>طول کارتن:</label>
+                            <input class="form-control border border-danger" type="number" id="shtoolcarton" />
+                        </div>
+                    </div>
+                    <div id="divsharzcarton" class="col-md-2">
+                        <div class="form-group">
+                            <label>عرض کارتن:</label>
+                            <input class="form-control border border-danger" type="number" id="sharzcarton" />
+                        </div>
+                    </div>
+                    <div id="divshertefacarton" class="col-md-2">
+                        <div class="form-group">
+                            <label>ارتفاع کارتن:</label>
+                            <input class="form-control border border-danger" type="number" id="shertefacarton" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="row">
+            @*<div class="col-md-1"></div>*@
+            <div class="col-md-4"></div>
+            <div class="col-md-2 mt-2">
+
+            </div>
+            <div class="col-md-3"></div>
+            @*<div class="col-md-5"></div>*@
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+<br />
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#varaq").hide();
+        BindCartonInfo();
+    });
+    function BindCartonInfo() {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("cartontype", "Home")',
+            datatype: "json",
+            success: function (data) {
+                $("#cartontype").kendoComboBox({
+                    dataSource: data
+                });
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("contentcarton","Home")',
+            datatype: "json",
+            success: function (data) {
+                $("#contenttype").kendoComboBox({
+                    dataSource: data
+                })
+            }
+        });
+    }
+</script>
+
+

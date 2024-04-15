@@ -1,0 +1,528 @@
+﻿
+@{
+    ViewBag.Title = "form";
+    Layout = "~/Views/Shared/MasterPage.cshtml";
+}
+@section style{
+    <style>
+        fieldset, legend {
+            all: revert;
+        }
+
+        .reset {
+            all: revert;
+        }
+
+        .row {
+            direction: rtl;
+        }
+        .border {
+            border-radius: 2rem;
+        }
+    </style>
+}
+@section title{
+    <h2>فرم ثبت سفارش</h2>
+    }
+<div>
+    <div id="OI"></div>
+    <div id="TI"></div>
+    <div id="PRI"></div>
+    <div id="LI"></div>
+    <div id="S"></div>
+    <div id="PI"></div>
+    <br />
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class=" col-md-5">
+            <textarea class="form-control border" style="resize:none" id="Description" placeholder="توضیحات" rows="8"></textarea>
+            <br />
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-3 text-md-center">
+                    <button class="btn btn-outline-dark" onclick="Calculateprice()">محاسبه بهای کل</button>
+                </div>
+                <div class="col-md-3 text-md-center">
+                    <button class="btn btn-outline-dark" onclick="saveall()">ذخیره</button>
+                </div>
+                <div class="col-md-3 text-md-center">
+                    <button class="btn btn-outline-danger" onclick="eraseall()">پاکسازی صفحه</button>
+                </div>
+            </div>
+            <br />
+            @*<div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-3"></div>
+                <div class="col-md-2">
+                    <button class="btn btn-outline-success" onclick="ExportToJpg()">خروجی تصویر</button>
+                </div>
+            </div>*@
+        </div>
+        <div class=" col-md-5">
+            <div class="form-group">
+                <label>بهای محاسبه شده هر کارتن</label>
+                <input id="percprice" readonly class="form-control border" />
+            </div>
+            <div class="form-group">
+                <label>بهای کل</label>
+                <input id="allcprice" readonly class="form-control border" />
+            </div>
+            <div class="form-group">
+                <label>درصد تخفیف</label>
+                <input id="takhfif" onchange="finalcalculate($('#allcprice').val())" class="form-control border border-danger" />
+            </div>
+            <div class="form-group">
+                <label>مالیات بر ارزش افزوده 9%</label>
+                <input id="malyat" readonly class="form-control border" />
+            </div>
+            <div class="form-group">
+                <label>جمع کل</label>
+                <input id="bigprice" readonly class="form-control border" />
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("OrderInformation","Home")',
+            datatype: "json",
+            success: function (data) {
+                $("#OI").html(data)
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("CartonTechnicalInfo", "Home")',
+                    datatype: "json",
+                    success: function (data) {
+                        $("#TI").html(data)
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("PrintInformation", "Home")',
+                            datatype: "json",
+                            success: function (data) {
+                                $("#PRI").html(data)
+                                $.ajax({
+                                    type: "POST",
+                                    url: '@Url.Action("LogesticInformation", "Home")',
+                                    datatype: "json",
+                                    success: function (data) {
+                                        $("#LI").html(data)
+                                        $.ajax({
+                                            type: "POST",
+                                            url: '@Url.Action("StandardOption", "Home")',
+                                            datatype: "json",
+                                            success: function (data) {
+                                                $("#S").html(data)
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: '@Url.Action("ProductInformatiom", "Home")',
+                                                    datatype: "json",
+                                                    success: function (data) {
+                                                        $("#PI").html(data)
+                                                    }
+                                                });
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    });
+    function Calculateprice() {
+    if (checkprice(1)) {
+        let type = howmanylayer();
+        let CartonLength = 0;
+        let CartonWidth = 0;
+        let CartonHeight = 0;
+        let cartoncount = 0;
+        if ($("#varagh").is(':checked', true)) {
+            CartonLength = $("#sheettoal").val();
+            CartonWidth = $("#sheetarz").val();
+            CartonHeight = 1;
+            cartoncount = $("#sheetcount").val();
+        }
+        else {
+            CartonLength = $("#CartonLength").val();
+            CartonWidth = $("#CartonWidth").val();
+            CartonHeight = $("#CartonHeight").val();
+            cartoncount = $("#cartoncount").val();
+        }
+        let liner = [];
+        let float = [];
+        let floattype = [];
+        let roye = "";
+        if (type == 0) {
+            roye = $('#layer1 :selected').val();
+            liner.push($('#layer3 :selected').val());
+            float.push($('#layer2 :selected').val());
+            floattype.push($('#floottype1 :selected').val());
+        }
+        if (type == 1) {
+            roye = $('#layer1 :selected').val()
+            float.push($('#layer2 :selected').val());
+            liner.push($('#layer3 :selected').val());
+            float.push($('#layer4 :selected').val());
+            liner.push($('#layer5 :selected').val());
+            floattype.push($('#floottype1 :selected').val());
+            floattype.push($('#floottype2 :selected').val());
+        }
+        let WasteRate = $("#txtWasteRate").val();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("CalculatePrice","Home")',
+            data: { type: type, CartonLength: CartonLength, CartonWidth: CartonWidth, CartonHeight: CartonHeight, cartoncount: cartoncount, liner: liner, floot: float, floattype: floattype, roye: roye, WasteRate: WasteRate },
+            success: function (data) {
+                $("#percprice").val(data[0]);
+                $("#allcprice").val(data[1]);
+            }
+        });
+    }
+    }
+    function saveall() {
+        alert();
+        let CreateDate = $("#CreateDate").val();
+        let customercode = $("#txtCustomerCode").val();
+        let customername = $("#txtCustomerName").val();
+        let salepersoncode = $("#txtSalePersonCode").val();
+        let productcode = $("#txtProductCode").val();
+        let productname = $("#txtProductName").val();
+        let salepersonname = $("#txtSalePersonName").val();
+        let address = $("#txtAddress").val();
+        let nationalcode = $("#txtnationalcode").val();
+        let postalcode = $("#txtPostalCode").val();
+        let rabetsazmani = $("#txtrabetsazmani").val();
+        let enconomiccode = $("#txtEconomicCode").val();
+        let tell = $("#txtTell").val();
+        let Tellrabetsazmani = $("#txtTellrabetsazmani").val();
+        let customeremail = $("#txtCustomerEmail").val();
+        $.ajax({
+            type: "POST",
+            url: '/Home/SaveOI',
+            data: {
+                CreateDate: CreateDate, customercode: customercode, customername: customername, salepersoncode: salepersoncode, productcode: productcode, productname: productname,
+                salepersonname: salepersonname, address: address, nationalcode: nationalcode, postalcode: postalcode, rabetsazmani: rabetsazmani, enconomiccode: enconomiccode,
+                tell: tell, Tellrabetsazmani: Tellrabetsazmani, customeremail: customeremail
+            },
+            datatype: "json",
+            success: function (data) {
+                if (data.ordercode != "") {
+                    $("#Ordercode").val(data.ordercode);
+                    let technicalltype = Gettechnicalltype($("#carton"));
+                    if (technicalltype == false) {
+                        let cartontype = $("#cartontype").data('kendoComboBox').value();
+                        let cartoncount = $("#cartoncount").val()
+                        let cartonlenght = $("#CartonLength").val()
+                        let cartonweight = $("#CartonWeight").val()
+                        let contenttype = $("#contenttype").data('kendoComboBox').value();
+                        let cartonwidth = $("#CartonWidth").val()
+                        let cartonheight = $("#CartonHeight").val()
+                        let sardkhone = yesnovalue($("#Syes"))
+                        let nemone = yesnovalue($("#Nyes"))
+                        let connection = getconnectionvalue()
+                        let space = yesnovalue($("#havespace"))
+                        $.ajax({
+                            type: "POST",
+                            url: '/Home/SaveTI',
+                            data: {
+                                technicalltype: technicalltype, cartontype: cartontype, cartoncount: cartoncount, cartonlenght: cartonlenght, cartonweight: cartonweight, contenttype: contenttype
+                                , cartonwidth: cartonwidth, cartonheight: cartonheight, sardkhone: sardkhone, nemone: nemone, connection: connection, space: space
+                            },
+                            datatype: "json",
+                            success: function (data) {
+                                let printtype = getprinttype();
+                                let paintcount = getpintcount();
+                                let printtypeselection = getprinttypeselection();
+                                let klishenum = $("#txtKelisheNum").val();
+                                let printamount = getprintamount();
+                                let templatenum = $("#txtTemplateNum").val();
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/Home/SavePI',
+                                    data: { printtype: printtype, paintcount: paintcount, printtypeselection: printtypeselection, klishenum: klishenum, printamount: printamount, templatenum: templatenum },
+                                    datatype: "json",
+                                    success: function (data) {
+                                        if (data.isok) {
+                                            let layouttype = gettworadiobuttenLI(0);
+                                            let columennumber = $("#txtColumnNumber").val();
+                                            let consumtype = gettworadiobuttenLI(1);
+                                            let distance = $("#txtDistance").val();
+                                            let deliverytype = gettworadiobuttenLI(2);
+                                            let producttime = $("#txtAnbareshTime").val();
+                                            let submittype = getthreeradiobuttenLI();
+                                            let ispalet = getpalet();
+                                            let humidity = gethumidity();
+                                            let useaddress = getTrueadress();
+                                            let adress2 = $("#txtOtherAddress").val();
+                                            $.ajax({
+                                                type: "POST",
+                                                url: '/Home/SaveLI',
+                                                datatype: "json",
+                                                data: { layouttype: layouttype, columennumber: columennumber, consumtype: consumtype, distance: distance, deliverytype: deliverytype, producttime: producttime, submittype: submittype, ispalet: ispalet, humidity: humidity, useaddress: useaddress, adress2: adress2 },
+                                                success: function (data) {
+                                                    if (data.isok == true) {
+                                                        let mizanvaraghmasrafi = $("#mizanvaraghmasrafi").val();
+                                                        let lowbct = parseFloat($("#txtBctNum").val());
+                                                        let WasteRate = parseFloat($("#txtWasteRate").val());
+                                                        let DeliverDate = $("#txtDeliverDate").val();
+                                                        let layercount = howmanylayer();
+                                                        let layer = [];
+                                                        let floattype = [];
+                                                        if (layercount == false) {
+                                                            layer.push($('#layer1 :selected').val());
+                                                            layer.push($('#layer2 :selected').val());
+                                                            layer.push($('#layer3 :selected').val());
+                                                            floattype.push($('#floottype1 :selected').val());
+                                                        }
+                                                        if (layercount == true) {
+                                                            layer.push($('#layer1 :selected').val());
+                                                            layer.push($('#layer2 :selected').val());
+                                                            layer.push($('#layer3 :selected').val());
+                                                            layer.push($('#layer4 :selected').val());
+                                                            layer.push($('#layer5 :selected').val());
+                                                            floattype.push($('#floottype1 :selected').val())
+                                                            floattype.push($('#floottype2 :selected').val())
+                                                        }
+                                                        var ECT = parseFloat($("#ECTBCT").val());
+                                                        var BCT = parseFloat($("#BCTECT").val());
+                                                        $.ajax({
+                                                            type: "POST",
+                                                            url: '@Url.Action("saveProductinfo", "Home")',
+                                                            data: { mizanvaraghmasrafi: mizanvaraghmasrafi, lowbct: lowbct, WasteRate: WasteRate, DeliverDate: DeliverDate, layercount: layercount, layer: layer, floattype: floattype, ECT: ECT, BCT: BCT },
+                                                            datatype: "json",
+                                                            success: function (data) {
+                                                                saveform();
+                                                            }
+                                                        });
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    }
+                    else {
+                        let sheetcount = $("#sheetcount").val();
+                        let sheettoal = $("#sheettoal").val();
+                        let sheetarz = $("#sheetarz").val();
+                        let sheetweught = $("#sheetweight").val();
+                        let sheettype = Getsheettype($("#samplesheet"));
+                        let cartonwidth = 0;
+                        let cartonheight = 0;
+                        let cartonlenght = 0;
+                        if ($("#samplesheet").is(':checked')) {
+                            cartonwidth = 0;
+                            cartonheight = 0;
+                            cartonlenght = 0;
+                        }
+                        else {
+                            cartonwidth = $("#sharzcarton").val();
+                            cartonheight = $("#shertefacarton").val();
+                            cartonlenght = $("#shtoolcarton").val();
+                        }
+                        $.ajax({
+                            type: "POST",
+                            url: '/Home/SaveTIV',
+                            data: {
+                                technicalltype: technicalltype, sheetcount: sheetcount, sheettoal: sheettoal, sheetarz: sheetarz, sheettype: sheettype, cartonwidth: cartonwidth
+                                , cartonheight: cartonheight, cartonlenght: cartonlenght, sheetweught: sheetweught
+                            },
+                            datatype: "json",
+                            success: function (data) {
+                                let printtype = getprinttype();
+                                let paintcount = getpintcount();
+                                let printtypeselection = getprinttypeselection();
+                                let klishenum = $("#txtKelisheNum").val();
+                                let printamount = getprintamount();
+                                let templatenum = $("#txtTemplateNum").val();
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/Home/SavePI',
+                                    data: { printtype: printtype, paintcount: paintcount, printtypeselection: printtypeselection, klishenum: klishenum, printamount: printamount, templatenum: templatenum },
+                                    datatype: "json",
+                                    success: function (data) {
+                                        if (data.isok) {
+                                            let layouttype = gettworadiobuttenLI(0);
+                                            let columennumber = 0;
+                                            let consumtype = gettworadiobuttenLI(1);
+                                            let distance = $("#txtDistance").val();
+                                            let deliverytype = gettworadiobuttenLI(2);
+                                            let producttime = $("#txtAnbareshTime").val();
+                                            let submittype = getthreeradiobuttenLI();
+                                            let ispalet = getpalet();
+                                            let humidity = gethumidity();
+                                            let useaddress = getTrueadress();
+                                            let adress2 = $("#txtOtherAddress").val();
+                                            $.ajax({
+                                                type: "POST",
+                                                url: '/Home/SaveLI',
+                                                datatype: "json",
+                                                data: { layouttype: layouttype, columennumber: columennumber, consumtype: consumtype, distance: distance, deliverytype: deliverytype, producttime: producttime, submittype: submittype, ispalet: ispalet, humidity: humidity, useaddress: useaddress, adress2: adress2 },
+                                                success: function (data) {
+                                                    if (data.isok == true) {
+                                                        let mizanvaraghmasrafi = $("#mizanvaraghmasrafi").val();
+                                                        let lowbct = 0;
+                                                        let WasteRate = parseFloat($("#txtWasteRate").val());
+                                                        let DeliverDate = $("#txtDeliverDate").val();
+                                                        let layercount = howmanylayer();
+                                                        let layer = [];
+                                                        let floattype = [];
+                                                        if (layercount == false) {
+                                                            layer.push($('#layer1 :selected').val());
+                                                            layer.push($('#layer2 :selected').val());
+                                                            layer.push($('#layer3 :selected').val());
+                                                            floattype.push($('#floottype1 :selected').val());
+                                                        }
+                                                        if (layercount == true) {
+                                                            layer.push($('#layer1 :selected').val());
+                                                            layer.push($('#layer2 :selected').val());
+                                                            layer.push($('#layer3 :selected').val());
+                                                            layer.push($('#layer4 :selected').val());
+                                                            layer.push($('#layer5 :selected').val());
+                                                            floattype.push($('#floottype1 :selected').val());
+                                                            floattype.push($('#floottype2 :selected').val());
+                                                        }
+                                                        var ECT = parseFloat($("#ECTBCT").val());
+                                                        var BCT = parseFloat($("#BCTECT").val());
+                                                        $.ajax({
+                                                            type: "POST",
+                                                            url: '/Home/saveProductinfo',
+                                                            datatype: "json",
+                                                            data: { mizanvaraghmasrafi: mizanvaraghmasrafi, lowbct: lowbct, WasteRate: WasteRate, DeliverDate: DeliverDate, layercount: layercount, layer: layer, floattype: floattype, ECT: ECT, BCT: BCT },
+                                                            success: function (data) {
+                                                                saveform();
+                                                            }
+                                                        });
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    }
+                }
+            }
+        });
+    }
+    function saveform() {
+        let Description = $("#Description").val();
+        let percprice = $("#percprice").val();
+        let allcprice = $("#allcprice").val();
+        let malyat = $("#malyat").val();
+        let takhfif = $("#takhfif").val();
+        let bigprice = $("#bigprice").val();
+        $.ajax({
+            type: "POST",
+            url: '/Home/SaveForm',
+            data: { Description: Description, percprice: percprice, allcprice: allcprice, malyat: malyat, takhfif: takhfif, bigprice: bigprice },
+            datatype: "json",
+            success: function (data) {
+                if (data) {
+                    alert("اطلاعات با موفقیت ذخیره شد");
+                    window.location.href = "@Url.Action("ResultPage","Home")";
+                }
+            }
+        });
+    }
+    function ECTcalculate() {
+    if (checkprice(0)) {
+        let type = howmanylayer();
+        let CartonLength = 0;
+        let CartonWidth = 0;
+        let CartonHeight = 0;
+        if ($("#varagh").is(':checked', true)) {
+            CartonLength = $("#sheettoal").val();
+            CartonWidth = $("#sheetarz").val();
+            CartonHeight = 1;
+        }
+        else {
+            CartonLength = $("#CartonLength").val();
+            CartonWidth = $("#CartonWidth").val();
+            CartonHeight = $("#CartonHeight").val();
+        }
+        let liner1 = "";
+        let float1 = "";
+        let liner2 = "";
+        let float2 = "";
+        let floattype1 = "";
+        let floattype2 = "";
+        let roye = "";
+        if (type == 0) {
+            roye = $('#layer1 :selected').val()
+            float1 = $('#layer2 :selected').val()
+            liner1 = $('#layer3 :selected').val()
+            floattype1 = $('#floottype1 :selected').val()
+        }
+        if (type == 1) {
+            roye = $('#layer1 :selected').val()
+            float1 = $('#layer2 :selected').val()
+            liner1 = $('#layer3 :selected').val()
+            float2 = $('#layer4 :selected').val()
+            liner2 = $('#layer5 :selected').val()
+            floattype1 = $('#floottype1 :selected').val()
+            floattype2 = $('#floottype2 :selected').val()
+        }
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("CalculateECT_BCT","Home")',
+            data: { type: type, liner1: liner1, float1: float1, liner2: liner2, float2: float2, roye: roye, floattype1: floattype1, floattype2: floattype2, CartonLength: CartonLength, CartonWidth: CartonWidth, CartonHeight: CartonHeight },
+            datatype: "json",
+            success: function (data) {
+                $("#ECTBCT").val(data.ECT);
+                $("#BCTECT").val(data.BCT);
+                let wr = data.WasteRate * 100;
+                wr = Math.trunc(wr);
+                $("#txtWasteRate").val(wr);
+            }
+        });
+    }
+    }
+    function calculatebct() {
+        if (error() == false) {
+            let type = false
+            if ($("#carton").is(':checked') == true) {
+                type = false;
+            }
+            else {
+                type = true;
+            }
+            if (type == false) {
+                let vazn = $("#CartonWeight").val();
+                let ertefa = $("#CartonHeight").val();
+                let sardkhane = yesnovalue($("#Syes"));
+                let space = yesnovalue($("#havespace"));
+                let fasale = $("#txtDistance").val();
+                let zamananbaresh = $("#txtAnbareshTime").val();
+                let chideman = gettworadiobuttenLI(0);
+                let rtobat = gethumidity();
+                let tedadrang = getpintcount();
+                let mizanchap = getprintamount();
+                let daste = Daste();
+                let havakesh = Havakesh();
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/BCTcalculate",
+                    data: {
+                        type: type, vazn: vazn, ertefa: ertefa, sardkhane: sardkhane, space: space, fasale: fasale, zamananbaresh: zamananbaresh, chideman: chideman, rtobat: rtobat, tedadrang: tedadrang, mizanchap: mizanchap, daste: daste, havakesh: havakesh
+                    },
+                    dataype: 'josn',
+                    success: function (data) {
+                        $("#txtBctNum").val(data);
+                    }
+                });
+            } else {
+                alert("در صورتی که سفارش از نوع ورق باشد bct آن از این روش محاسبه نمی شود");
+            }
+
+        }
+    }
+</script>

@@ -1,0 +1,1080 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ParandCartondbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CartonTechnicalInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderInfoId" Type="int" Nullable="false" />
+          <Property Name="type" Type="bit" />
+          <Property Name="CartonType" Type="nvarchar" MaxLength="50" />
+          <Property Name="CartonCount" Type="int" />
+          <Property Name="CartonLength" Type="int" />
+          <Property Name="CartonWidth" Type="int" />
+          <Property Name="CartonHeight" Type="int" />
+          <Property Name="CartonWeight" Type="int" />
+          <Property Name="IsCold" Type="bit" />
+          <Property Name="IsTemplate" Type="bit" />
+          <Property Name="CartonEmpty" Type="bit" />
+          <Property Name="ConnectorType" Type="int" />
+          <Property Name="Whosave" Type="int" Nullable="false" />
+          <Property Name="CartonInsideType" Type="nvarchar" MaxLength="50" />
+          <Property Name="SheatCount" Type="int" />
+          <Property Name="SheatLength" Type="int" />
+          <Property Name="SheatWidth" Type="int" />
+          <Property Name="SheatType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CartonType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CartonTypeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InsideProducts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KelisheForm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Layers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RCT" Type="float" Nullable="false" />
+          <Property Name="Garmazh" Type="int" Nullable="false" />
+          <Property Name="Width" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IsAvailabe" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogesticInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderInfoId" Type="int" Nullable="false" />
+          <Property Name="PrintInfoId" Type="int" Nullable="false" />
+          <Property Name="LayoutType" Type="bit" />
+          <Property Name="LayoutCount" Type="int" />
+          <Property Name="TypeOfUse" Type="bit" />
+          <Property Name="ProductDistance" Type="int" />
+          <Property Name="DeliveryMethod" Type="bit" />
+          <Property Name="AnbareshTime" Type="int" />
+          <Property Name="SendMethod" Type="nvarchar" MaxLength="50" />
+          <Property Name="LogesticTypeSelection" Type="nvarchar" MaxLength="50" />
+          <Property Name="Humidity" Type="nvarchar" MaxLength="50" />
+          <Property Name="UseAddress" Type="bit" />
+          <Property Name="OtherAddress" Type="nvarchar(max)" />
+          <Property Name="WhoSave" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderCode" Type="varchar" MaxLength="15" StoreGeneratedPattern="Computed" />
+          <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SaleExpertCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SaleExpertName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="NationalCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PostalCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="EnterPriceInterfaceName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EnconomicCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Tell" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="EnterPriceInterfaceTell" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Whosave" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PriceInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="whosave" Type="int" Nullable="false" />
+          <Property Name="costpervaragh" Type="float" />
+          <Property Name="costofall" Type="float" />
+          <Property Name="malyat" Type="float" />
+          <Property Name="takhfif" Type="float" />
+          <Property Name="sumofall" Type="float" />
+          <Property Name="ProductInfoId" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PrintInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderInfoId" Type="int" Nullable="false" />
+          <Property Name="CartonTechnicalId" Type="int" Nullable="false" />
+          <Property Name="PrintType" Type="nvarchar" MaxLength="50" />
+          <Property Name="ColorCount" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrintTypeSelection" Type="nvarchar(max)" />
+          <Property Name="PrintAmount" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsKelishe" Type="bit" />
+          <Property Name="IsTemplate" Type="bit" />
+          <Property Name="kelisheNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="TemplateNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="Whosave" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogesticInfoId" Type="int" Nullable="false" />
+          <Property Name="TheAmountOfSheetsUsedForEachCarton" Type="float" />
+          <Property Name="MinimumBCT" Type="float" />
+          <Property Name="WasteRate" Type="float" />
+          <Property Name="DeliverTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="LayerCount" Type="bit" />
+          <Property Name="Layer1" Type="int" />
+          <Property Name="Layer2" Type="int" />
+          <Property Name="FloatType1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Layer3" Type="int" />
+          <Property Name="Layer4" Type="int" />
+          <Property Name="FloatType2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Layer5" Type="int" />
+          <Property Name="BCT" Type="float" />
+          <Property Name="ECT" Type="float" />
+          <Property Name="Whosave" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StandardInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StandardId" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserFamily" Type="nvarchar(max)" />
+          <Property Name="UserAccess" Type="int" />
+          <Property Name="NationalCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Department" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ResultView">
+          <Key>
+            <PropertyRef Name="Whosave" />
+            <PropertyRef Name="CartonTechnicalId" />
+            <PropertyRef Name="ProductInfoId" />
+          </Key>
+          <Property Name="OrderCode" Type="varchar" MaxLength="15" />
+          <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SaleExpertCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SaleExpertName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="NationalCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PostalCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="EnterPriceInterfaceName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EnconomicCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Tell" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="EnterPriceInterfaceTell" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Whosave" Type="int" Nullable="false" />
+          <Property Name="type" Type="bit" />
+          <Property Name="CartonType" Type="nvarchar" MaxLength="50" />
+          <Property Name="CartonCount" Type="int" />
+          <Property Name="CartonLength" Type="int" />
+          <Property Name="CartonWidth" Type="int" />
+          <Property Name="CartonHeight" Type="int" />
+          <Property Name="CartonWeight" Type="int" />
+          <Property Name="IsCold" Type="bit" />
+          <Property Name="IsTemplate" Type="bit" />
+          <Property Name="CartonEmpty" Type="bit" />
+          <Property Name="ConnectorType" Type="int" />
+          <Property Name="CartonInsideType" Type="nvarchar" MaxLength="50" />
+          <Property Name="SheatCount" Type="int" />
+          <Property Name="SheatLength" Type="int" />
+          <Property Name="SheatWidth" Type="int" />
+          <Property Name="SheatType" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrintType" Type="nvarchar" MaxLength="50" />
+          <Property Name="CartonTechnicalId" Type="int" Nullable="false" />
+          <Property Name="ColorCount" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrintTypeSelection" Type="nvarchar(max)" />
+          <Property Name="PrintAmount" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsKelishe" Type="bit" />
+          <Property Name="PrintIsTemplate" Type="bit" />
+          <Property Name="kelisheNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="TemplateNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="LayoutType" Type="bit" />
+          <Property Name="LayoutCount" Type="int" />
+          <Property Name="TypeOfUse" Type="bit" />
+          <Property Name="ProductDistance" Type="int" />
+          <Property Name="DeliveryMethod" Type="bit" />
+          <Property Name="AnbareshTime" Type="int" />
+          <Property Name="SendMethod" Type="nvarchar" MaxLength="50" />
+          <Property Name="LogesticTypeSelection" Type="nvarchar" MaxLength="50" />
+          <Property Name="Humidity" Type="nvarchar" MaxLength="50" />
+          <Property Name="UseAddress" Type="bit" />
+          <Property Name="OtherAddress" Type="nvarchar(max)" />
+          <Property Name="TheAmountOfSheetsUsedForEachCarton" Type="float" />
+          <Property Name="MinimumBCT" Type="float" />
+          <Property Name="WasteRate" Type="float" />
+          <Property Name="DeliverTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="LayerCount" Type="bit" />
+          <Property Name="Layer1" Type="int" />
+          <Property Name="Layer2" Type="int" />
+          <Property Name="FloatType1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Layer3" Type="int" />
+          <Property Name="Layer4" Type="int" />
+          <Property Name="FloatType2" Type="nvarchar" MaxLength="50" />
+          <Property Name="BCT" Type="float" />
+          <Property Name="Layer5" Type="int" />
+          <Property Name="ECT" Type="float" />
+          <Property Name="costpervaragh" Type="float" />
+          <Property Name="costofall" Type="float" />
+          <Property Name="malyat" Type="float" />
+          <Property Name="takhfif" Type="float" />
+          <Property Name="sumofall" Type="float" />
+          <Property Name="ProductInfoId" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_CartonTechnicalInfo_CartonTechnicalInfo">
+          <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CartonTechnicalInfo" Type="Self.CartonTechnicalInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CartonTechnicalInfo">
+              <PropertyRef Name="OrderInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogesticInfo_OrderInfo">
+          <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LogesticInfo" Type="Self.LogesticInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LogesticInfo">
+              <PropertyRef Name="OrderInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrintInfo_OrderInfo">
+          <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PrintInfo" Type="Self.PrintInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrintInfo">
+              <PropertyRef Name="OrderInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrintInfo_PrintInfo">
+          <End Role="PrintInfo" Type="Self.PrintInfo" Multiplicity="1" />
+          <End Role="PrintInfo1" Type="Self.PrintInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PrintInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrintInfo1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ParandCartondbModelStoreContainer">
+          <EntitySet Name="CartonTechnicalInfo" EntityType="Self.CartonTechnicalInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CartonType" EntityType="Self.CartonType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InsideProducts" EntityType="Self.InsideProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KelisheForm" EntityType="Self.KelisheForm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Layers" EntityType="Self.Layers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogesticInfo" EntityType="Self.LogesticInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderInfo" EntityType="Self.OrderInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PriceInfo" EntityType="Self.PriceInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrintInfo" EntityType="Self.PrintInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductInfo" EntityType="Self.ProductInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StandardInfo" EntityType="Self.StandardInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResultView" EntityType="Self.ResultView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ResultView].[OrderCode] AS [OrderCode], 
+    [ResultView].[CreateDate] AS [CreateDate], 
+    [ResultView].[CustomerCode] AS [CustomerCode], 
+    [ResultView].[CustomerName] AS [CustomerName], 
+    [ResultView].[SaleExpertCode] AS [SaleExpertCode], 
+    [ResultView].[ProductCode] AS [ProductCode], 
+    [ResultView].[ProductName] AS [ProductName], 
+    [ResultView].[SaleExpertName] AS [SaleExpertName], 
+    [ResultView].[Address] AS [Address], 
+    [ResultView].[NationalCode] AS [NationalCode], 
+    [ResultView].[PostalCode] AS [PostalCode], 
+    [ResultView].[EnterPriceInterfaceName] AS [EnterPriceInterfaceName], 
+    [ResultView].[EnconomicCode] AS [EnconomicCode], 
+    [ResultView].[Tell] AS [Tell], 
+    [ResultView].[EnterPriceInterfaceTell] AS [EnterPriceInterfaceTell], 
+    [ResultView].[Email] AS [Email], 
+    [ResultView].[Whosave] AS [Whosave], 
+    [ResultView].[type] AS [type], 
+    [ResultView].[CartonType] AS [CartonType], 
+    [ResultView].[CartonCount] AS [CartonCount], 
+    [ResultView].[CartonLength] AS [CartonLength], 
+    [ResultView].[CartonWidth] AS [CartonWidth], 
+    [ResultView].[CartonHeight] AS [CartonHeight], 
+    [ResultView].[CartonWeight] AS [CartonWeight], 
+    [ResultView].[IsCold] AS [IsCold], 
+    [ResultView].[IsTemplate] AS [IsTemplate], 
+    [ResultView].[CartonEmpty] AS [CartonEmpty], 
+    [ResultView].[ConnectorType] AS [ConnectorType], 
+    [ResultView].[CartonInsideType] AS [CartonInsideType], 
+    [ResultView].[SheatCount] AS [SheatCount], 
+    [ResultView].[SheatLength] AS [SheatLength], 
+    [ResultView].[SheatWidth] AS [SheatWidth], 
+    [ResultView].[SheatType] AS [SheatType], 
+    [ResultView].[PrintType] AS [PrintType], 
+    [ResultView].[CartonTechnicalId] AS [CartonTechnicalId], 
+    [ResultView].[ColorCount] AS [ColorCount], 
+    [ResultView].[PrintTypeSelection] AS [PrintTypeSelection], 
+    [ResultView].[PrintAmount] AS [PrintAmount], 
+    [ResultView].[IsKelishe] AS [IsKelishe], 
+    [ResultView].[PrintIsTemplate] AS [PrintIsTemplate], 
+    [ResultView].[kelisheNum] AS [kelisheNum], 
+    [ResultView].[TemplateNum] AS [TemplateNum], 
+    [ResultView].[LayoutType] AS [LayoutType], 
+    [ResultView].[LayoutCount] AS [LayoutCount], 
+    [ResultView].[TypeOfUse] AS [TypeOfUse], 
+    [ResultView].[ProductDistance] AS [ProductDistance], 
+    [ResultView].[DeliveryMethod] AS [DeliveryMethod], 
+    [ResultView].[AnbareshTime] AS [AnbareshTime], 
+    [ResultView].[SendMethod] AS [SendMethod], 
+    [ResultView].[LogesticTypeSelection] AS [LogesticTypeSelection], 
+    [ResultView].[Humidity] AS [Humidity], 
+    [ResultView].[UseAddress] AS [UseAddress], 
+    [ResultView].[OtherAddress] AS [OtherAddress], 
+    [ResultView].[TheAmountOfSheetsUsedForEachCarton] AS [TheAmountOfSheetsUsedForEachCarton], 
+    [ResultView].[MinimumBCT] AS [MinimumBCT], 
+    [ResultView].[WasteRate] AS [WasteRate], 
+    [ResultView].[DeliverTime] AS [DeliverTime], 
+    [ResultView].[LayerCount] AS [LayerCount], 
+    [ResultView].[Layer1] AS [Layer1], 
+    [ResultView].[Layer2] AS [Layer2], 
+    [ResultView].[FloatType1] AS [FloatType1], 
+    [ResultView].[Layer3] AS [Layer3], 
+    [ResultView].[Layer4] AS [Layer4], 
+    [ResultView].[FloatType2] AS [FloatType2], 
+    [ResultView].[BCT] AS [BCT], 
+    [ResultView].[Layer5] AS [Layer5], 
+    [ResultView].[ECT] AS [ECT], 
+    [ResultView].[costpervaragh] AS [costpervaragh], 
+    [ResultView].[costofall] AS [costofall], 
+    [ResultView].[malyat] AS [malyat], 
+    [ResultView].[takhfif] AS [takhfif], 
+    [ResultView].[sumofall] AS [sumofall], 
+    [ResultView].[ProductInfoId] AS [ProductInfoId], 
+    [ResultView].[Description] AS [Description]
+    FROM [dbo].[ResultView] AS [ResultView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CartonTechnicalInfo_CartonTechnicalInfo" Association="Self.FK_CartonTechnicalInfo_CartonTechnicalInfo">
+            <End Role="OrderInfo" EntitySet="OrderInfo" />
+            <End Role="CartonTechnicalInfo" EntitySet="CartonTechnicalInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogesticInfo_OrderInfo" Association="Self.FK_LogesticInfo_OrderInfo">
+            <End Role="OrderInfo" EntitySet="OrderInfo" />
+            <End Role="LogesticInfo" EntitySet="LogesticInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrintInfo_OrderInfo" Association="Self.FK_PrintInfo_OrderInfo">
+            <End Role="OrderInfo" EntitySet="OrderInfo" />
+            <End Role="PrintInfo" EntitySet="PrintInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrintInfo_PrintInfo" Association="Self.FK_PrintInfo_PrintInfo">
+            <End Role="PrintInfo" EntitySet="PrintInfo" />
+            <End Role="PrintInfo1" EntitySet="PrintInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ParandCartondbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CartonTechnicalInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderInfoId" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="Boolean" />
+          <Property Name="CartonType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CartonCount" Type="Int32" />
+          <Property Name="CartonLength" Type="Int32" />
+          <Property Name="CartonWidth" Type="Int32" />
+          <Property Name="CartonHeight" Type="Int32" />
+          <Property Name="CartonWeight" Type="Int32" />
+          <Property Name="IsCold" Type="Boolean" />
+          <Property Name="IsTemplate" Type="Boolean" />
+          <Property Name="CartonEmpty" Type="Boolean" />
+          <Property Name="ConnectorType" Type="Int32" />
+          <Property Name="Whosave" Type="Int32" Nullable="false" />
+          <Property Name="CartonInsideType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SheatCount" Type="Int32" />
+          <Property Name="SheatLength" Type="Int32" />
+          <Property Name="SheatWidth" Type="Int32" />
+          <Property Name="SheatType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrderInfo" Relationship="Self.FK_CartonTechnicalInfo_CartonTechnicalInfo" FromRole="CartonTechnicalInfo" ToRole="OrderInfo" />
+        </EntityType>
+        <EntityType Name="InsideProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KelisheForm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Layer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RCT" Type="Double" Nullable="false" />
+          <Property Name="Garmazh" Type="Int32" Nullable="false" />
+          <Property Name="Width" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IsAvailabe" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogesticInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderInfoId" Type="Int32" Nullable="false" />
+          <Property Name="PrintInfoId" Type="Int32" Nullable="false" />
+          <Property Name="LayoutType" Type="Boolean" />
+          <Property Name="LayoutCount" Type="Int32" />
+          <Property Name="TypeOfUse" Type="Boolean" />
+          <Property Name="ProductDistance" Type="Int32" />
+          <Property Name="DeliveryMethod" Type="Boolean" />
+          <Property Name="AnbareshTime" Type="Int32" />
+          <Property Name="SendMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LogesticTypeSelection" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Humidity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UseAddress" Type="Boolean" />
+          <Property Name="OtherAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WhoSave" Type="Int32" />
+          <NavigationProperty Name="OrderInfo" Relationship="Self.FK_LogesticInfo_OrderInfo" FromRole="LogesticInfo" ToRole="OrderInfo" />
+        </EntityType>
+        <EntityType Name="OrderInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderCode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CreateDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SaleExpertCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SaleExpertName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NationalCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PostalCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EnterPriceInterfaceName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EnconomicCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Tell" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EnterPriceInterfaceTell" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Whosave" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CartonTechnicalInfoes" Relationship="Self.FK_CartonTechnicalInfo_CartonTechnicalInfo" FromRole="OrderInfo" ToRole="CartonTechnicalInfo" />
+          <NavigationProperty Name="LogesticInfoes" Relationship="Self.FK_LogesticInfo_OrderInfo" FromRole="OrderInfo" ToRole="LogesticInfo" />
+          <NavigationProperty Name="PrintInfoes" Relationship="Self.FK_PrintInfo_OrderInfo" FromRole="OrderInfo" ToRole="PrintInfo" />
+        </EntityType>
+        <EntityType Name="PriceInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="whosave" Type="Int32" Nullable="false" />
+          <Property Name="costpervaragh" Type="Double" />
+          <Property Name="costofall" Type="Double" />
+          <Property Name="malyat" Type="Double" />
+          <Property Name="takhfif" Type="Double" />
+          <Property Name="sumofall" Type="Double" />
+          <Property Name="ProductInfoId" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PrintInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderInfoId" Type="Int32" Nullable="false" />
+          <Property Name="CartonTechnicalId" Type="Int32" Nullable="false" />
+          <Property Name="PrintType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ColorCount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrintTypeSelection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PrintAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsKelishe" Type="Boolean" />
+          <Property Name="IsTemplate" Type="Boolean" />
+          <Property Name="kelisheNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TemplateNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Whosave" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrderInfo" Relationship="Self.FK_PrintInfo_OrderInfo" FromRole="PrintInfo" ToRole="OrderInfo" />
+          <NavigationProperty Name="PrintInfo1" Relationship="Self.FK_PrintInfo_PrintInfo" FromRole="PrintInfo" ToRole="PrintInfo1" />
+          <NavigationProperty Name="PrintInfo2" Relationship="Self.FK_PrintInfo_PrintInfo" FromRole="PrintInfo1" ToRole="PrintInfo" />
+        </EntityType>
+        <EntityType Name="ProductInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogesticInfoId" Type="Int32" Nullable="false" />
+          <Property Name="TheAmountOfSheetsUsedForEachCarton" Type="Double" />
+          <Property Name="MinimumBCT" Type="Double" />
+          <Property Name="WasteRate" Type="Double" />
+          <Property Name="DeliverTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LayerCount" Type="Boolean" />
+          <Property Name="Layer1" Type="Int32" />
+          <Property Name="Layer2" Type="Int32" />
+          <Property Name="FloatType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Layer3" Type="Int32" />
+          <Property Name="Layer4" Type="Int32" />
+          <Property Name="FloatType2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Layer5" Type="Int32" />
+          <Property Name="BCT" Type="Double" />
+          <Property Name="ECT" Type="Double" />
+          <Property Name="Whosave" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StandardInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StandardId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserFamily" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserAccess" Type="Int32" />
+          <Property Name="NationalCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_CartonTechnicalInfo_CartonTechnicalInfo">
+          <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CartonTechnicalInfo" Type="Self.CartonTechnicalInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CartonTechnicalInfo">
+              <PropertyRef Name="OrderInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogesticInfo_OrderInfo">
+          <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LogesticInfo" Type="Self.LogesticInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LogesticInfo">
+              <PropertyRef Name="OrderInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrintInfo_OrderInfo">
+          <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PrintInfo" Type="Self.PrintInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrintInfo">
+              <PropertyRef Name="OrderInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrintInfo_PrintInfo">
+          <End Role="PrintInfo" Type="Self.PrintInfo" Multiplicity="1" />
+          <End Role="PrintInfo1" Type="Self.PrintInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PrintInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrintInfo1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ParandCartondbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CartonTechnicalInfoes" EntityType="Self.CartonTechnicalInfo" />
+          <EntitySet Name="InsideProducts" EntityType="Self.InsideProduct" />
+          <EntitySet Name="KelisheForms" EntityType="Self.KelisheForm" />
+          <EntitySet Name="Layers" EntityType="Self.Layer" />
+          <EntitySet Name="LogesticInfoes" EntityType="Self.LogesticInfo" />
+          <EntitySet Name="OrderInfoes" EntityType="Self.OrderInfo" />
+          <EntitySet Name="PriceInfoes" EntityType="Self.PriceInfo" />
+          <EntitySet Name="PrintInfoes" EntityType="Self.PrintInfo" />
+          <EntitySet Name="ProductInfoes" EntityType="Self.ProductInfo" />
+          <EntitySet Name="StandardInfoes" EntityType="Self.StandardInfo" />
+          <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
+          <AssociationSet Name="FK_CartonTechnicalInfo_CartonTechnicalInfo" Association="Self.FK_CartonTechnicalInfo_CartonTechnicalInfo">
+            <End Role="OrderInfo" EntitySet="OrderInfoes" />
+            <End Role="CartonTechnicalInfo" EntitySet="CartonTechnicalInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogesticInfo_OrderInfo" Association="Self.FK_LogesticInfo_OrderInfo">
+            <End Role="OrderInfo" EntitySet="OrderInfoes" />
+            <End Role="LogesticInfo" EntitySet="LogesticInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrintInfo_OrderInfo" Association="Self.FK_PrintInfo_OrderInfo">
+            <End Role="OrderInfo" EntitySet="OrderInfoes" />
+            <End Role="PrintInfo" EntitySet="PrintInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrintInfo_PrintInfo" Association="Self.FK_PrintInfo_PrintInfo">
+            <End Role="PrintInfo" EntitySet="PrintInfoes" />
+            <End Role="PrintInfo1" EntitySet="PrintInfoes" />
+          </AssociationSet>
+          <EntitySet Name="CartonTypes" EntityType="ParandCartondbModel.CartonType" />
+          <EntitySet Name="ResultViews" EntityType="ParandCartondbModel.ResultView" />
+        </EntityContainer>
+        <EntityType Name="CartonType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CartonTypeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ResultView">
+          <Key>
+            <PropertyRef Name="Whosave" />
+            <PropertyRef Name="CartonTechnicalId" />
+            <PropertyRef Name="ProductInfoId" />
+          </Key>
+          <Property Name="OrderCode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SaleExpertCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SaleExpertName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NationalCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PostalCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EnterPriceInterfaceName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EnconomicCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Tell" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EnterPriceInterfaceTell" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Whosave" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="Boolean" />
+          <Property Name="CartonType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CartonCount" Type="Int32" />
+          <Property Name="CartonLength" Type="Int32" />
+          <Property Name="CartonWidth" Type="Int32" />
+          <Property Name="CartonHeight" Type="Int32" />
+          <Property Name="CartonWeight" Type="Int32" />
+          <Property Name="IsCold" Type="Boolean" />
+          <Property Name="IsTemplate" Type="Boolean" />
+          <Property Name="CartonEmpty" Type="Boolean" />
+          <Property Name="ConnectorType" Type="Int32" />
+          <Property Name="CartonInsideType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SheatCount" Type="Int32" />
+          <Property Name="SheatLength" Type="Int32" />
+          <Property Name="SheatWidth" Type="Int32" />
+          <Property Name="SheatType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrintType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CartonTechnicalId" Type="Int32" Nullable="false" />
+          <Property Name="ColorCount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrintTypeSelection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PrintAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsKelishe" Type="Boolean" />
+          <Property Name="PrintIsTemplate" Type="Boolean" />
+          <Property Name="kelisheNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TemplateNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LayoutType" Type="Boolean" />
+          <Property Name="LayoutCount" Type="Int32" />
+          <Property Name="TypeOfUse" Type="Boolean" />
+          <Property Name="ProductDistance" Type="Int32" />
+          <Property Name="DeliveryMethod" Type="Boolean" />
+          <Property Name="AnbareshTime" Type="Int32" />
+          <Property Name="SendMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LogesticTypeSelection" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Humidity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UseAddress" Type="Boolean" />
+          <Property Name="OtherAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TheAmountOfSheetsUsedForEachCarton" Type="Double" />
+          <Property Name="MinimumBCT" Type="Double" />
+          <Property Name="WasteRate" Type="Double" />
+          <Property Name="DeliverTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LayerCount" Type="Boolean" />
+          <Property Name="Layer1" Type="Int32" />
+          <Property Name="Layer2" Type="Int32" />
+          <Property Name="FloatType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Layer3" Type="Int32" />
+          <Property Name="Layer4" Type="Int32" />
+          <Property Name="FloatType2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BCT" Type="Double" />
+          <Property Name="Layer5" Type="Int32" />
+          <Property Name="ECT" Type="Double" />
+          <Property Name="costpervaragh" Type="Double" />
+          <Property Name="costofall" Type="Double" />
+          <Property Name="malyat" Type="Double" />
+          <Property Name="takhfif" Type="Double" />
+          <Property Name="sumofall" Type="Double" />
+          <Property Name="ProductInfoId" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ParandCartondbModelStoreContainer" CdmEntityContainer="ParandCartondbEntities">
+          <EntitySetMapping Name="CartonTechnicalInfoes">
+            <EntityTypeMapping TypeName="ParandCartondbModel.CartonTechnicalInfo">
+              <MappingFragment StoreEntitySet="CartonTechnicalInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderInfoId" ColumnName="OrderInfoId" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="CartonType" ColumnName="CartonType" />
+                <ScalarProperty Name="CartonCount" ColumnName="CartonCount" />
+                <ScalarProperty Name="CartonLength" ColumnName="CartonLength" />
+                <ScalarProperty Name="CartonWidth" ColumnName="CartonWidth" />
+                <ScalarProperty Name="CartonHeight" ColumnName="CartonHeight" />
+                <ScalarProperty Name="CartonWeight" ColumnName="CartonWeight" />
+                <ScalarProperty Name="IsCold" ColumnName="IsCold" />
+                <ScalarProperty Name="IsTemplate" ColumnName="IsTemplate" />
+                <ScalarProperty Name="CartonEmpty" ColumnName="CartonEmpty" />
+                <ScalarProperty Name="ConnectorType" ColumnName="ConnectorType" />
+                <ScalarProperty Name="Whosave" ColumnName="Whosave" />
+                <ScalarProperty Name="CartonInsideType" ColumnName="CartonInsideType" />
+                <ScalarProperty Name="SheatCount" ColumnName="SheatCount" />
+                <ScalarProperty Name="SheatLength" ColumnName="SheatLength" />
+                <ScalarProperty Name="SheatWidth" ColumnName="SheatWidth" />
+                <ScalarProperty Name="SheatType" ColumnName="SheatType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InsideProducts">
+            <EntityTypeMapping TypeName="ParandCartondbModel.InsideProduct">
+              <MappingFragment StoreEntitySet="InsideProducts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KelisheForms">
+            <EntityTypeMapping TypeName="ParandCartondbModel.KelisheForm">
+              <MappingFragment StoreEntitySet="KelisheForm">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Layers">
+            <EntityTypeMapping TypeName="ParandCartondbModel.Layer">
+              <MappingFragment StoreEntitySet="Layers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="RCT" ColumnName="RCT" />
+                <ScalarProperty Name="Garmazh" ColumnName="Garmazh" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IsAvailabe" ColumnName="IsAvailabe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogesticInfoes">
+            <EntityTypeMapping TypeName="ParandCartondbModel.LogesticInfo">
+              <MappingFragment StoreEntitySet="LogesticInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderInfoId" ColumnName="OrderInfoId" />
+                <ScalarProperty Name="PrintInfoId" ColumnName="PrintInfoId" />
+                <ScalarProperty Name="LayoutType" ColumnName="LayoutType" />
+                <ScalarProperty Name="LayoutCount" ColumnName="LayoutCount" />
+                <ScalarProperty Name="TypeOfUse" ColumnName="TypeOfUse" />
+                <ScalarProperty Name="ProductDistance" ColumnName="ProductDistance" />
+                <ScalarProperty Name="DeliveryMethod" ColumnName="DeliveryMethod" />
+                <ScalarProperty Name="AnbareshTime" ColumnName="AnbareshTime" />
+                <ScalarProperty Name="SendMethod" ColumnName="SendMethod" />
+                <ScalarProperty Name="LogesticTypeSelection" ColumnName="LogesticTypeSelection" />
+                <ScalarProperty Name="Humidity" ColumnName="Humidity" />
+                <ScalarProperty Name="UseAddress" ColumnName="UseAddress" />
+                <ScalarProperty Name="OtherAddress" ColumnName="OtherAddress" />
+                <ScalarProperty Name="WhoSave" ColumnName="WhoSave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderInfoes">
+            <EntityTypeMapping TypeName="ParandCartondbModel.OrderInfo">
+              <MappingFragment StoreEntitySet="OrderInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="SaleExpertCode" ColumnName="SaleExpertCode" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="SaleExpertName" ColumnName="SaleExpertName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="EnterPriceInterfaceName" ColumnName="EnterPriceInterfaceName" />
+                <ScalarProperty Name="EnconomicCode" ColumnName="EnconomicCode" />
+                <ScalarProperty Name="Tell" ColumnName="Tell" />
+                <ScalarProperty Name="EnterPriceInterfaceTell" ColumnName="EnterPriceInterfaceTell" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Whosave" ColumnName="Whosave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PriceInfoes">
+            <EntityTypeMapping TypeName="ParandCartondbModel.PriceInfo">
+              <MappingFragment StoreEntitySet="PriceInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="whosave" ColumnName="whosave" />
+                <ScalarProperty Name="costpervaragh" ColumnName="costpervaragh" />
+                <ScalarProperty Name="costofall" ColumnName="costofall" />
+                <ScalarProperty Name="malyat" ColumnName="malyat" />
+                <ScalarProperty Name="takhfif" ColumnName="takhfif" />
+                <ScalarProperty Name="sumofall" ColumnName="sumofall" />
+                <ScalarProperty Name="ProductInfoId" ColumnName="ProductInfoId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrintInfoes">
+            <EntityTypeMapping TypeName="ParandCartondbModel.PrintInfo">
+              <MappingFragment StoreEntitySet="PrintInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderInfoId" ColumnName="OrderInfoId" />
+                <ScalarProperty Name="CartonTechnicalId" ColumnName="CartonTechnicalId" />
+                <ScalarProperty Name="PrintType" ColumnName="PrintType" />
+                <ScalarProperty Name="ColorCount" ColumnName="ColorCount" />
+                <ScalarProperty Name="PrintTypeSelection" ColumnName="PrintTypeSelection" />
+                <ScalarProperty Name="PrintAmount" ColumnName="PrintAmount" />
+                <ScalarProperty Name="IsKelishe" ColumnName="IsKelishe" />
+                <ScalarProperty Name="IsTemplate" ColumnName="IsTemplate" />
+                <ScalarProperty Name="kelisheNum" ColumnName="kelisheNum" />
+                <ScalarProperty Name="TemplateNum" ColumnName="TemplateNum" />
+                <ScalarProperty Name="Whosave" ColumnName="Whosave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductInfoes">
+            <EntityTypeMapping TypeName="ParandCartondbModel.ProductInfo">
+              <MappingFragment StoreEntitySet="ProductInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LogesticInfoId" ColumnName="LogesticInfoId" />
+                <ScalarProperty Name="TheAmountOfSheetsUsedForEachCarton" ColumnName="TheAmountOfSheetsUsedForEachCarton" />
+                <ScalarProperty Name="MinimumBCT" ColumnName="MinimumBCT" />
+                <ScalarProperty Name="WasteRate" ColumnName="WasteRate" />
+                <ScalarProperty Name="DeliverTime" ColumnName="DeliverTime" />
+                <ScalarProperty Name="LayerCount" ColumnName="LayerCount" />
+                <ScalarProperty Name="Layer1" ColumnName="Layer1" />
+                <ScalarProperty Name="Layer2" ColumnName="Layer2" />
+                <ScalarProperty Name="FloatType1" ColumnName="FloatType1" />
+                <ScalarProperty Name="Layer3" ColumnName="Layer3" />
+                <ScalarProperty Name="Layer4" ColumnName="Layer4" />
+                <ScalarProperty Name="FloatType2" ColumnName="FloatType2" />
+                <ScalarProperty Name="Layer5" ColumnName="Layer5" />
+                <ScalarProperty Name="BCT" ColumnName="BCT" />
+                <ScalarProperty Name="ECT" ColumnName="ECT" />
+                <ScalarProperty Name="Whosave" ColumnName="Whosave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StandardInfoes">
+            <EntityTypeMapping TypeName="ParandCartondbModel.StandardInfo">
+              <MappingFragment StoreEntitySet="StandardInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="StandardId" ColumnName="StandardId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfoes">
+            <EntityTypeMapping TypeName="ParandCartondbModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserFamily" ColumnName="UserFamily" />
+                <ScalarProperty Name="UserAccess" ColumnName="UserAccess" />
+                <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CartonTypes">
+            <EntityTypeMapping TypeName="ParandCartondbModel.CartonType">
+              <MappingFragment StoreEntitySet="CartonType">
+                <ScalarProperty Name="CartonTypeName" ColumnName="CartonTypeName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResultViews">
+            <EntityTypeMapping TypeName="ParandCartondbModel.ResultView">
+              <MappingFragment StoreEntitySet="ResultView">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ProductInfoId" ColumnName="ProductInfoId" />
+                <ScalarProperty Name="sumofall" ColumnName="sumofall" />
+                <ScalarProperty Name="takhfif" ColumnName="takhfif" />
+                <ScalarProperty Name="malyat" ColumnName="malyat" />
+                <ScalarProperty Name="costofall" ColumnName="costofall" />
+                <ScalarProperty Name="costpervaragh" ColumnName="costpervaragh" />
+                <ScalarProperty Name="ECT" ColumnName="ECT" />
+                <ScalarProperty Name="Layer5" ColumnName="Layer5" />
+                <ScalarProperty Name="BCT" ColumnName="BCT" />
+                <ScalarProperty Name="FloatType2" ColumnName="FloatType2" />
+                <ScalarProperty Name="Layer4" ColumnName="Layer4" />
+                <ScalarProperty Name="Layer3" ColumnName="Layer3" />
+                <ScalarProperty Name="FloatType1" ColumnName="FloatType1" />
+                <ScalarProperty Name="Layer2" ColumnName="Layer2" />
+                <ScalarProperty Name="Layer1" ColumnName="Layer1" />
+                <ScalarProperty Name="LayerCount" ColumnName="LayerCount" />
+                <ScalarProperty Name="DeliverTime" ColumnName="DeliverTime" />
+                <ScalarProperty Name="WasteRate" ColumnName="WasteRate" />
+                <ScalarProperty Name="MinimumBCT" ColumnName="MinimumBCT" />
+                <ScalarProperty Name="TheAmountOfSheetsUsedForEachCarton" ColumnName="TheAmountOfSheetsUsedForEachCarton" />
+                <ScalarProperty Name="OtherAddress" ColumnName="OtherAddress" />
+                <ScalarProperty Name="UseAddress" ColumnName="UseAddress" />
+                <ScalarProperty Name="Humidity" ColumnName="Humidity" />
+                <ScalarProperty Name="LogesticTypeSelection" ColumnName="LogesticTypeSelection" />
+                <ScalarProperty Name="SendMethod" ColumnName="SendMethod" />
+                <ScalarProperty Name="AnbareshTime" ColumnName="AnbareshTime" />
+                <ScalarProperty Name="DeliveryMethod" ColumnName="DeliveryMethod" />
+                <ScalarProperty Name="ProductDistance" ColumnName="ProductDistance" />
+                <ScalarProperty Name="TypeOfUse" ColumnName="TypeOfUse" />
+                <ScalarProperty Name="LayoutCount" ColumnName="LayoutCount" />
+                <ScalarProperty Name="LayoutType" ColumnName="LayoutType" />
+                <ScalarProperty Name="TemplateNum" ColumnName="TemplateNum" />
+                <ScalarProperty Name="kelisheNum" ColumnName="kelisheNum" />
+                <ScalarProperty Name="PrintIsTemplate" ColumnName="PrintIsTemplate" />
+                <ScalarProperty Name="IsKelishe" ColumnName="IsKelishe" />
+                <ScalarProperty Name="PrintAmount" ColumnName="PrintAmount" />
+                <ScalarProperty Name="PrintTypeSelection" ColumnName="PrintTypeSelection" />
+                <ScalarProperty Name="ColorCount" ColumnName="ColorCount" />
+                <ScalarProperty Name="CartonTechnicalId" ColumnName="CartonTechnicalId" />
+                <ScalarProperty Name="PrintType" ColumnName="PrintType" />
+                <ScalarProperty Name="SheatType" ColumnName="SheatType" />
+                <ScalarProperty Name="SheatWidth" ColumnName="SheatWidth" />
+                <ScalarProperty Name="SheatLength" ColumnName="SheatLength" />
+                <ScalarProperty Name="SheatCount" ColumnName="SheatCount" />
+                <ScalarProperty Name="CartonInsideType" ColumnName="CartonInsideType" />
+                <ScalarProperty Name="ConnectorType" ColumnName="ConnectorType" />
+                <ScalarProperty Name="CartonEmpty" ColumnName="CartonEmpty" />
+                <ScalarProperty Name="IsTemplate" ColumnName="IsTemplate" />
+                <ScalarProperty Name="IsCold" ColumnName="IsCold" />
+                <ScalarProperty Name="CartonWeight" ColumnName="CartonWeight" />
+                <ScalarProperty Name="CartonHeight" ColumnName="CartonHeight" />
+                <ScalarProperty Name="CartonWidth" ColumnName="CartonWidth" />
+                <ScalarProperty Name="CartonLength" ColumnName="CartonLength" />
+                <ScalarProperty Name="CartonCount" ColumnName="CartonCount" />
+                <ScalarProperty Name="CartonType" ColumnName="CartonType" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="Whosave" ColumnName="Whosave" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EnterPriceInterfaceTell" ColumnName="EnterPriceInterfaceTell" />
+                <ScalarProperty Name="Tell" ColumnName="Tell" />
+                <ScalarProperty Name="EnconomicCode" ColumnName="EnconomicCode" />
+                <ScalarProperty Name="EnterPriceInterfaceName" ColumnName="EnterPriceInterfaceName" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="SaleExpertName" ColumnName="SaleExpertName" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="SaleExpertCode" ColumnName="SaleExpertCode" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

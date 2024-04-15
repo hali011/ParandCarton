@@ -1,0 +1,156 @@
+﻿<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 offset-md-1 form-1-box ">
+        <fieldset class="form-group border-2 border border-dark p-3">
+            <legend class="w-auto px-2">اطلاعات چاپ و دایکات</legend>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>نوع چاپ:</label>
+                        <div class="form-check">
+                            <input type="radio" style="accent-color:red;" checked id="felsko" value="فلکسو" onchange="printtype(1)" />
+                            <label for="felsko" style="margin-left:10px">فلکسو</label>
+                            <input type="radio" style="accent-color:red;" id="laminet" value="لمینت" onchange="printtype(2)" />
+                            <label for="laminet">لمینت</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="ranglaminet" class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-7 pull-right">
+                    <div class="form-group">
+                        <label>تعدادرنگ:</label>
+                        <br />
+                        <div class="form-check form-check-inline">
+                            <input type="radio" style="accent-color:red;" checked id="nonepaint" value="بدون چاپ" onchange="countofpaint(0)" />
+                            <label for="nonepaint" style="margin-left: 10px ">بدون چاپ</label>
+                            <input type="radio" style="accent-color:red;" id="onepaint" value="یک" onchange="countofpaint(1)" />
+                            <label for="onepaint" style="margin-left: 10px ">یک</label>
+                            <input type="radio" id="twopaint" style="accent-color:red;" value="دو" onchange="countofpaint(2)" />
+                            <label for="twopaint" style="margin-left: 10px ">دو</label>
+                            <input type="radio" style="accent-color:red;" id="threepaint" value="سه" onchange="countofpaint(3)" />
+                            <label for="threepaint" style="margin-left: 10px ">سه</label>
+                            <input type="radio" style="accent-color:red;" id="fourpaint" value="چهار" onchange="countofpaint(4)" />
+                            <label for="fourpaint" style="margin-left: 10px ">چهار</label>
+                            <input type="radio" id="fivepaint" style="accent-color:red;" value="پنج" onchange="countofpaint(5)" />
+                            <label for="fivepaint">پنج</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-4 pull-right mt-4">
+                    <div class="form-group">
+                        <div class="form-check form-check-inline">
+                            <input type="checkbox" value="یو وی" id="uv" />
+                            <label for="uv" style="margin-left: 10px ">یو وی</label>
+                            <input type="checkbox" id="daycat" value="دایکات" />
+                            <label for="daycat" style="margin-left: 10px ">دایکات</label>
+                            <input type="checkbox" id="daste" value="دسته" />
+                            <label for="daste" style="margin-left: 10px ">دسته</label>
+                            <input type="checkbox" id="havakesh" value="هواکش" />
+                            <label for="havakesh">هواکش</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>کلیشه:</label>
+                        <div class="form-check" style="margin-top:10px">
+                            <input type="radio" id="haveklishe" value="1" style="accent-color:red;" onclick="klishe($('#txtKelisheNum'),1)" />
+                            <label for="haveklishe" style="margin-left: 10px ">دارد</label>
+                            <input type="radio" checked id="donthaveklishe" style="accent-color:red;" value="0" onclick="klishe($('#txtKelisheNum'),0)" />
+                            <label for="donthaveklishe">ندارد</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 pull-right">
+                    <label>شماره کلیشه:</label>
+                    <input class="border form-control" id="txtKelisheNum" disabled />
+                </div>
+                <div id="modalkelishe" class="col-md-2">
+
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-5 pull-right">
+                    <div class="form-group">
+                        <label>میزان چاپ:</label>
+                        <br />
+                        <div class="form-check form-check-inline">
+                            <input id="10darsad" checked onchange="mizanechap(0)" type="radio" value="10%" />
+                            <label for="10darsad" style="margin-left: 10px ">10%</label>
+                            <input id="25darsad" onchange="mizanechap(1)" type="radio" value="25%" />
+                            <label for="25darsad" style="margin-left: 10px ">25%</label>
+                            <input id="50darsad" onchange="mizanechap(2)" type="radio" value="50%" />
+                            <label for="50darsad" style="margin-left: 10px ">50%</label>
+                            <input id="75darsad" onchange="mizanechap(3)" type="radio" value="75%" />
+                            <label for="75darsad" style="margin-left: 10px ">75%</label>
+                            <input id="100darsad" onchange="mizanechap(4)" type="radio" value="100%" />
+                            <label for="100darsad">100%</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>قالب:</label>
+                        <div class="form-check" style="margin-top:10px">
+                            <input type="radio" id="haveframe" value="1" style="accent-color:red;" onclick="frame($('#txtTemplateNum'),1)" />
+                            <label for="haveframe" style="margin-left: 10px ">دارد</label>
+                            <input type="radio" checked id="donthaveframe" style="accent-color:red;" value="0" onclick="frame($('#txtTemplateNum'),0)" />
+                            <label for="donthaveframe">ندارد</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2 pull-right">
+                    <label>شماره قالب:</label>
+                    <input class="border form-control" id="txtTemplateNum" disabled />
+                </div>
+                <div id="modalstore" class="col-md-2">
+
+                </div>
+            </div>
+            <br />
+        </fieldset>
+    </div>
+</div>
+
+<br />
+
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            /* BindCustomer();*/
+            $(".ms-wikicontent").removeAttr("style");
+            $("#canceleditPI").hide();
+            loadmodal();
+        });
+    function loadmodal() {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("loadmodalstore","Home")',
+            datatype: "json",
+            success: function (data) {
+                $("#modalstore").html(data);
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("loadmodalklishe","Home")',
+            datatype: "json",
+            success: function (data) {
+                $("#modalkelishe").html(data);
+            }
+        });
+    }
+</script>
+

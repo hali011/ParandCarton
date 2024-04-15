@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "LoginPage";
+    Layout = "~/Views/Shared/MasterPage.cshtml";
+}
+
+@section style{
+    <style>
+        fieldset, legend {
+            all: revert;
+        }
+
+        .reset {
+            all: revert;
+        }
+
+        .row {
+            direction: rtl;
+        }
+
+        .table > thead {
+            vertical-align: middle;
+        }
+        .border {
+            border-radius: 2rem;
+        }
+    </style>
+}
+
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 offset-md-1 form-1-box ">
+        <fieldset class="form-group border border-dark p-3">
+            <legend class="w-auto px-2">ورود</legend>
+            <div class="row">
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>کد ملی</label>
+                        <input id="natunalcode" class="form-control border" />
+                    </div>
+                </div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>رمز ورود</label>
+                        <input id="pass" type="password" class="form-control border"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:1em; margin-right:0.5em">
+                <button class="btn btn-outline-success border border-success" onclick="Login()" style=" width: 100px">ورود</button>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var pass = document.getElementById("pass");
+        pass.addEventListener("keydown", function (e) {
+            if (e.code === "Enter") {
+                Login();
+            }
+        });
+    });
+    function Login() {
+        var nc = $("#natunalcode").val();
+        if (nc == null) {
+            alert("لطفا کد ملی خود را وارد کنید");
+        }
+        var pass = $("#pass").val();
+        if (pass == null) {
+            alert("لطفا رمز عبور خود را وارد کنید");
+        }
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("Login","Admin")',
+            data: { pass: pass, nc: nc },
+            datatype: "json",
+            success: function (data) {
+                if (data.error == 1) {
+                    alert("کد ملی وارد شده صحیح نیست یا ثبت نشده است");
+                }
+                else if (data.error == 2) {
+                    alert("رمز وارد شده شما اشتباه است");
+                }
+                else if (data.error == 0) {
+                    window.open("/Home/form", "_self")
+                }
+            }
+        });
+    }
+</script>

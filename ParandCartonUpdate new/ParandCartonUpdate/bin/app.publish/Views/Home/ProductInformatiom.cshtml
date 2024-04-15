@@ -1,0 +1,154 @@
+﻿@model IEnumerable<ParandCartonUpdate.Models.Layer>
+<br />
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 offset-md-1 form-1-box ">
+        <fieldset class="form-group border-2 border border-dark p-3">
+            <legend class="w-auto px-2">اطللاعات محصول</legend>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-3 pull-right">
+                    <label>میزان ورق مصرفی برای هر کارتن:</label>
+                    <input class="form-control border" style=" -webkit-appearance: none; " placeholder="برحسب کیلوگرم" type="number" id="mizanvaraghmasrafi" />
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-3 pull-right">
+                    <div class="form-group">
+                        <label>برآورد حداقل BCT مورد نیاز:</label>
+                        <div style="display:inline;background-color:blue">
+                            <input class="form-control border" style=" -webkit-appearance: none; " readonly type="number" placeholder="برحسب کیلوگرم" id="txtBctNum" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <button class="btn btn-outline-dark" style="margin-top:1.5rem" onclick="calculatebct()">محاسبه</button>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>درصد ضایعات:</label>
+                        <input class="form-control border" type="number" id="txtWasteRate" />
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-3 pull-right">
+                    <div class="form-group">
+                        <label>تاریخ تحویل به مشتری:</label>
+                        <input data-jdp class="form-control border border-danger" readonly id="txtDeliverDate" />
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input style="accent-color:red;" type="radio" onclick="layers(3)" id="3layers" />
+                        <label for="3layers">سه لایه</label>
+                        <input style="accent-color:red;" checked type="radio" onclick="layers(5)" id="5layers" />
+                        <label id="3=5layers">پنج لایه</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10 pull-right">
+                    <div class="form-group">
+                        <label>ترکیب ورق پیشنهادی :</label>
+                        <div class="form-group row">
+                            <div class="col-md-2">
+                                <select id="layer1" class=" form-control  border dropdown">
+                                    <option selected value="0" disabled>رویه</option>
+                                    @foreach (var item in Model)
+                                    {
+                                        <option value="@item.Id">@item.ProductName @item.Width</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <select id="layer2" class="bg-danger form-control border dropdown">
+                                    <option selected value="0" disabled>فلوت</option>
+                                    @foreach (var item in Model)
+                                    {
+                                        <option value="@item.Id">@item.ProductName @item.Width</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-1">
+                                <select id="floottype1" onchange="checklayertype(0)" class="bg-warning form-control border dropdown">
+                                    <option selected value="0" disabled>نوع فلوت</option>
+                                    <option id="E1" value="E">E</option>
+                                    <option id="B1" value="B">B</option>
+                                    <option id="C1" value="C">C</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <select id="layer3" class="form-control border dropdown">
+                                    <option selected value="0" disabled>لاینر</option>
+                                    @foreach (var item in Model)
+                                    {
+                                        <option value="@item.Id">@item.ProductName @item.Width</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <select id="layer4" class="bg-danger form-control border dropdown">
+                                    <option selected value="0" disabled>فلوت</option>
+                                    @foreach (var item in Model)
+                                    {
+                                        <option value="@item.Id">@item.ProductName @item.Width</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-1">
+                                <select id="floottype2" onchange="checklayertype(1)" class="bg-warning form-control border dropdown">
+                                    <option selected value="0" disabled>نوع فلوت</option>
+                                    <option id="E2" value="E">E</option>
+                                    <option id="B2" value="B">B</option>
+                                    <option id="C2" value="C">C</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <select id="layer5" class="form-control border dropdown">
+                                    <option selected value="0" disabled>لاینر</option>
+                                    @foreach (var item in Model)
+                                    {
+                                        <option value="@item.Id">@item.ProductName @item.Width</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-2">
+                    <label>BCT</label>
+                    <input class="form-control border" style=" -webkit-appearance: none; " type="number" readonly id="BCTECT" />
+                </div>
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-2">
+                    <label>ECT</label>
+                    <input class="form-control border" style=" -webkit-appearance: none; " type="number" readonly id="ECTBCT" />
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                    <button class="btn btn-outline-dark" onclick="ECTcalculate()" style="margin-top:1.5rem;">محاسبه</button>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        jalaliDatepicker.startWatch();
+    });
+</script>

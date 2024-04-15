@@ -1,0 +1,1043 @@
+﻿@model ParandCartonUpdate.Models.ResultView
+@{
+    ViewBag.Title = "ResultPage";
+    Layout = "~/Views/Shared/MasterPage.cshtml";
+}
+@{
+    List<ParandCartonUpdate.Models.Layer> layer = new List<ParandCartonUpdate.Models.Layer>();
+    string layer1 = "";
+    string layer2 = "";
+    string layer3 = "";
+    string layer4 = "";
+    string layer5 = "";
+    using (ParandCartonUpdate.Models.ParandCartondbEntities db = new ParandCartonUpdate.Models.ParandCartondbEntities())
+    {
+        layer = db.Layers.ToList();
+    }
+    if (Model.LayerCount == false)
+    {
+        ParandCartonUpdate.Models.Layer laye = layer.Where(w => w.Id == Model.Layer1).SingleOrDefault();
+        layer1 = laye.ProductName + laye.Width;
+        laye = layer.Where(w => w.Id == Model.Layer2).SingleOrDefault();
+        layer2 = laye.ProductName + laye.Width;
+        laye = layer.Where(w => w.Id == Model.Layer3).SingleOrDefault();
+        layer3 = laye.ProductName + laye.Width;
+    }
+    else
+    {
+        ParandCartonUpdate.Models.Layer laye = layer.Where(w => w.Id == Model.Layer1).SingleOrDefault();
+        layer1 = laye.ProductName + laye.Width;
+        laye = layer.Where(w => w.Id == Model.Layer2).SingleOrDefault();
+        layer2 = laye.ProductName + laye.Width;
+        laye = layer.Where(w => w.Id == Model.Layer3).SingleOrDefault();
+        layer3 = laye.ProductName + laye.Width;
+        laye = layer.Where(w => w.Id == Model.Layer4).SingleOrDefault();
+        layer4 = laye.ProductName + laye.Width;
+        laye = layer.Where(w => w.Id == Model.Layer5).SingleOrDefault();
+        layer5 = laye.ProductName + laye.Width;
+    }
+
+}
+@{
+    bool uv = false;
+    bool daykat = false;
+    bool daste = false;
+    bool havakesh = false;
+    List<string> pts = new List<string>();
+    if (Model.PrintTypeSelection != null && Model.PrintTypeSelection != "")
+    {
+        pts = Model.PrintTypeSelection.Split(' ').ToList();
+        for (int i = 0; i < pts.Count; i++)
+        {
+            if (pts[i] == "یو وی")
+            {
+                uv = true;
+            }
+            if (pts[i] == "دایکات")
+            {
+                daykat = true;
+            }
+            if (pts[i] == "دسته")
+            {
+                daste = true;
+            }
+            if (pts[i] == "هواکش")
+            {
+                havakesh = true;
+            }
+        }
+    }
+}
+@{
+    bool palet = false;
+    bool sherink = false;
+    bool tasme = false;
+    List<string> ispalet = new List<string>();
+    if (Model.LogesticTypeSelection != "" && Model.LogesticTypeSelection != null)
+    {
+        ispalet = Model.LogesticTypeSelection.Split(' ').ToList();
+        for (int i = 0; i < ispalet.Count; i++)
+        {
+            if (ispalet[i] == "شیرینک")
+            {
+                sherink = true;
+            }
+            if (ispalet[i] == "تسمه")
+            {
+                tasme = true;
+            }
+            if (ispalet[i] == "پالت")
+            {
+                palet = true;
+            }
+        }
+    }
+}
+
+@section style{
+    <style>
+        fieldset, legend {
+            all: revert;
+        }
+
+        .reset {
+            all: revert;
+        }
+
+        .row {
+            direction: rtl;
+        }
+
+        .border {
+            border-radius: 2rem;
+        }
+
+        body, html {
+            font-family: 'B Yekan';
+            font-size: 14px !important;
+        }
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+        input {
+            text-align: right;
+        }
+    </style>
+}
+@section title{
+    <h2>فرم ثبت سفارش</h2>
+}
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 offset-md-1 form-1-box ">
+        <fieldset class="form-group border-2 border border-dark p-3">
+            <legend class="w-auto px-2">اطلاعات سفارش</legend>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>کد سفارش:</label>
+                        <input class="form-control border" readonly id="ordercode" value="@Model.OrderCode" />
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>تاریخ : </label>
+                        <input class="border form-control" value="@Model.CreateDate" readonly />
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>کد مشتری:</label>
+                        <input class="border form-control" readonly value="@Model.CustomerCode" id="txtCustomerCode" />
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>نام مشتری:</label>
+                        <input class="border form-control" readonly value="@Model.CustomerName" id="txtCustomerName" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+
+                </div>
+
+                <div class="col-md-2 pull-right">
+                    <label>کد کارشناس فروش:</label>
+                    <input class="form-control border" readonly id="txtSalePersonCode" value="@Model.SaleExpertCode" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>کد محصول:</label>
+                        <input class="border form-control" readonly value="@Model.ProductCode" id="txtProductCode" />
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>نام محصول:</label>
+                        <input id="txtProductName" class="border form-control" readonly value="@Model.ProductName" />
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2 pull-right">
+                    <label>نام کارشناس فروش:</label>
+                    <input class="form-control border" readonly id="txtSalePersonName" value="@Model.SaleExpertName" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-8 pull-right">
+                    <div class="form-group">
+                        <label>آدرس:</label>
+                        <input class="border form-control" id="txtAddress" readonly value="@Model.Address" />
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>کد ملی:</label>
+                        <input class="form-control border" id="txtnationalcode" readonly value="@Model.NationalCode" />
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>کد پستی:</label>
+                        <input class="border form-control" readonly value="@Model.PostalCode" id="txtPostalCode" />
+                    </div>
+                </div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>رابط سازمانی مشتری:</label>
+                        <input class="border form-control" readonly value="@Model.EnterPriceInterfaceName" id="txtrabetsazmani" />
+                    </div>
+                </div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>کد اقتصادی:</label>
+                        <input class="border form-control" readonly value="@Model.EnconomicCode" id="txtEconomicCode" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>تلفن:</label>
+                        <input class="border form-control" id="txtTell" readonly value="@Model.Tell" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>تلفن رابط سازمانی:</label>
+                        <input class="border form-control" readonly value="@Model.EnterPriceInterfaceTell" id="txtTellrabetsazmani" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>ایمیل مشتری:</label>
+                        <input class="border form-control" readonly value="@Model.Email" id="txtCustomerEmail" />
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="row">
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<br />
+
+
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 offset-md-1 form-1-box ">
+        <fieldset class="form-group border-2 border border-dark p-3">
+            <legend class="w-auto px-2">اطلاعات فنی کارتن</legend>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-3 pull-right">
+                    <div class="form-group">
+                        <label>نوع سفارش</label>
+                        <div class="form-check">
+                            @if (Model.type == false)
+                            {
+                                <input type="radio" checked id="carton" />
+                                <label for="carton">کارتن</label>
+                            }
+                            else
+                            {
+                                <input type="radio" checked id="varagh" />
+                                <label for="varagh">ورق</label>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            @if (Model.type == false)
+            {
+
+                <div id="karaton">
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-3 pull-right">
+                            <div class="form-group">
+                                <label>نوع کارتن:</label>
+                                <input readonly value="@Model.CartonType" class="form-control border" id="cartontype" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-3 pull-right">
+                            <div class="form-group">
+                                <label>تعداد کارتن:</label>
+                                <input class="form-control border" readonly value="@Model.CartonCount" id="cartoncount" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label>طول:</label>
+                                <input placeholder="بر حسب میلی متر" class="form-control border" readonly value="@Model.CartonLength" id="CartonLength" />
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-3 pull-right">
+                            <div class="form-group">
+                                <label>وزن کالای داخل کارتن:</label>
+                                <input id="CartonWeight" readonly value="@Model.CartonWeight" class="border form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-3 pull-right">
+                            <div class="form-group">
+                                <label>محصول داخل کارتن:</label>
+                                <input id="contenttype" readonly value="@Model.CartonInsideType" class="border form-control" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label>عرض:</label>
+                                <input readonly value="@Model.CartonWidth" class="border form-control" id="CartonWidth" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label>ارتفاع:</label>
+                                <input class="border form-control" readonly value="@Model.CartonHeight" id="CartonHeight" />
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label>سردخانه ای:</label>
+                                <div class="form-check">
+                                    @if (Model.IsCold == true)
+                                    {
+                                        <input type="radio" checked="checked" id="Syes" />
+                                        <label for="Syes">بله</label>
+                                    }
+                                    else
+                                    {
+                                        <input type="radio" checked id="Sno" />
+                                        <label for="Sno">خیر</label>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label>نمونه:</label>
+                                <div class="form-check">
+                                    @if (Model.IsTemplate == true)
+                                    {
+                                        <input type="radio" checked id="Nyes" />
+                                        <label for="Nyes">بله</label>
+                                    }
+                                    else
+                                    {
+                                        <input type="radio" id="Nno" checked />
+                                        <label for="Nno">خیر</label>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 pull-right">
+                            <div class="form-group">
+                                <label>نحوه اتصال:</label>
+                                <div class="form-check">
+                                    @if (Model.ConnectorType == 1)
+                                    {
+                                        <input type="radio" checked="checked" id="chasb" />
+                                        <label for="chasb">لب چسب</label>
+                                    }
+                                    else if (Model.ConnectorType == 2)
+                                    {
+                                        <input type="radio" id="mangene" checked />
+                                        <label for="mangene">منگنه</label>
+                                    }
+                                    else
+                                    {
+                                        <input type="radio" id="ghofli" checked />
+                                        <label for="ghofli">قفلی</label>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>فضای خالی در کارتن:</label>
+                                <div class="form-check">
+                                    @if (Model.CartonEmpty == true)
+                                    {
+                                        <input type="radio" id="havespace" checked />
+                                        <label for="havespace">بله</label>
+                                    }
+                                    else
+                                    {
+                                        <input type="radio" id="donthavespace" checked />
+                                        <label for="donthavespace">خیر</label>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            }
+            @if (Model.type == true)
+            {
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2 pull-right">
+                        <div class="form-group">
+                            <label>تعداد شیت:</label>
+                            <input class="form-control border" readonly value="@Model.SheatCount" />
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2 pull-right">
+                        <div class="form-group">
+                            <label>طول شیت:</label>
+                            <input class="form-control border" readonly value="@Model.SheatLength" />
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2 pull-right">
+                        <div class="form-group">
+                            <label>عرض شیت:</label>
+                            <input class="form-control border" readonly value="@Model.SheatWidth" />
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>نوع شیت:</label>
+                            <input class="form-control border" value="@Model.SheatType" />
+                        </div>
+                    </div>
+                </div>
+                if (Model.SheatType == "شیت خط دار")
+                {
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div id="divshtoolcarton" class="col-md-2">
+                            <div class="form-group">
+                                <label>طول کارتن:</label>
+                                <input class="form-control border " value="@Model.CartonLength" readonly />
+                            </div>
+                        </div>
+                        <div id="divsharzcarton" class="col-md-2">
+                            <div class="form-group">
+                                <label>عرض کارتن:</label>
+                                <input class="form-control border " value="@Model.CartonWidth" readonly  />
+                            </div>
+                        </div>
+                        <div id="divshertefacarton" class="col-md-2">
+                            <div class="form-group">
+                                <label>ارتفاع کارتن:</label>
+                                <input class="form-control border" value="@Model.CartonHeight" readonly />
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </fieldset>
+    </div>
+</div>
+<br />
+
+
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 offset-md-1 form-1-box ">
+        <fieldset class="form-group border-2 border border-dark p-3">
+            <legend class="w-auto px-2">اطلاعات چاپ و دایکات</legend>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>نوع چاپ:</label>
+                        <input class="form-control border" readonly value="@Model.PrintType" />
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>تعدادرنگ:</label>
+                        <input class="form-control border" readonly value="@Model.ColorCount" />
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-4 pull-right mt-4">
+                    <div class="form-group">
+                        <div class="form-check form-check-inline">
+                            @if (uv == true)
+                            {
+                                <input checked disabled type="checkbox" value="یو وی" id="uv" />
+                                <label for="uv" style="margin-left: 10px ">یو وی</label>
+                            }
+                            else
+                            {
+                                <input disabled type="checkbox" value="یو وی" id="uv" />
+                                <label for="uv" style="margin-left: 10px ">یو وی</label>
+                            }
+                            @if (daykat == true)
+                            {
+                                <input type="checkbox" disabled checked id="daycat" value="دایکات" />
+                                <label for="daycat" style="margin-left: 10px ">دایکات</label>
+                            }
+                            else
+                            {
+                                <input type="checkbox" disabled id="daycat" value="دایکات" />
+                                <label for="daycat" style="margin-left: 10px ">دایکات</label>
+                            }
+                            @if (daste == true)
+                            {
+                                <input type="checkbox" disabled checked id="daste" value="دسته" />
+                                <label for="daste" style="margin-left: 10px ">دسته</label>
+                            }
+                            else
+                            {
+                                <input type="checkbox" disabled id="daste" value="دسته" />
+                                <label for="daste" style="margin-left: 10px ">دسته</label>
+                            }
+                            @if (havakesh == true)
+                            {
+                                <input type="checkbox" checked disabled id="havakesh" value="هواکش" />
+                                <label for="havakesh">هواکش</label>
+                            }
+                            else
+                            {
+                                <input type="checkbox" disabled id="havakesh" value="هواکش" />
+                                <label for="havakesh">هواکش</label>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                @if (Model.IsKelishe == true)
+                {
+                    <div class="col-md-2 pull-right">
+                        <div class="form-group">
+                            <label>کلیشه:</label>
+                            <div class="form-check" style="margin-top:10px">
+                                <input type="radio" id="haveklishe" checked />
+                                <label for="haveklishe" style="margin-left: 10px ">دارد</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 pull-right">
+                        <label>شماره کلیشه:</label>
+                        <input class="border form-control" id="txtKelisheNum" readonly value="@Model.kelisheNum" />
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-2 pull-right">
+                        <div class="form-group">
+                            <label>کلیشه:</label>
+                            <div class="form-check" style="margin-top:10px">
+                                <input type="radio" checked id="donthaveklishe" />
+                                <label for="donthaveklishe">ندارد</label>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="col-md-1"></div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>میزان چاپ:</label>
+                        <input class="border form-control" readonly value="@Model.PrintAmount" />
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+                @if (Model.PrintIsTemplate == true)
+                {
+                    <div class="col-md-2 pull-right">
+                        <div class="form-group">
+                            <label>قالب:</label>
+                            <div class="form-check" style="margin-top:10px">
+                                <input type="radio" id="haveframe" checked />
+                                <label for="haveframe" style="margin-left: 10px ">دارد</label>
+                                <input type="radio" checked id="donthaveframe" style="accent-color:red;" value="0" onclick="frame($('#txtTemplateNum'),0)" />
+                                <label for="donthaveframe">ندارد</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2 pull-right">
+                        <label>شماره قالب:</label>
+                        <input class="border form-control" id="txtTemplateNum" readonly value="@Model.TemplateNum" />
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-2 pull-right">
+                        <div class="form-group">
+                            <label>قالب:</label>
+                            <div class="form-check" style="margin-top:10px">
+                                <input type="radio" checked id="donthaveframe" />
+                                <label for="donthaveframe">ندارد</label>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <br />
+        </fieldset>
+    </div>
+</div>
+<br />
+
+
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 offset-md-1 form-1-box ">
+        <fieldset class="form-group border-2 border border-dark p-3">
+            <legend class="w-auto px-2">اطلاعات انبارش و لجستیک</legend>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>نحوه چیدمان:</label>
+                        <div class="form-check">
+                            @if (Model.LayoutType == true)
+                            {
+                                <input type="radio" id="monazam" checked />
+                                <label for="monazam" style="margin-left: 10px">منظم</label>
+                            }
+                            else
+                            {
+                                <input type="radio" id="namonazam" checked />
+                                <label for="namonazam">نامنظم</label>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>نوع مصرف:</label>
+                        <div class="form-check">
+                            @if (Model.TypeOfUse == false)
+                            {
+                                <input type="radio" checked id="dakheli" />
+                                <label for="dakheli" style="margin-left: 10px">داخلی</label>
+                            }
+                            else
+                            {
+                                <input checked type="radio" id="saderati" />
+                                <label for="saderati">صادراتی</label>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>نحوه تحویل:</label>
+                        <div class="form-check">
+                            @if (Model.DeliveryMethod == false)
+                            {
+                                <input id="factory" type="radio" checked />
+                                <label for="factory">درب کارخانه</label>
+                            }
+                            else
+                            {
+                                <input id="customersuggest" type="radio" checked />
+                                <label for="customersuggest">درخواست مشتری</label>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-3 pull-right">
+                    <label>تعداد چیدمان ستونی روی هم:</label>
+                    <input readonly class="form-control border" value="@Model.LayoutCount" id="txtColumnNumber" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <div>
+                            <label>نحوه ارسال :</label>
+                            <input class="form-control border" value="@Model.SendMethod" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-3 pull-right">
+                    <label>مسافت تقریبی ارسال کالا:</label>
+                    <input class="form-control border" id="txtDistance" readonly value="@Model.ProductDistance" />
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2 pull-right">
+                    <label>مدت زمان انبارش:</label>
+                    <input readonly class="form-control border " value="@Model.AnbareshTime" id="txtAnbareshTime" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-4 pull-right">
+                    <div class="form-group" style="margin-top:1.5em">
+                        <div Class="form-check form-check-inline">
+                            @if (sherink == true)
+                            {
+                                <input checked disabled type="checkbox" value="شیرینک" id="sherink" />
+                                <label for="sherink">شیرینک</label>
+                            }
+                            else
+                            {
+                                <input disabled type="checkbox" value="شیرینک" id="sherink" />
+                                <label for="sherink">شیرینک</label>
+                            }
+                            @if (tasme == true)
+                            {
+                                <input type="checkbox" disabled checked style="margin-right:1rem;" value="تسمه" id="tasme" />
+                                <label for="tasme">تسمه</label>
+                            }
+                            else
+                            {
+                                <input type="checkbox" disabled style="margin-right:1rem;" value="تسمه" id="tasme" />
+                                <label for="tasme">تسمه</label>
+                            }
+                            @if (palet == true)
+                            {
+                                <input type="checkbox" checked disabled style="margin-right:1rem;" value="پالت" id="palet" />
+                                <label for="palet">پالت</label>
+                            }
+                            else
+                            {
+                                <input type="checkbox" disabled style="margin-right:1rem;" value="پالت" id="palet" />
+                                <label for="palet">پالت</label>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 pull-right">
+                    <div class="form-group">
+                        <label>میزان رطوبت :</label>
+                        @switch (Model.Humidity)
+                        {
+                            case "1":
+                                <input class="form-control border" readonly value="50%" />
+                                break;
+                            case "2":
+                                <input class="form-control border" readonly value="60%" />
+                                break;
+                            case "3":
+                                <input class="form-control border" readonly value="70%" />
+                                break;
+                            case "4":
+                                <input class="form-control border" readonly value="80%" />
+                                break;
+                            case "5":
+                                <input class="form-control border" readonly value="90%" />
+                                break;
+                        }
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div id="divAddress1" class="col-md-2 pull-right">
+                    <label>آدرس خریدار:</label>
+                    <div class="form-group">
+                        @if (Model.UseAddress == true)
+                        {
+                            <input type="checkbox" disabled checked id="trueadress" />
+                        }
+                        else
+                        {
+                            <input type="checkbox" disabled id="trueadress" />
+                        }
+                    </div>
+                </div>
+                <div id="divAddress2" class="col-md-7 pull-right">
+                    <div class="form-group">
+                        <label>آدرس دیگر:</label>
+                        <input value="@Model.OtherAddress" class=" border form-control" id="txtOtherAddress" />
+                    </div>
+                </div>
+            </div>
+            <br />
+        </fieldset>
+    </div>
+</div>
+<br />
+
+
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 offset-md-1 form-1-box ">
+        <fieldset class="form-group border-2 border border-dark p-3">
+            <legend class="w-auto px-2">اطللاعات محصول</legend>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-3 pull-right">
+                    <label>میزان ورق مصرفی برای هر کارتن:</label>
+                    <input class="form-control border" value="@Model.TheAmountOfSheetsUsedForEachCarton" readonly id="mizanvaraghmasrafi" />
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-3 pull-right">
+                    <div class="form-group">
+                        <label>برآورد حداقل BCT مورد نیاز:</label>
+                        <input class="form-control border" readonly value="@Model.MinimumBCT" id="txtBctNum" />
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>ضریب ضایعات:</label>
+                        <input class="form-control border" value="@Model.WasteRate" readonly id="txtWasteRate" />
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-4 pull-right"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>تاریخ تحویل به مشتری:</label>
+                        <input class="form-control border" value="@Model.DeliverTime" readonly id="txtDeliverDate" />
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        @if (Model.LayerCount == false)
+                        {
+                            <input checked disabled type="radio" id="3layers" />
+                            <label for="3layers">سه لایه</label>
+                            <input type="radio" disabled id="5layers" />
+                            <label id="3=5layers">پنج لایه</label>
+                        }
+                        else
+                        {
+                            <input type="radio" disabled id="3layers" />
+                            <label for="3layers">سه لایه</label>
+                            <input checked type="radio" disabled id="5layers" />
+                            <label id="3=5layers">پنج لایه</label>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10 pull-right">
+                    <div class="form-group">
+                        @if (Model.LayerCount == false)
+                        {
+                            <div class="row">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-2">
+                                    <label>ترکیب ورق  :</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-2">
+                                    <select id="layer1" class=" form-control  border dropdown">
+                                        <option selected disabled>@layer1</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <select id="layer2" class="bg-danger form-control border dropdown">
+                                        <option selected disabled>@layer2</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-1">
+                                    <select id="floottype1" class="bg-warning form-control border dropdown">
+                                        <option selected disabled>@Model.FloatType1</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <select id="layer3" class="form-control border dropdown">
+                                        <option selected disabled>@layer3</option>
+                                    </select>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <label>ترکیب ورق  :</label>
+                            <div class="form-group row">
+                                <div class="col-md-2">
+                                    <select id="layer1" class=" form-control  border dropdown">
+                                        <option selected disabled>@layer1</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <select id="layer2" class="bg-danger form-control border dropdown">
+                                        <option selected disabled>@layer2</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-1">
+                                    <select id="floottype1" class="bg-warning form-control border dropdown">
+                                        <option selected disabled>@Model.FloatType1</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <select id="layer3" class="form-control border dropdown">
+                                        <option selected disabled>@layer3</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <select id="layer4" class="bg-danger form-control border dropdown">
+                                        <option selected disabled>@layer4</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-1">
+                                    <select id="floottype2" class="bg-warning form-control border dropdown">
+                                        <option selected disabled>@Model.FloatType2</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <select id="layer5" class="form-control border dropdown">
+                                        <option selected disabled>@layer5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="form-group col-md-2">
+                    <label>BCT</label>
+                    <input class="form-control border" readonly value="@Model.BCT" id="BCTECT" />
+                </div>
+                <div class="form-group col-md-2">
+                    <label>ECT</label>
+                    <input class="form-control border" readonly value="@Model.ECT" id="ECTBCT" />
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2"></div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+<br />
+
+
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class=" col-md-5">
+        <input hidden value="@Model.Description" id="description" />
+        <textarea class="form-control border border-dark" id="txtdescription" style="resize:none" rows="8"></textarea>
+        <br />
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-outline-success" id="btnexportpdf" onclick="ExportTopdf()">خروجی تصویر</button>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <div class=" col-md-5">
+        <div class="form-group">
+            <label>بهای محاسبه شده هر کارتن</label>
+            <input id="percprice" value="@Model.costpervaragh" readonly class="form-control border  border-dark" />
+        </div>
+        <div class="form-group">
+            <label>بهای کل</label>
+            <input id="allcprice" readonly value="@Model.costofall" class="form-control border  border-dark" />
+        </div>
+        <div class="form-group">
+            <label>درصد تخفیف</label>
+            <input id="takhfif" class="form-control border  border-dark" readonly value="@Model.takhfif" />
+        </div>
+        <div class="form-group">
+            <label>مالیات بر ارزش افزوده 9%</label>
+            <input id="malyat" readonly class="form-control border  border-dark" value="@Model.malyat" />
+        </div>
+        <div class="form-group">
+            <label>جمع کل</label>
+            <input id="bigprice" readonly class="form-control border border-dark" value="@Model.sumofall" />
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        let d = $("#description").val();
+        document.getElementById("txtdescription").value = d;
+    });
+</script>

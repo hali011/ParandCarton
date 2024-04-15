@@ -1,0 +1,144 @@
+﻿<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 offset-md-1 form-1-box ">
+        <fieldset class="form-group border-2 border border-dark p-3">
+            <legend class="w-auto px-2">اطلاعات انبارش و لجستیک</legend>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>نحوه چیدمان:</label>
+                        <div class="form-check">
+                            <input type="radio" id="monazam" onclick="radiowithtwoinput(true,2)" checked value="1" />
+                            <label for="monazam" style="margin-left: 10px">منظم</label>
+                            <input type="radio" id="namonazam" onclick="radiowithtwoinput(false, 2)" value="0" />
+                            <label for="namonazam">نامنظم</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5"></div>
+                <div class="col-md-3 pull-right">
+                    <label>تعداد چیدمان ستونی روی هم:</label>
+                    <input readonly class="form-control border" type="number" id="txtColumnNumber" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2 pull-right">
+                    <div class="form-group">
+                        <label>نوع مصرف:</label>
+                        <div class="form-check">
+                            <input value="0" type="radio" checked id="dakheli" onclick="radiowithtwoinput(false, 0)" />
+                            <label for="dakheli" style="margin-left: 10px">داخلی</label>
+                            <input value="1" type="radio" id="saderati" onclick="radiowithtwoinput(true,0)" />
+                            <label for="saderati">صادراتی</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5"></div>
+                <div class="col-md-3 pull-right">
+                    <label>مسافت تقریبی ارسال کالا:</label>
+                    <input class="form-control border border-danger" id="txtDistance" type="number" placeholder="لطفا مسافت را وارد نمایید" />
+                </div>
+            </div>
+            <br />  
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-4 pull-right">
+                    <div class="form-group">
+                        <label>نحوه تحویل:</label>
+                        <div class="form-check">
+                            <input id="factory" type="radio" style="accent-color:red;" checked value="0" onclick="radiowithtwoinput(false, 1)" />
+                            <label for="factory">درب کارخانه</label>
+                            <input id="customersuggest" style="accent-color:red;" type="radio" value="1" onclick="radiowithtwoinput(true, 1)" />
+                            <label for="customersuggest">درخواست مشتری</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-2 pull-right">
+                    <label>مدت زمان انبارش:</label>
+                    <input class="form-control border border-danger" type="number" id="txtAnbareshTime" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-4 pull-right">
+                    <div class="form-group">
+                        <div>
+                            <label>نحوه ارسال :</label>
+                            <input type="radio" checked onclick="radiowiththreeinput(0,0)" value="کامیونت" id="kamyonet" />
+                            <label for="kamyonet">کامیونت</label>
+                            <input type="radio" value="کامیون" onclick="radiowiththreeinput(1,0)" id="kamyon" />
+                            <label for="kamyon">کامیون</label>
+                            <input type="radio" value="تریلی" id="tereyli" onclick="radiowiththreeinput(2,0)" />
+                            <label for="tereyli">تریلی</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-4 pull-right">
+                    <div class="form-group">
+                        <div Class="form-check form-check-inline">
+                            <input type="checkbox" value="شیرینک" id="sherink" />
+                            <label for="sherink">شیرینک</label>
+                            <input type="checkbox" style="margin-right:1rem;" value="تسمه" id="tasme" />
+                            <label for="tasme">تسمه</label>
+                            <input type="checkbox" style="margin-right:1rem;" value="پالت" id="palet" />
+                            <label for="palet">پالت</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-3 pull-right">
+                    <div class="form-group">
+                        <label>میزان رطوبت :</label>
+                        <select class=" border border-danger form-control dropdown" id="ddlHumidity" Style="width: 250px;">
+                            <option selected value="0" disabled>انتخاب کنید</option>
+                            <option value="1">رطوبت سطح 50%</option>
+                            <option value="2">رطوبت سطح 60%</option>
+                            <option value="3">رطوبت سطح 70%</option>
+                            <option value="4">رطوبت سطح 80%</option>
+                            <option value="5">رطوبت سطح 90%</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row" >
+                <div class="col-md-1"></div>
+                <div id="divAddress1" class="col-md-2 pull-right">
+                    <label>آدرس خریدار:</label>
+                    <div class="form-group">
+                        <input type="checkbox" style="accent-color:red;" checked id="trueadress" />
+                    </div>
+                </div>
+                <div id="divAddress2" class="col-md-7 pull-right">
+                        <div class="form-group">
+                            <label>آدرس دیگر:</label>
+                            <input class=" border form-control" id="txtOtherAddress" />
+                        </div>
+                </div>
+
+            </div>
+            <br />
+        </fieldset>
+    </div>
+</div>
+
+<br />
+<div id="PItable" class="content">
+
+    <div class="clearfix text-black"></div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        adressf(0);
+    });
+</script>

@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="~/Content/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/vendor/nucleo/css/nucleo.css" rel="stylesheet" />
+    <link href="~/Content/fonts/yekan/yekan.css" rel="stylesheet" />
+    <link href="~/Content/vendor/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    @*<script src="~/Content/js/jquery-3.5.1.js"></script>*@
+    <script src="~/Content/css/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/Kendo/jquery.min.js"></script>
+    <script src="~/Content/Kendo/jszip.min.js"></script>
+    <script src="~/Content/Kendo/kendo.all.min.js"></script>
+    <script src="~/Content/Kendo/kendo.aspnetmvc.min.js"></script>
+    <link href="~/Content/Kendo/kendo.default-ocean-blue.min.css" rel="stylesheet" />
+    <script src="~/Content/dataTable/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="~/Content/Jalali/jalalidatepicker.min.js"></script>
+    <link href="~/Content/Jalali/jalalidatepicker.min.css" rel="stylesheet" />
+    <script src="~/Content/JavaScript.js"></script>
+    <style>
+        body, html {
+            font-family: 'B Yekan';
+            font-size:14px !important;
+        }
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+        @*@media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }*@
+    </style>
+
+    @RenderSection("style", required: false)
+</head>
+<body>
+        <main>
+            <div id="mypdfexport">
+                <div class="container py-4">
+                    <header class="row pb-3 mb-4 border-bottom">
+                        <div class="col-md-2">
+                            <img src="~/Content/لوگو_prev_ui_081926.png" style="width:15rem;" />
+                        </div>
+                        <div class="col-md-3"></div>
+                        <div class=" col-md-2">
+                            @RenderSection("title", required: false)
+                        </div>
+                    </header>
+                    <div class="mb-4 bg-light rounded-5">
+                        <div class="container py-5" style="text-align: right">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+</body>
+</html>

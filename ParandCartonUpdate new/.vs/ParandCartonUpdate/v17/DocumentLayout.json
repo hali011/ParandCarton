@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Ali\\Desktop\\New folder\\ParandCartonUpdate new\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|c:\\users\\ali\\desktop\\new folder\\parandcartonupdate new\\parandcartonupdate\\views\\home\\productinformatiom.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|solutionrelative:parandcartonupdate\\views\\home\\productinformatiom.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductInformatiom.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ali\\Desktop\\New folder\\ParandCartonUpdate new\\ParandCartonUpdate\\Views\\Home\\ProductInformatiom.cshtml",
+              "RelativeDocumentMoniker": "ParandCartonUpdate\\Views\\Home\\ProductInformatiom.cshtml",
+              "ToolTip": "C:\\Users\\Ali\\Desktop\\New folder\\ParandCartonUpdate new\\ParandCartonUpdate\\Views\\Home\\ProductInformatiom.cshtml",
+              "RelativeToolTip": "ParandCartonUpdate\\Views\\Home\\ProductInformatiom.cshtml",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAABUAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-14T22:33:21.262Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
