@@ -235,7 +235,17 @@
                             datatype: "json",
                             success: function (data) {
                                 let printtype = getprinttype();
-                                let paintcount = getpintcount();
+                                let paintcount = "";
+                                if (printtype == "لمینت") {
+                                    paintcount = $("#nonepaint").val();
+                                } else {
+                                    paintcount = getpintcount
+                                }
+                                let colorcode1 = $("#colorcode1").val();
+                                let colorcode2 = $("#colorcode2").val();
+                                let colorcode3 = $("#colorcode3").val();
+                                let colorcode4 = $("#colorcode4").val();
+                                let colorcode5 = $("#colorcode5").val();
                                 let printtypeselection = getprinttypeselection();
                                 let klishenum = $("#txtKelisheNum").val();
                                 let printamount = getprintamount();
@@ -243,7 +253,7 @@
                                 $.ajax({
                                     type: "POST",
                                     url: '/Home/SavePI',
-                                    data: { printtype: printtype, paintcount: paintcount, printtypeselection: printtypeselection, klishenum: klishenum, printamount: printamount, templatenum: templatenum },
+                                    data: { colorcode1: colorcode1, colorcode2: colorcode2, colorcode3: colorcode3, colorcode4: colorcode4, colorcode5: colorcode5,  printtype: printtype, paintcount: paintcount, printtypeselection: printtypeselection, klishenum: klishenum, printamount: printamount, templatenum: templatenum },
                                     datatype: "json",
                                     success: function (data) {
                                         if (data.isok) {
@@ -522,6 +532,91 @@
                 alert("در صورتی که سفارش از نوع ورق باشد bct آن از این روش محاسبه نمی شود");
             }
 
+        }
+    }
+
+
+    function countofpaint(x) {
+        switch (x) {
+            case 0:
+                $("#colorcodediv").hide();
+                $("#nonepaint").prop('checked', true);
+                $("#onepaint").prop('checked', false);
+                $("#twopaint").prop('checked', false);
+                $("#threepaint").prop('checked', false);
+                $("#fourpaint").prop('checked', false);
+                $("#fivepaint").prop('checked', false);
+                break;
+            case 1:
+                $("#colorcodediv").show();
+                $("#colorcode5").hide();
+                $("#colorcode2").hide();
+                $("#colorcode3").hide();
+                $("#colorcode4").hide();
+                $("#colorcode1").show();
+                $("#nonepaint").prop('checked', false);
+                $("#onepaint").prop('checked', true);
+                $("#twopaint").prop('checked', false);
+                $("#threepaint").prop('checked', false);
+                $("#fourpaint").prop('checked', false);
+                $("#fivepaint").prop('checked', false);
+                break;
+            case 2:
+                $("#colorcodediv").show();
+                $("#colorcode5").hide();
+                $("#colorcode3").hide();
+                $("#colorcode4").hide();
+                $("#colorcode1").show();
+                $("#colorcode2").show();
+                $("#nonepaint").prop('checked', false);
+                $("#onepaint").prop('checked', false);
+                $("#twopaint").prop('checked', true);
+                $("#threepaint").prop('checked', false);
+                $("#fourpaint").prop('checked', false);
+                $("#fivepaint").prop('checked', false);
+                break;
+            case 3:
+                $("#colorcodediv").show();
+                $("#colorcode5").hide();
+                $("#colorcode4").hide();
+                $("#colorcode1").show();
+                $("#colorcode2").show();
+                $("#colorcode3").show();
+                $("#nonepaint").prop('checked', false);
+                $("#onepaint").prop('checked', false);
+                $("#twopaint").prop('checked', false);
+                $("#threepaint").prop('checked', true);
+                $("#fourpaint").prop('checked', false);
+                $("#fivepaint").prop('checked', false);
+                break;
+            case 4:
+                $("#colorcodediv").show();
+                $("#colorcode5").hide();
+                $("#colorcode1").show();
+                $("#colorcode2").show();
+                $("#colorcode3").show();
+                $("#colorcode4").show();
+                $("#nonepaint").prop('checked', false);
+                $("#onepaint").prop('checked', false);
+                $("#twopaint").prop('checked', false);
+                $("#threepaint").prop('checked', false);
+                $("#fourpaint").prop('checked', true);
+                $("#fivepaint").prop('checked', false);
+                break;
+            case 5:
+                $("#colorcodediv").show();
+                $("#colorcode1").show();
+                $("#colorcode2").show();
+                $("#colorcode3").show();
+                $("#colorcode4").show();
+                $("#colorcode5").show();
+                $("#nonepaint").prop('checked', false);
+                $("#onepaint").prop('checked', false);
+                $("#twopaint").prop('checked', false);
+                $("#threepaint").prop('checked', false);
+                $("#fourpaint").prop('checked', false);
+                $("#fivepaint").prop('checked', true);
+                break;
         }
     }
 </script>

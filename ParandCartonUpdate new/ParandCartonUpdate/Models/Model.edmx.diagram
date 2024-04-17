@@ -12,16 +12,16 @@
         <EntityTypeShape EntityType="ParandCartondbModel.LogesticInfo" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ParandCartondbModel.OrderInfo" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ParandCartondbModel.PriceInfo" Width="1.5" PointX="4.75" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParandCartondbModel.PrintInfo" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
         <EntityTypeShape EntityType="ParandCartondbModel.ProductInfo" Width="1.5" PointX="4.625" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ParandCartondbModel.StandardInfo" Width="1.5" PointX="6.375" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ParandCartondbModel.UserInfo" Width="1.5" PointX="6.375" PointY="2.75" IsExpanded="true" />
         <AssociationConnector Association="ParandCartondbModel.FK_CartonTechnicalInfo_CartonTechnicalInfo" ManuallyRouted="false" />
         <AssociationConnector Association="ParandCartondbModel.FK_LogesticInfo_OrderInfo" ManuallyRouted="false" />
-        <AssociationConnector Association="ParandCartondbModel.FK_PrintInfo_OrderInfo" ManuallyRouted="false" />
-        <AssociationConnector Association="ParandCartondbModel.FK_PrintInfo_PrintInfo" ManuallyRouted="false" />
         <EntityTypeShape EntityType="ParandCartondbModel.CartonType" Width="1.5" PointX="11.375" PointY="0.75" />
         <EntityTypeShape EntityType="ParandCartondbModel.ResultView" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ParandCartondbModel.PrintInfo" Width="1.5" PointX="3" PointY="13.375" />
+        <AssociationConnector Association="ParandCartondbModel.FK_PrintInfo_OrderInfo" />
+        <AssociationConnector Association="ParandCartondbModel.FK_PrintInfo_PrintInfo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

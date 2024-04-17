@@ -4,6 +4,7 @@
     <EntitySetMapping Name="CartonTechnicalInfoes">
       <EntityTypeMapping TypeName="ParandCartondbModel.CartonTechnicalInfo">
         <MappingFragment StoreEntitySet="CartonTechnicalInfo">
+          <ScalarProperty Name="SheatWeight" ColumnName="SheatWeight" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="OrderInfoId" ColumnName="OrderInfoId" />
           <ScalarProperty Name="type" ColumnName="type" />
@@ -115,24 +116,6 @@
           <ScalarProperty Name="sumofall" ColumnName="sumofall" />
           <ScalarProperty Name="ProductInfoId" ColumnName="ProductInfoId" />
           <ScalarProperty Name="Description" ColumnName="Description" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PrintInfoes">
-      <EntityTypeMapping TypeName="ParandCartondbModel.PrintInfo">
-        <MappingFragment StoreEntitySet="PrintInfo">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="OrderInfoId" ColumnName="OrderInfoId" />
-          <ScalarProperty Name="CartonTechnicalId" ColumnName="CartonTechnicalId" />
-          <ScalarProperty Name="PrintType" ColumnName="PrintType" />
-          <ScalarProperty Name="ColorCount" ColumnName="ColorCount" />
-          <ScalarProperty Name="PrintTypeSelection" ColumnName="PrintTypeSelection" />
-          <ScalarProperty Name="PrintAmount" ColumnName="PrintAmount" />
-          <ScalarProperty Name="IsKelishe" ColumnName="IsKelishe" />
-          <ScalarProperty Name="IsTemplate" ColumnName="IsTemplate" />
-          <ScalarProperty Name="kelisheNum" ColumnName="kelisheNum" />
-          <ScalarProperty Name="TemplateNum" ColumnName="TemplateNum" />
-          <ScalarProperty Name="Whosave" ColumnName="Whosave" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -266,6 +249,29 @@
           <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
           <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
           <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrintInfoes">
+      <EntityTypeMapping TypeName="ParandCartondbModel.PrintInfo">
+        <MappingFragment StoreEntitySet="PrintInfo">
+          <ScalarProperty Name="ColorCode5" ColumnName="ColorCode5" />
+          <ScalarProperty Name="ColorCode4" ColumnName="ColorCode4" />
+          <ScalarProperty Name="ColorCode3" ColumnName="ColorCode3" />
+          <ScalarProperty Name="ColorCode2" ColumnName="ColorCode2" />
+          <ScalarProperty Name="ColorCode1" ColumnName="ColorCode1" />
+          <ScalarProperty Name="Whosave" ColumnName="Whosave" />
+          <ScalarProperty Name="TemplateNum" ColumnName="TemplateNum" />
+          <ScalarProperty Name="kelisheNum" ColumnName="kelisheNum" />
+          <ScalarProperty Name="IsTemplate" ColumnName="IsTemplate" />
+          <ScalarProperty Name="IsKelishe" ColumnName="IsKelishe" />
+          <ScalarProperty Name="PrintAmount" ColumnName="PrintAmount" />
+          <ScalarProperty Name="PrintTypeSelection" ColumnName="PrintTypeSelection" />
+          <ScalarProperty Name="ColorCount" ColumnName="ColorCount" />
+          <ScalarProperty Name="PrintType" ColumnName="PrintType" />
+          <ScalarProperty Name="CartonTechnicalId" ColumnName="CartonTechnicalId" />
+          <ScalarProperty Name="OrderInfoId" ColumnName="OrderInfoId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

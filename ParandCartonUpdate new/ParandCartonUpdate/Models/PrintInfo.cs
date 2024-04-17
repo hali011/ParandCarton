@@ -26,6 +26,11 @@ namespace ParandCartonUpdate.Models
         public string kelisheNum { get; set; }
         public string TemplateNum { get; set; }
         public int Whosave { get; set; }
+        public string ColorCode1 { get; set; }
+        public string ColorCode2 { get; set; }
+        public string ColorCode3 { get; set; }
+        public string ColorCode4 { get; set; }
+        public string ColorCode5 { get; set; }
     
         public virtual OrderInfo OrderInfo { get; set; }
         public virtual PrintInfo PrintInfo1 { get; set; }

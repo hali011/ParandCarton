@@ -23,6 +23,7 @@
     <Property Name="SheatLength" Type="int" />
     <Property Name="SheatWidth" Type="int" />
     <Property Name="SheatType" Type="nvarchar" MaxLength="50" />
+    <Property Name="SheatWeight" Type="int" />
   </EntityType>
   <EntityType Name="CartonType">
     <Key>
@@ -133,6 +134,11 @@
     <Property Name="kelisheNum" Type="nvarchar" MaxLength="50" />
     <Property Name="TemplateNum" Type="nvarchar" MaxLength="50" />
     <Property Name="Whosave" Type="int" Nullable="false" />
+    <Property Name="ColorCode1" Type="nvarchar" MaxLength="50" />
+    <Property Name="ColorCode2" Type="nvarchar" MaxLength="50" />
+    <Property Name="ColorCode3" Type="nvarchar" MaxLength="50" />
+    <Property Name="ColorCode4" Type="nvarchar" MaxLength="50" />
+    <Property Name="ColorCode5" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="ProductInfo">
     <Key>

@@ -24,6 +24,7 @@
     <Property Name="SheatWidth" Type="Int32" />
     <Property Name="SheatType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="OrderInfo" Relationship="Self.FK_CartonTechnicalInfo_CartonTechnicalInfo" FromRole="CartonTechnicalInfo" ToRole="OrderInfo" />
+    <Property Name="SheatWeight" Type="Int32" />
   </EntityType>
   <EntityType Name="InsideProduct">
     <Key>
@@ -99,7 +100,7 @@
     <Property Name="Whosave" Type="Int32" Nullable="false" />
     <NavigationProperty Name="CartonTechnicalInfoes" Relationship="Self.FK_CartonTechnicalInfo_CartonTechnicalInfo" FromRole="OrderInfo" ToRole="CartonTechnicalInfo" />
     <NavigationProperty Name="LogesticInfoes" Relationship="Self.FK_LogesticInfo_OrderInfo" FromRole="OrderInfo" ToRole="LogesticInfo" />
-    <NavigationProperty Name="PrintInfoes" Relationship="Self.FK_PrintInfo_OrderInfo" FromRole="OrderInfo" ToRole="PrintInfo" />
+    <NavigationProperty Name="PrintInfoes" Relationship="ParandCartondbModel.FK_PrintInfo_OrderInfo" FromRole="OrderInfo" ToRole="PrintInfo" />
   </EntityType>
   <EntityType Name="PriceInfo">
     <Key>
@@ -114,26 +115,6 @@
     <Property Name="sumofall" Type="Double" />
     <Property Name="ProductInfoId" Type="Int32" Nullable="false" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="PrintInfo">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="OrderInfoId" Type="Int32" Nullable="false" />
-    <Property Name="CartonTechnicalId" Type="Int32" Nullable="false" />
-    <Property Name="PrintType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ColorCount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="PrintTypeSelection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="PrintAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="IsKelishe" Type="Boolean" />
-    <Property Name="IsTemplate" Type="Boolean" />
-    <Property Name="kelisheNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="TemplateNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Whosave" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="OrderInfo" Relationship="Self.FK_PrintInfo_OrderInfo" FromRole="PrintInfo" ToRole="OrderInfo" />
-    <NavigationProperty Name="PrintInfo1" Relationship="Self.FK_PrintInfo_PrintInfo" FromRole="PrintInfo" ToRole="PrintInfo1" />
-    <NavigationProperty Name="PrintInfo2" Relationship="Self.FK_PrintInfo_PrintInfo" FromRole="PrintInfo1" ToRole="PrintInfo" />
   </EntityType>
   <EntityType Name="ProductInfo">
     <Key>
@@ -205,32 +186,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PrintInfo_OrderInfo">
-    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="PrintInfo" Type="Self.PrintInfo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="OrderInfo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PrintInfo">
-        <PropertyRef Name="OrderInfoId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PrintInfo_PrintInfo">
-    <End Role="PrintInfo" Type="Self.PrintInfo" Multiplicity="1" />
-    <End Role="PrintInfo1" Type="Self.PrintInfo" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="PrintInfo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PrintInfo1">
-        <PropertyRef Name="Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="ParandCartondbEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="CartonTechnicalInfoes" EntityType="Self.CartonTechnicalInfo" />
     <EntitySet Name="InsideProducts" EntityType="Self.InsideProduct" />
@@ -239,7 +194,6 @@
     <EntitySet Name="LogesticInfoes" EntityType="Self.LogesticInfo" />
     <EntitySet Name="OrderInfoes" EntityType="Self.OrderInfo" />
     <EntitySet Name="PriceInfoes" EntityType="Self.PriceInfo" />
-    <EntitySet Name="PrintInfoes" EntityType="Self.PrintInfo" />
     <EntitySet Name="ProductInfoes" EntityType="Self.ProductInfo" />
     <EntitySet Name="StandardInfoes" EntityType="Self.StandardInfo" />
     <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
@@ -251,16 +205,17 @@
       <End Role="OrderInfo" EntitySet="OrderInfoes" />
       <End Role="LogesticInfo" EntitySet="LogesticInfoes" />
     </AssociationSet>
-    <AssociationSet Name="FK_PrintInfo_OrderInfo" Association="Self.FK_PrintInfo_OrderInfo">
+    <EntitySet Name="CartonTypes" EntityType="ParandCartondbModel.CartonType" />
+    <EntitySet Name="ResultViews" EntityType="ParandCartondbModel.ResultView" />
+    <EntitySet Name="PrintInfoes" EntityType="ParandCartondbModel.PrintInfo" />
+    <AssociationSet Name="FK_PrintInfo_OrderInfo" Association="ParandCartondbModel.FK_PrintInfo_OrderInfo">
       <End Role="OrderInfo" EntitySet="OrderInfoes" />
       <End Role="PrintInfo" EntitySet="PrintInfoes" />
     </AssociationSet>
-    <AssociationSet Name="FK_PrintInfo_PrintInfo" Association="Self.FK_PrintInfo_PrintInfo">
+    <AssociationSet Name="FK_PrintInfo_PrintInfo" Association="ParandCartondbModel.FK_PrintInfo_PrintInfo">
       <End Role="PrintInfo" EntitySet="PrintInfoes" />
       <End Role="PrintInfo1" EntitySet="PrintInfoes" />
     </AssociationSet>
-    <EntitySet Name="CartonTypes" EntityType="ParandCartondbModel.CartonType" />
-    <EntitySet Name="ResultViews" EntityType="ParandCartondbModel.ResultView" />
   </EntityContainer>
   <EntityType Name="CartonType">
     <Key>
@@ -350,4 +305,55 @@
     <Property Name="ProductInfoId" Type="Int32" Nullable="false" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
+  <EntityType Name="PrintInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderInfoId" Type="Int32" Nullable="false" />
+    <Property Name="CartonTechnicalId" Type="Int32" Nullable="false" />
+    <Property Name="PrintType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ColorCount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrintTypeSelection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PrintAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsKelishe" Type="Boolean" />
+    <Property Name="IsTemplate" Type="Boolean" />
+    <Property Name="kelisheNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TemplateNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Whosave" Type="Int32" Nullable="false" />
+    <Property Name="ColorCode1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ColorCode2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ColorCode3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ColorCode4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ColorCode5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OrderInfo" Relationship="ParandCartondbModel.FK_PrintInfo_OrderInfo" FromRole="PrintInfo" ToRole="OrderInfo" />
+    <NavigationProperty Name="PrintInfo1" Relationship="ParandCartondbModel.FK_PrintInfo_PrintInfo" FromRole="PrintInfo" ToRole="PrintInfo1" />
+    <NavigationProperty Name="PrintInfo2" Relationship="ParandCartondbModel.FK_PrintInfo_PrintInfo" FromRole="PrintInfo1" ToRole="PrintInfo" />
+  </EntityType>
+  <Association Name="FK_PrintInfo_OrderInfo">
+    <End Type="ParandCartondbModel.OrderInfo" Role="OrderInfo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ParandCartondbModel.PrintInfo" Role="PrintInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrintInfo">
+        <PropertyRef Name="OrderInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrintInfo_PrintInfo">
+    <End Type="ParandCartondbModel.PrintInfo" Role="PrintInfo" Multiplicity="1" />
+    <End Type="ParandCartondbModel.PrintInfo" Role="PrintInfo1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="PrintInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrintInfo1">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

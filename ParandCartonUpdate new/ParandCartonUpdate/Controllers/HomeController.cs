@@ -502,7 +502,7 @@ namespace ParandCartonUpdate.Controllers
         #endregion
         #region Save&Edit PrintInformation
         [HttpPost]
-        public ActionResult SavePI(string printtype, string paintcount, List<string> printtypeselection, string klishenum, string printamount, string templatenum)
+        public ActionResult SavePI(string colorcode1 , string colorcode2 , string colorcode3 , string colorcode4 , string colorcode5 ,string printtype, string paintcount, List<string> printtypeselection, string klishenum, string printamount, string templatenum)
         {
             if (Session["UserInfo"] == null)
             {
@@ -541,6 +541,11 @@ namespace ParandCartonUpdate.Controllers
                     pi.IsTemplate = istamplate;
                     pi.kelisheNum = klishenum;
                     pi.TemplateNum = templatenum;
+                    pi.ColorCode1 = colorcode1;
+                    pi.ColorCode2 = colorcode2;
+                    pi.ColorCode3 = colorcode3;
+                    pi.ColorCode4 = colorcode4;
+                    pi.ColorCode5 = colorcode5;
                     db.PrintInfoes.Add(pi);
                     db.SaveChanges();
                     flag = true;

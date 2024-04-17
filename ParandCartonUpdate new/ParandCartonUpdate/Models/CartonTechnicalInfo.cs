@@ -33,6 +33,7 @@ namespace ParandCartonUpdate.Models
         public Nullable<int> SheatLength { get; set; }
         public Nullable<int> SheatWidth { get; set; }
         public string SheatType { get; set; }
+        public Nullable<int> SheatWeight { get; set; }
     
         public virtual OrderInfo OrderInfo { get; set; }
     }

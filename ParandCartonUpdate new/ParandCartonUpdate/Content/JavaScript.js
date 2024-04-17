@@ -204,58 +204,6 @@ function printtype(x) {
             break;
     }
 }
-function countofpaint(x) {
-    switch (x) {
-        case 0:
-            $("#nonepaint").prop('checked', true);
-            $("#onepaint").prop('checked', false);
-            $("#twopaint").prop('checked', false);
-            $("#threepaint").prop('checked', false);
-            $("#fourpaint").prop('checked', false);
-            $("#fivepaint").prop('checked', false);
-            break;
-        case 1:
-            $("#nonepaint").prop('checked', false);
-            $("#onepaint").prop('checked', true);
-            $("#twopaint").prop('checked', false);
-            $("#threepaint").prop('checked', false);
-            $("#fourpaint").prop('checked', false);
-            $("#fivepaint").prop('checked', false);
-            break;
-        case 2:
-            $("#nonepaint").prop('checked', false);
-            $("#onepaint").prop('checked', false);
-            $("#twopaint").prop('checked', true);
-            $("#threepaint").prop('checked', false);
-            $("#fourpaint").prop('checked', false);
-            $("#fivepaint").prop('checked', false);
-            break;
-        case 3:
-            $("#nonepaint").prop('checked', false);
-            $("#onepaint").prop('checked', false);
-            $("#twopaint").prop('checked', false);
-            $("#threepaint").prop('checked', true);
-            $("#fourpaint").prop('checked', false);
-            $("#fivepaint").prop('checked', false);
-            break;
-        case 4:
-            $("#nonepaint").prop('checked', false);
-            $("#onepaint").prop('checked', false);
-            $("#twopaint").prop('checked', false);
-            $("#threepaint").prop('checked', false);
-            $("#fourpaint").prop('checked', true);
-            $("#fivepaint").prop('checked', false);
-            break;
-        case 5:
-            $("#nonepaint").prop('checked', false);
-            $("#onepaint").prop('checked', false);
-            $("#twopaint").prop('checked', false);
-            $("#threepaint").prop('checked', false);
-            $("#fourpaint").prop('checked', false);
-            $("#fivepaint").prop('checked', true);
-            break;
-    }
-}
 function mizanechap(x) {
     switch (x) {
         case 0:
