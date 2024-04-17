@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Ali\\Desktop\\New folder\\ParandCartonUpdate new\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|c:\\users\\ali\\desktop\\new folder\\parandcartonupdate new\\parandcartonupdate\\views\\home\\productinformatiom.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|c:\\users\\ali\\desktop\\new folder\\parandcartonupdate new\\parandcartonupdate\\views\\home\\cartontechnicalinfo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|solutionrelative:parandcartonupdate\\views\\home\\cartontechnicalinfo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|C:\\Users\\Ali\\Desktop\\New folder\\ParandCartonUpdate new\\parandcartonupdate\\views\\home\\form.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|solutionrelative:parandcartonupdate\\views\\home\\form.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|C:\\Users\\Ali\\Desktop\\New folder\\ParandCartonUpdate new\\parandcartonupdate\\views\\home\\productinformatiom.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|solutionrelative:parandcartonupdate\\views\\home\\productinformatiom.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|C:\\Users\\Ali\\Desktop\\New folder\\ParandCartonUpdate new\\parandcartonupdate\\views\\home\\resultpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|solutionrelative:parandcartonupdate\\views\\home\\resultpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,15 +31,51 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "CartonTechnicalInfo.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ali\\Desktop\\New folder\\ParandCartonUpdate new\\ParandCartonUpdate\\Views\\Home\\CartonTechnicalInfo.cshtml",
+              "RelativeDocumentMoniker": "ParandCartonUpdate\\Views\\Home\\CartonTechnicalInfo.cshtml",
+              "ToolTip": "C:\\Users\\Ali\\Desktop\\New folder\\ParandCartonUpdate new\\ParandCartonUpdate\\Views\\Home\\CartonTechnicalInfo.cshtml",
+              "RelativeToolTip": "ParandCartonUpdate\\Views\\Home\\CartonTechnicalInfo.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-17T09:55:51.719Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "form.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ali\\Desktop\\New folder\\ParandCartonUpdate new\\ParandCartonUpdate\\Views\\Home\\form.cshtml",
+              "RelativeDocumentMoniker": "ParandCartonUpdate\\Views\\Home\\form.cshtml",
+              "ToolTip": "C:\\Users\\Ali\\Desktop\\New folder\\ParandCartonUpdate new\\ParandCartonUpdate\\Views\\Home\\form.cshtml",
+              "RelativeToolTip": "ParandCartonUpdate\\Views\\Home\\form.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAALkAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-17T09:53:55.789Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ResultPage.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ali\\Desktop\\New folder\\ParandCartonUpdate new\\ParandCartonUpdate\\Views\\Home\\ResultPage.cshtml",
+              "RelativeDocumentMoniker": "ParandCartonUpdate\\Views\\Home\\ResultPage.cshtml",
+              "ToolTip": "C:\\Users\\Ali\\Desktop\\New folder\\ParandCartonUpdate new\\ParandCartonUpdate\\Views\\Home\\ResultPage.cshtml",
+              "RelativeToolTip": "ParandCartonUpdate\\Views\\Home\\ResultPage.cshtml",
+              "ViewState": "AQIAAAYEAAAAAAAAAAAswB4EAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-17T09:40:23.568Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ProductInformatiom.cshtml",
               "DocumentMoniker": "C:\\Users\\Ali\\Desktop\\New folder\\ParandCartonUpdate new\\ParandCartonUpdate\\Views\\Home\\ProductInformatiom.cshtml",
               "RelativeDocumentMoniker": "ParandCartonUpdate\\Views\\Home\\ProductInformatiom.cshtml",
               "ToolTip": "C:\\Users\\Ali\\Desktop\\New folder\\ParandCartonUpdate new\\ParandCartonUpdate\\Views\\Home\\ProductInformatiom.cshtml",
               "RelativeToolTip": "ParandCartonUpdate\\Views\\Home\\ProductInformatiom.cshtml",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAAABUAAAAWAAAA",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAABUAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-14T22:33:21.262Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-14T22:33:21.262Z"
             }
           ]
         }
