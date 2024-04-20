@@ -635,7 +635,7 @@ namespace ParandCartonUpdate.Controllers
         #endregion
         #region Save&Edit logesticInfo
         [HttpPost]
-        public ActionResult SaveLI(bool layouttype, int columennumber, bool consumtype, int distance, bool deliverytype ,int producttime ,string submittype, List<string> ispalet, string humidity, bool useaddress, string adress2)
+        public ActionResult SaveLI(int kafchin , int countinbox , int countinrise ,bool layouttype, int columennumber, bool consumtype, int distance, bool deliverytype ,int producttime ,string submittype, List<string> ispalet, string humidity, bool useaddress, string adress2)
         {
             if (Session["UserInfo"] == null)
             {
@@ -651,6 +651,9 @@ namespace ParandCartonUpdate.Controllers
                     var oi = db.OrderInfoes.Where(x => x.Whosave == user.Id).ToList().LastOrDefault();
                     var pi = db.PrintInfoes.Where(x => x.Whosave == user.Id).ToList().LastOrDefault();
                     li.WhoSave = Convert.ToInt32(user.Id);
+                    li.Countofkafchin = kafchin;
+                    li.CountinBox = countinbox;
+                    li.CountinRise = countinrise;
                     li.OrderInfoId = oi.Id;
                     li.PrintInfoId = pi.Id;
                     li.LayoutType = layouttype;
@@ -670,7 +673,6 @@ namespace ParandCartonUpdate.Controllers
                 }
                 return Json(new { isok = flag });
             }
-
         }
 
         #endregion

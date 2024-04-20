@@ -27,16 +27,16 @@ namespace ParandCartonUpdate.Models
     
         public virtual DbSet<CartonTechnicalInfo> CartonTechnicalInfoes { get; set; }
         public virtual DbSet<InsideProduct> InsideProducts { get; set; }
-        public virtual DbSet<KelisheForm> KelisheForms { get; set; }
-        public virtual DbSet<Layer> Layers { get; set; }
-        public virtual DbSet<LogesticInfo> LogesticInfoes { get; set; }
         public virtual DbSet<OrderInfo> OrderInfoes { get; set; }
         public virtual DbSet<PriceInfo> PriceInfoes { get; set; }
+        public virtual DbSet<PrintInfo> PrintInfoes { get; set; }
         public virtual DbSet<ProductInfo> ProductInfoes { get; set; }
         public virtual DbSet<StandardInfo> StandardInfoes { get; set; }
         public virtual DbSet<UserInfo> UserInfoes { get; set; }
+        public virtual DbSet<Layer> Layers { get; set; }
         public virtual DbSet<CartonType> CartonTypes { get; set; }
+        public virtual DbSet<KelisheForm> KelisheForms { get; set; }
+        public virtual DbSet<LogesticInfo> LogesticInfoes { get; set; }
         public virtual DbSet<ResultView> ResultViews { get; set; }
-        public virtual DbSet<PrintInfo> PrintInfoes { get; set; }
     }
 }

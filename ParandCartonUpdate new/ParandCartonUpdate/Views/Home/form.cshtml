@@ -238,8 +238,6 @@
                                 let paintcount = "";
                                 if (printtype == "لمینت") {
                                     paintcount = $("#nonepaint").val();
-                                } else {
-                                    paintcount = getpintcount
                                 }
                                 let colorcode1 = $("#colorcode1").val();
                                 let colorcode2 = $("#colorcode2").val();
@@ -258,6 +256,9 @@
                                     success: function (data) {
                                         if (data.isok) {
                                             let layouttype = gettworadiobuttenLI(0);
+                                            let kafchin = $("#kafchin").val();
+                                            let countinbox = $("#countinbox").val();
+                                            let countinrise = $("#countinrise").val();
                                             let columennumber = $("#txtColumnNumber").val();
                                             let consumtype = gettworadiobuttenLI(1);
                                             let distance = $("#txtDistance").val();
@@ -272,7 +273,7 @@
                                                 type: "POST",
                                                 url: '/Home/SaveLI',
                                                 datatype: "json",
-                                                data: { layouttype: layouttype, columennumber: columennumber, consumtype: consumtype, distance: distance, deliverytype: deliverytype, producttime: producttime, submittype: submittype, ispalet: ispalet, humidity: humidity, useaddress: useaddress, adress2: adress2 },
+                                                data: { kafchin: kafchin, countinbox: countinbox, countinrise: countinrise, layouttype: layouttype, columennumber: columennumber, consumtype: consumtype, distance: distance, deliverytype: deliverytype, producttime: producttime, submittype: submittype, ispalet: ispalet, humidity: humidity, useaddress: useaddress, adress2: adress2 },
                                                 success: function (data) {
                                                     if (data.isok == true) {
                                                         let mizanvaraghmasrafi = $("#mizanvaraghmasrafi").val();
@@ -354,7 +355,7 @@
                                 $.ajax({
                                     type: "POST",
                                     url: '/Home/SavePI',
-                                    data: { printtype: printtype, paintcount: paintcount, printtypeselection: printtypeselection, klishenum: klishenum, printamount: printamount, templatenum: templatenum },
+                                    data: { colorcode1: colorcode1, colorcode2: colorcode2, colorcode3: colorcode3, colorcode4: colorcode4, colorcode5: colorcode5, printtype: printtype, paintcount: paintcount, printtypeselection: printtypeselection, klishenum: klishenum, printamount: printamount, templatenum: templatenum },
                                     datatype: "json",
                                     success: function (data) {
                                         if (data.isok) {

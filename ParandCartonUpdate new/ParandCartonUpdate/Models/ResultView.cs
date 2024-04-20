@@ -88,5 +88,13 @@ namespace ParandCartonUpdate.Models
         public Nullable<double> sumofall { get; set; }
         public int ProductInfoId { get; set; }
         public string Description { get; set; }
+        public string ColorCode5 { get; set; }
+        public string ColorCode4 { get; set; }
+        public string ColorCode3 { get; set; }
+        public string ColorCode2 { get; set; }
+        public string ColorCode1 { get; set; }
+        public Nullable<decimal> Countofkafchin { get; set; }
+        public Nullable<decimal> CountinRise { get; set; }
+        public Nullable<decimal> CountinBox { get; set; }
     }
 }

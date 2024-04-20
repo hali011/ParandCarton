@@ -29,6 +29,9 @@ namespace ParandCartonUpdate.Models
         public Nullable<bool> UseAddress { get; set; }
         public string OtherAddress { get; set; }
         public Nullable<int> WhoSave { get; set; }
+        public Nullable<decimal> Countofkafchin { get; set; }
+        public Nullable<decimal> CountinBox { get; set; }
+        public Nullable<decimal> CountinRise { get; set; }
     
         public virtual OrderInfo OrderInfo { get; set; }
     }

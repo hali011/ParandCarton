@@ -603,8 +603,11 @@ function getpalet() {
     if ($("#sherink").is(':checked', true)) {
         str.push($("#sherink").val());
     }
-    if ($("#tasme").is(':checked', true)) {
-        str.push($("#tasme").val());
+    if ($("#tasme16").is(':checked', true)) {
+        str.push($("#tasme16").val());
+    }
+    if ($("#tasme9").is(':checked', true)) {
+        str.push($("#tasme9").val());
     }
     if ($("#palet").is(':checked', true)) {
         str.push($("#palet").val());

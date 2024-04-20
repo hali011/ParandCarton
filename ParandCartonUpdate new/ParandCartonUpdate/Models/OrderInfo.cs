@@ -18,8 +18,8 @@ namespace ParandCartonUpdate.Models
         public OrderInfo()
         {
             this.CartonTechnicalInfoes = new HashSet<CartonTechnicalInfo>();
-            this.LogesticInfoes = new HashSet<LogesticInfo>();
             this.PrintInfoes = new HashSet<PrintInfo>();
+            this.LogesticInfoes = new HashSet<LogesticInfo>();
         }
     
         public int Id { get; set; }
@@ -44,8 +44,8 @@ namespace ParandCartonUpdate.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CartonTechnicalInfo> CartonTechnicalInfoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LogesticInfo> LogesticInfoes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PrintInfo> PrintInfoes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LogesticInfo> LogesticInfoes { get; set; }
     }
 }

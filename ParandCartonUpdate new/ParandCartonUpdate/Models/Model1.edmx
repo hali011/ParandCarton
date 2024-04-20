@@ -85,6 +85,9 @@
           <Property Name="UseAddress" Type="bit" />
           <Property Name="OtherAddress" Type="nvarchar(max)" />
           <Property Name="WhoSave" Type="int" />
+          <Property Name="Countofkafchin" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="CountinBox" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="CountinRise" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="OrderInfo">
           <Key>
@@ -269,6 +272,14 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
           <Property Name="sumofall" Type="float" />
           <Property Name="ProductInfoId" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ColorCode5" Type="nvarchar" MaxLength="50" />
+          <Property Name="ColorCode4" Type="nvarchar" MaxLength="50" />
+          <Property Name="ColorCode3" Type="nvarchar" MaxLength="50" />
+          <Property Name="ColorCode2" Type="nvarchar" MaxLength="50" />
+          <Property Name="ColorCode1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Countofkafchin" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="CountinRise" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="CountinBox" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK_CartonTechnicalInfo_CartonTechnicalInfo">
           <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
@@ -412,7 +423,15 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
     [ResultView].[takhfif] AS [takhfif], 
     [ResultView].[sumofall] AS [sumofall], 
     [ResultView].[ProductInfoId] AS [ProductInfoId], 
-    [ResultView].[Description] AS [Description]
+    [ResultView].[Description] AS [Description], 
+    [ResultView].[ColorCode5] AS [ColorCode5], 
+    [ResultView].[ColorCode4] AS [ColorCode4], 
+    [ResultView].[ColorCode3] AS [ColorCode3], 
+    [ResultView].[ColorCode2] AS [ColorCode2], 
+    [ResultView].[ColorCode1] AS [ColorCode1], 
+    [ResultView].[Countofkafchin] AS [Countofkafchin], 
+    [ResultView].[CountinRise] AS [CountinRise], 
+    [ResultView].[CountinBox] AS [CountinBox]
     FROM [dbo].[ResultView] AS [ResultView]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_CartonTechnicalInfo_CartonTechnicalInfo" Association="Self.FK_CartonTechnicalInfo_CartonTechnicalInfo">
@@ -459,8 +478,8 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
           <Property Name="SheatLength" Type="Int32" />
           <Property Name="SheatWidth" Type="Int32" />
           <Property Name="SheatType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="OrderInfo" Relationship="Self.FK_CartonTechnicalInfo_CartonTechnicalInfo" FromRole="CartonTechnicalInfo" ToRole="OrderInfo" />
           <Property Name="SheatWeight" Type="Int32" />
+          <NavigationProperty Name="OrderInfo" Relationship="Self.FK_CartonTechnicalInfo_CartonTechnicalInfo" FromRole="CartonTechnicalInfo" ToRole="OrderInfo" />
         </EntityType>
         <EntityType Name="InsideProduct">
           <Key>
@@ -468,49 +487,6 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="KelisheForm">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Type" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Layer">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="RCT" Type="Double" Nullable="false" />
-          <Property Name="Garmazh" Type="Int32" Nullable="false" />
-          <Property Name="Width" Type="Int32" Nullable="false" />
-          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="IsAvailabe" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="LogesticInfo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderInfoId" Type="Int32" Nullable="false" />
-          <Property Name="PrintInfoId" Type="Int32" Nullable="false" />
-          <Property Name="LayoutType" Type="Boolean" />
-          <Property Name="LayoutCount" Type="Int32" />
-          <Property Name="TypeOfUse" Type="Boolean" />
-          <Property Name="ProductDistance" Type="Int32" />
-          <Property Name="DeliveryMethod" Type="Boolean" />
-          <Property Name="AnbareshTime" Type="Int32" />
-          <Property Name="SendMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LogesticTypeSelection" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Humidity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UseAddress" Type="Boolean" />
-          <Property Name="OtherAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="WhoSave" Type="Int32" />
-          <NavigationProperty Name="OrderInfo" Relationship="Self.FK_LogesticInfo_OrderInfo" FromRole="LogesticInfo" ToRole="OrderInfo" />
         </EntityType>
         <EntityType Name="OrderInfo">
           <Key>
@@ -535,8 +511,8 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Whosave" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CartonTechnicalInfoes" Relationship="Self.FK_CartonTechnicalInfo_CartonTechnicalInfo" FromRole="OrderInfo" ToRole="CartonTechnicalInfo" />
-          <NavigationProperty Name="LogesticInfoes" Relationship="Self.FK_LogesticInfo_OrderInfo" FromRole="OrderInfo" ToRole="LogesticInfo" />
-          <NavigationProperty Name="PrintInfoes" Relationship="ParandCartondbModel.FK_PrintInfo_OrderInfo" FromRole="OrderInfo" ToRole="PrintInfo" />
+          <NavigationProperty Name="PrintInfoes" Relationship="Self.FK_PrintInfo_OrderInfo" FromRole="OrderInfo" ToRole="PrintInfo" />
+          <NavigationProperty Name="LogesticInfoes" Relationship="ParandCartondbModel.FK_LogesticInfo_OrderInfo" FromRole="OrderInfo" ToRole="LogesticInfo" />
         </EntityType>
         <EntityType Name="PriceInfo">
           <Key>
@@ -551,6 +527,31 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
           <Property Name="sumofall" Type="Double" />
           <Property Name="ProductInfoId" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PrintInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderInfoId" Type="Int32" Nullable="false" />
+          <Property Name="CartonTechnicalId" Type="Int32" Nullable="false" />
+          <Property Name="PrintType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ColorCount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrintTypeSelection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PrintAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsKelishe" Type="Boolean" />
+          <Property Name="IsTemplate" Type="Boolean" />
+          <Property Name="kelisheNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TemplateNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Whosave" Type="Int32" Nullable="false" />
+          <Property Name="ColorCode1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ColorCode2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ColorCode3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ColorCode4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ColorCode5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrderInfo" Relationship="Self.FK_PrintInfo_OrderInfo" FromRole="PrintInfo" ToRole="OrderInfo" />
+          <NavigationProperty Name="PrintInfo1" Relationship="Self.FK_PrintInfo_PrintInfo" FromRole="PrintInfo" ToRole="PrintInfo1" />
+          <NavigationProperty Name="PrintInfo2" Relationship="Self.FK_PrintInfo_PrintInfo" FromRole="PrintInfo1" ToRole="PrintInfo" />
         </EntityType>
         <EntityType Name="ProductInfo">
           <Key>
@@ -608,28 +609,38 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_LogesticInfo_OrderInfo">
+        <Association Name="FK_PrintInfo_OrderInfo">
           <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="LogesticInfo" Type="Self.LogesticInfo" Multiplicity="*" />
+          <End Role="PrintInfo" Type="Self.PrintInfo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OrderInfo">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="LogesticInfo">
+            <Dependent Role="PrintInfo">
               <PropertyRef Name="OrderInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrintInfo_PrintInfo">
+          <End Role="PrintInfo" Type="Self.PrintInfo" Multiplicity="1" />
+          <End Role="PrintInfo1" Type="Self.PrintInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PrintInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrintInfo1">
+              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ParandCartondbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CartonTechnicalInfoes" EntityType="Self.CartonTechnicalInfo" />
           <EntitySet Name="InsideProducts" EntityType="Self.InsideProduct" />
-          <EntitySet Name="KelisheForms" EntityType="Self.KelisheForm" />
-          <EntitySet Name="Layers" EntityType="Self.Layer" />
-          <EntitySet Name="LogesticInfoes" EntityType="Self.LogesticInfo" />
           <EntitySet Name="OrderInfoes" EntityType="Self.OrderInfo" />
           <EntitySet Name="PriceInfoes" EntityType="Self.PriceInfo" />
+          <EntitySet Name="PrintInfoes" EntityType="Self.PrintInfo" />
           <EntitySet Name="ProductInfoes" EntityType="Self.ProductInfo" />
           <EntitySet Name="StandardInfoes" EntityType="Self.StandardInfo" />
           <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
@@ -637,28 +648,76 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
             <End Role="OrderInfo" EntitySet="OrderInfoes" />
             <End Role="CartonTechnicalInfo" EntitySet="CartonTechnicalInfoes" />
           </AssociationSet>
-          <AssociationSet Name="FK_LogesticInfo_OrderInfo" Association="Self.FK_LogesticInfo_OrderInfo">
-            <End Role="OrderInfo" EntitySet="OrderInfoes" />
-            <End Role="LogesticInfo" EntitySet="LogesticInfoes" />
-          </AssociationSet>
-          <EntitySet Name="CartonTypes" EntityType="ParandCartondbModel.CartonType" />
-          <EntitySet Name="ResultViews" EntityType="ParandCartondbModel.ResultView" />
-          <EntitySet Name="PrintInfoes" EntityType="ParandCartondbModel.PrintInfo" />
-          <AssociationSet Name="FK_PrintInfo_OrderInfo" Association="ParandCartondbModel.FK_PrintInfo_OrderInfo">
+          <AssociationSet Name="FK_PrintInfo_OrderInfo" Association="Self.FK_PrintInfo_OrderInfo">
             <End Role="OrderInfo" EntitySet="OrderInfoes" />
             <End Role="PrintInfo" EntitySet="PrintInfoes" />
           </AssociationSet>
-          <AssociationSet Name="FK_PrintInfo_PrintInfo" Association="ParandCartondbModel.FK_PrintInfo_PrintInfo">
+          <AssociationSet Name="FK_PrintInfo_PrintInfo" Association="Self.FK_PrintInfo_PrintInfo">
             <End Role="PrintInfo" EntitySet="PrintInfoes" />
             <End Role="PrintInfo1" EntitySet="PrintInfoes" />
           </AssociationSet>
+          <EntitySet Name="Layers" EntityType="ParandCartondbModel.Layer" />
+          <EntitySet Name="CartonTypes" EntityType="ParandCartondbModel.CartonType" />
+          <EntitySet Name="KelisheForms" EntityType="ParandCartondbModel.KelisheForm" />
+          <EntitySet Name="LogesticInfoes" EntityType="ParandCartondbModel.LogesticInfo" />
+          <EntitySet Name="ResultViews" EntityType="ParandCartondbModel.ResultView" />
+          <AssociationSet Name="FK_LogesticInfo_OrderInfo" Association="ParandCartondbModel.FK_LogesticInfo_OrderInfo">
+            <End Role="OrderInfo" EntitySet="OrderInfoes" />
+            <End Role="LogesticInfo" EntitySet="LogesticInfoes" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Layer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RCT" Type="Double" Nullable="false" />
+          <Property Name="Garmazh" Type="Int32" Nullable="false" />
+          <Property Name="Width" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="IsAvailabe" Type="Boolean" Nullable="false" />
+        </EntityType>
         <EntityType Name="CartonType">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CartonTypeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="KelisheForm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogesticInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderInfoId" Type="Int32" Nullable="false" />
+          <Property Name="PrintInfoId" Type="Int32" Nullable="false" />
+          <Property Name="LayoutType" Type="Boolean" />
+          <Property Name="LayoutCount" Type="Int32" />
+          <Property Name="TypeOfUse" Type="Boolean" />
+          <Property Name="ProductDistance" Type="Int32" />
+          <Property Name="DeliveryMethod" Type="Boolean" />
+          <Property Name="AnbareshTime" Type="Int32" />
+          <Property Name="SendMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LogesticTypeSelection" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Humidity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UseAddress" Type="Boolean" />
+          <Property Name="OtherAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WhoSave" Type="Int32" />
+          <Property Name="Countofkafchin" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CountinBox" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CountinRise" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="OrderInfo" Relationship="ParandCartondbModel.FK_LogesticInfo_OrderInfo" FromRole="LogesticInfo" ToRole="OrderInfo" />
         </EntityType>
         <EntityType Name="ResultView">
           <Key>
@@ -740,55 +799,26 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
           <Property Name="sumofall" Type="Double" />
           <Property Name="ProductInfoId" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="PrintInfo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderInfoId" Type="Int32" Nullable="false" />
-          <Property Name="CartonTechnicalId" Type="Int32" Nullable="false" />
-          <Property Name="PrintType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ColorCount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PrintTypeSelection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PrintAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsKelishe" Type="Boolean" />
-          <Property Name="IsTemplate" Type="Boolean" />
-          <Property Name="kelisheNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TemplateNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Whosave" Type="Int32" Nullable="false" />
-          <Property Name="ColorCode1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ColorCode2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ColorCode3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ColorCode4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ColorCode5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="OrderInfo" Relationship="ParandCartondbModel.FK_PrintInfo_OrderInfo" FromRole="PrintInfo" ToRole="OrderInfo" />
-          <NavigationProperty Name="PrintInfo1" Relationship="ParandCartondbModel.FK_PrintInfo_PrintInfo" FromRole="PrintInfo" ToRole="PrintInfo1" />
-          <NavigationProperty Name="PrintInfo2" Relationship="ParandCartondbModel.FK_PrintInfo_PrintInfo" FromRole="PrintInfo1" ToRole="PrintInfo" />
+          <Property Name="ColorCode4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ColorCode3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ColorCode2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ColorCode1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Countofkafchin" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CountinRise" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CountinBox" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
-        <Association Name="FK_PrintInfo_OrderInfo">
+        <Association Name="FK_LogesticInfo_OrderInfo">
           <End Type="ParandCartondbModel.OrderInfo" Role="OrderInfo" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="ParandCartondbModel.PrintInfo" Role="PrintInfo" Multiplicity="*" />
+          <End Type="ParandCartondbModel.LogesticInfo" Role="LogesticInfo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OrderInfo">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PrintInfo">
+            <Dependent Role="LogesticInfo">
               <PropertyRef Name="OrderInfoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PrintInfo_PrintInfo">
-          <End Type="ParandCartondbModel.PrintInfo" Role="PrintInfo" Multiplicity="1" />
-          <End Type="ParandCartondbModel.PrintInfo" Role="PrintInfo1" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="PrintInfo">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PrintInfo1">
-              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -801,7 +831,6 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
           <EntitySetMapping Name="CartonTechnicalInfoes">
             <EntityTypeMapping TypeName="ParandCartondbModel.CartonTechnicalInfo">
               <MappingFragment StoreEntitySet="CartonTechnicalInfo">
-                <ScalarProperty Name="SheatWeight" ColumnName="SheatWeight" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OrderInfoId" ColumnName="OrderInfoId" />
                 <ScalarProperty Name="type" ColumnName="type" />
@@ -821,6 +850,7 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
                 <ScalarProperty Name="SheatLength" ColumnName="SheatLength" />
                 <ScalarProperty Name="SheatWidth" ColumnName="SheatWidth" />
                 <ScalarProperty Name="SheatType" ColumnName="SheatType" />
+                <ScalarProperty Name="SheatWeight" ColumnName="SheatWeight" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -829,51 +859,6 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
               <MappingFragment StoreEntitySet="InsideProducts">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="KelisheForms">
-            <EntityTypeMapping TypeName="ParandCartondbModel.KelisheForm">
-              <MappingFragment StoreEntitySet="KelisheForm">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Layers">
-            <EntityTypeMapping TypeName="ParandCartondbModel.Layer">
-              <MappingFragment StoreEntitySet="Layers">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-                <ScalarProperty Name="RCT" ColumnName="RCT" />
-                <ScalarProperty Name="Garmazh" ColumnName="Garmazh" />
-                <ScalarProperty Name="Width" ColumnName="Width" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="IsAvailabe" ColumnName="IsAvailabe" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LogesticInfoes">
-            <EntityTypeMapping TypeName="ParandCartondbModel.LogesticInfo">
-              <MappingFragment StoreEntitySet="LogesticInfo">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="OrderInfoId" ColumnName="OrderInfoId" />
-                <ScalarProperty Name="PrintInfoId" ColumnName="PrintInfoId" />
-                <ScalarProperty Name="LayoutType" ColumnName="LayoutType" />
-                <ScalarProperty Name="LayoutCount" ColumnName="LayoutCount" />
-                <ScalarProperty Name="TypeOfUse" ColumnName="TypeOfUse" />
-                <ScalarProperty Name="ProductDistance" ColumnName="ProductDistance" />
-                <ScalarProperty Name="DeliveryMethod" ColumnName="DeliveryMethod" />
-                <ScalarProperty Name="AnbareshTime" ColumnName="AnbareshTime" />
-                <ScalarProperty Name="SendMethod" ColumnName="SendMethod" />
-                <ScalarProperty Name="LogesticTypeSelection" ColumnName="LogesticTypeSelection" />
-                <ScalarProperty Name="Humidity" ColumnName="Humidity" />
-                <ScalarProperty Name="UseAddress" ColumnName="UseAddress" />
-                <ScalarProperty Name="OtherAddress" ColumnName="OtherAddress" />
-                <ScalarProperty Name="WhoSave" ColumnName="WhoSave" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -913,6 +898,29 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
                 <ScalarProperty Name="sumofall" ColumnName="sumofall" />
                 <ScalarProperty Name="ProductInfoId" ColumnName="ProductInfoId" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrintInfoes">
+            <EntityTypeMapping TypeName="ParandCartondbModel.PrintInfo">
+              <MappingFragment StoreEntitySet="PrintInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderInfoId" ColumnName="OrderInfoId" />
+                <ScalarProperty Name="CartonTechnicalId" ColumnName="CartonTechnicalId" />
+                <ScalarProperty Name="PrintType" ColumnName="PrintType" />
+                <ScalarProperty Name="ColorCount" ColumnName="ColorCount" />
+                <ScalarProperty Name="PrintTypeSelection" ColumnName="PrintTypeSelection" />
+                <ScalarProperty Name="PrintAmount" ColumnName="PrintAmount" />
+                <ScalarProperty Name="IsKelishe" ColumnName="IsKelishe" />
+                <ScalarProperty Name="IsTemplate" ColumnName="IsTemplate" />
+                <ScalarProperty Name="kelisheNum" ColumnName="kelisheNum" />
+                <ScalarProperty Name="TemplateNum" ColumnName="TemplateNum" />
+                <ScalarProperty Name="Whosave" ColumnName="Whosave" />
+                <ScalarProperty Name="ColorCode1" ColumnName="ColorCode1" />
+                <ScalarProperty Name="ColorCode2" ColumnName="ColorCode2" />
+                <ScalarProperty Name="ColorCode3" ColumnName="ColorCode3" />
+                <ScalarProperty Name="ColorCode4" ColumnName="ColorCode4" />
+                <ScalarProperty Name="ColorCode5" ColumnName="ColorCode5" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -961,6 +969,20 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Layers">
+            <EntityTypeMapping TypeName="ParandCartondbModel.Layer">
+              <MappingFragment StoreEntitySet="Layers">
+                <ScalarProperty Name="IsAvailabe" ColumnName="IsAvailabe" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Garmazh" ColumnName="Garmazh" />
+                <ScalarProperty Name="RCT" ColumnName="RCT" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="CartonTypes">
             <EntityTypeMapping TypeName="ParandCartondbModel.CartonType">
               <MappingFragment StoreEntitySet="CartonType">
@@ -969,9 +991,51 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="KelisheForms">
+            <EntityTypeMapping TypeName="ParandCartondbModel.KelisheForm">
+              <MappingFragment StoreEntitySet="KelisheForm">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogesticInfoes">
+            <EntityTypeMapping TypeName="ParandCartondbModel.LogesticInfo">
+              <MappingFragment StoreEntitySet="LogesticInfo">
+                <ScalarProperty Name="CountinRise" ColumnName="CountinRise" />
+                <ScalarProperty Name="CountinBox" ColumnName="CountinBox" />
+                <ScalarProperty Name="Countofkafchin" ColumnName="Countofkafchin" />
+                <ScalarProperty Name="WhoSave" ColumnName="WhoSave" />
+                <ScalarProperty Name="OtherAddress" ColumnName="OtherAddress" />
+                <ScalarProperty Name="UseAddress" ColumnName="UseAddress" />
+                <ScalarProperty Name="Humidity" ColumnName="Humidity" />
+                <ScalarProperty Name="LogesticTypeSelection" ColumnName="LogesticTypeSelection" />
+                <ScalarProperty Name="SendMethod" ColumnName="SendMethod" />
+                <ScalarProperty Name="AnbareshTime" ColumnName="AnbareshTime" />
+                <ScalarProperty Name="DeliveryMethod" ColumnName="DeliveryMethod" />
+                <ScalarProperty Name="ProductDistance" ColumnName="ProductDistance" />
+                <ScalarProperty Name="TypeOfUse" ColumnName="TypeOfUse" />
+                <ScalarProperty Name="LayoutCount" ColumnName="LayoutCount" />
+                <ScalarProperty Name="LayoutType" ColumnName="LayoutType" />
+                <ScalarProperty Name="PrintInfoId" ColumnName="PrintInfoId" />
+                <ScalarProperty Name="OrderInfoId" ColumnName="OrderInfoId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ResultViews">
             <EntityTypeMapping TypeName="ParandCartondbModel.ResultView">
               <MappingFragment StoreEntitySet="ResultView">
+                <ScalarProperty Name="CountinBox" ColumnName="CountinBox" />
+                <ScalarProperty Name="CountinRise" ColumnName="CountinRise" />
+                <ScalarProperty Name="Countofkafchin" ColumnName="Countofkafchin" />
+                <ScalarProperty Name="ColorCode1" ColumnName="ColorCode1" />
+                <ScalarProperty Name="ColorCode2" ColumnName="ColorCode2" />
+                <ScalarProperty Name="ColorCode3" ColumnName="ColorCode3" />
+                <ScalarProperty Name="ColorCode4" ColumnName="ColorCode4" />
+                <ScalarProperty Name="ColorCode5" ColumnName="ColorCode5" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="ProductInfoId" ColumnName="ProductInfoId" />
                 <ScalarProperty Name="sumofall" ColumnName="sumofall" />
@@ -1046,29 +1110,6 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
                 <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PrintInfoes">
-            <EntityTypeMapping TypeName="ParandCartondbModel.PrintInfo">
-              <MappingFragment StoreEntitySet="PrintInfo">
-                <ScalarProperty Name="ColorCode5" ColumnName="ColorCode5" />
-                <ScalarProperty Name="ColorCode4" ColumnName="ColorCode4" />
-                <ScalarProperty Name="ColorCode3" ColumnName="ColorCode3" />
-                <ScalarProperty Name="ColorCode2" ColumnName="ColorCode2" />
-                <ScalarProperty Name="ColorCode1" ColumnName="ColorCode1" />
-                <ScalarProperty Name="Whosave" ColumnName="Whosave" />
-                <ScalarProperty Name="TemplateNum" ColumnName="TemplateNum" />
-                <ScalarProperty Name="kelisheNum" ColumnName="kelisheNum" />
-                <ScalarProperty Name="IsTemplate" ColumnName="IsTemplate" />
-                <ScalarProperty Name="IsKelishe" ColumnName="IsKelishe" />
-                <ScalarProperty Name="PrintAmount" ColumnName="PrintAmount" />
-                <ScalarProperty Name="PrintTypeSelection" ColumnName="PrintTypeSelection" />
-                <ScalarProperty Name="ColorCount" ColumnName="ColorCount" />
-                <ScalarProperty Name="PrintType" ColumnName="PrintType" />
-                <ScalarProperty Name="CartonTechnicalId" ColumnName="CartonTechnicalId" />
-                <ScalarProperty Name="OrderInfoId" ColumnName="OrderInfoId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

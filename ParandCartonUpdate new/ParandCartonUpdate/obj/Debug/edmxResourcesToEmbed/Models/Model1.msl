@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ParandCartondbModelStoreContainer" CdmEntityContainer="ParandCartondbEntities">
+    <EntitySetMapping Name="CartonTechnicalInfoes">
+      <EntityTypeMapping TypeName="ParandCartondbModel.CartonTechnicalInfo">
+        <MappingFragment StoreEntitySet="CartonTechnicalInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderInfoId" ColumnName="OrderInfoId" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="CartonType" ColumnName="CartonType" />
+          <ScalarProperty Name="CartonCount" ColumnName="CartonCount" />
+          <ScalarProperty Name="CartonLength" ColumnName="CartonLength" />
+          <ScalarProperty Name="CartonWidth" ColumnName="CartonWidth" />
+          <ScalarProperty Name="CartonHeight" ColumnName="CartonHeight" />
+          <ScalarProperty Name="CartonWeight" ColumnName="CartonWeight" />
+          <ScalarProperty Name="IsCold" ColumnName="IsCold" />
+          <ScalarProperty Name="IsTemplate" ColumnName="IsTemplate" />
+          <ScalarProperty Name="CartonEmpty" ColumnName="CartonEmpty" />
+          <ScalarProperty Name="ConnectorType" ColumnName="ConnectorType" />
+          <ScalarProperty Name="Whosave" ColumnName="Whosave" />
+          <ScalarProperty Name="CartonInsideType" ColumnName="CartonInsideType" />
+          <ScalarProperty Name="SheatCount" ColumnName="SheatCount" />
+          <ScalarProperty Name="SheatLength" ColumnName="SheatLength" />
+          <ScalarProperty Name="SheatWidth" ColumnName="SheatWidth" />
+          <ScalarProperty Name="SheatType" ColumnName="SheatType" />
+          <ScalarProperty Name="SheatWeight" ColumnName="SheatWeight" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InsideProducts">
+      <EntityTypeMapping TypeName="ParandCartondbModel.InsideProduct">
+        <MappingFragment StoreEntitySet="InsideProducts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogesticInfoes">
+      <EntityTypeMapping TypeName="ParandCartondbModel.LogesticInfo">
+        <MappingFragment StoreEntitySet="LogesticInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderInfoId" ColumnName="OrderInfoId" />
+          <ScalarProperty Name="PrintInfoId" ColumnName="PrintInfoId" />
+          <ScalarProperty Name="LayoutType" ColumnName="LayoutType" />
+          <ScalarProperty Name="LayoutCount" ColumnName="LayoutCount" />
+          <ScalarProperty Name="TypeOfUse" ColumnName="TypeOfUse" />
+          <ScalarProperty Name="ProductDistance" ColumnName="ProductDistance" />
+          <ScalarProperty Name="DeliveryMethod" ColumnName="DeliveryMethod" />
+          <ScalarProperty Name="AnbareshTime" ColumnName="AnbareshTime" />
+          <ScalarProperty Name="SendMethod" ColumnName="SendMethod" />
+          <ScalarProperty Name="LogesticTypeSelection" ColumnName="LogesticTypeSelection" />
+          <ScalarProperty Name="Humidity" ColumnName="Humidity" />
+          <ScalarProperty Name="UseAddress" ColumnName="UseAddress" />
+          <ScalarProperty Name="OtherAddress" ColumnName="OtherAddress" />
+          <ScalarProperty Name="WhoSave" ColumnName="WhoSave" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderInfoes">
+      <EntityTypeMapping TypeName="ParandCartondbModel.OrderInfo">
+        <MappingFragment StoreEntitySet="OrderInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="SaleExpertCode" ColumnName="SaleExpertCode" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="SaleExpertName" ColumnName="SaleExpertName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="EnterPriceInterfaceName" ColumnName="EnterPriceInterfaceName" />
+          <ScalarProperty Name="EnconomicCode" ColumnName="EnconomicCode" />
+          <ScalarProperty Name="Tell" ColumnName="Tell" />
+          <ScalarProperty Name="EnterPriceInterfaceTell" ColumnName="EnterPriceInterfaceTell" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Whosave" ColumnName="Whosave" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PriceInfoes">
+      <EntityTypeMapping TypeName="ParandCartondbModel.PriceInfo">
+        <MappingFragment StoreEntitySet="PriceInfo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="whosave" ColumnName="whosave" />
+          <ScalarProperty Name="costpervaragh" ColumnName="costpervaragh" />
+          <ScalarProperty Name="costofall" ColumnName="costofall" />
+          <ScalarProperty Name="malyat" ColumnName="malyat" />
+          <ScalarProperty Name="takhfif" ColumnName="takhfif" />
+          <ScalarProperty Name="sumofall" ColumnName="sumofall" />
+          <ScalarProperty Name="ProductInfoId" ColumnName="ProductInfoId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrintInfoes">
+      <EntityTypeMapping TypeName="ParandCartondbModel.PrintInfo">
+        <MappingFragment StoreEntitySet="PrintInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderInfoId" ColumnName="OrderInfoId" />
+          <ScalarProperty Name="CartonTechnicalId" ColumnName="CartonTechnicalId" />
+          <ScalarProperty Name="PrintType" ColumnName="PrintType" />
+          <ScalarProperty Name="ColorCount" ColumnName="ColorCount" />
+          <ScalarProperty Name="PrintTypeSelection" ColumnName="PrintTypeSelection" />
+          <ScalarProperty Name="PrintAmount" ColumnName="PrintAmount" />
+          <ScalarProperty Name="IsKelishe" ColumnName="IsKelishe" />
+          <ScalarProperty Name="IsTemplate" ColumnName="IsTemplate" />
+          <ScalarProperty Name="kelisheNum" ColumnName="kelisheNum" />
+          <ScalarProperty Name="TemplateNum" ColumnName="TemplateNum" />
+          <ScalarProperty Name="Whosave" ColumnName="Whosave" />
+          <ScalarProperty Name="ColorCode1" ColumnName="ColorCode1" />
+          <ScalarProperty Name="ColorCode2" ColumnName="ColorCode2" />
+          <ScalarProperty Name="ColorCode3" ColumnName="ColorCode3" />
+          <ScalarProperty Name="ColorCode4" ColumnName="ColorCode4" />
+          <ScalarProperty Name="ColorCode5" ColumnName="ColorCode5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductInfoes">
+      <EntityTypeMapping TypeName="ParandCartondbModel.ProductInfo">
+        <MappingFragment StoreEntitySet="ProductInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LogesticInfoId" ColumnName="LogesticInfoId" />
+          <ScalarProperty Name="TheAmountOfSheetsUsedForEachCarton" ColumnName="TheAmountOfSheetsUsedForEachCarton" />
+          <ScalarProperty Name="MinimumBCT" ColumnName="MinimumBCT" />
+          <ScalarProperty Name="WasteRate" ColumnName="WasteRate" />
+          <ScalarProperty Name="DeliverTime" ColumnName="DeliverTime" />
+          <ScalarProperty Name="LayerCount" ColumnName="LayerCount" />
+          <ScalarProperty Name="Layer1" ColumnName="Layer1" />
+          <ScalarProperty Name="Layer2" ColumnName="Layer2" />
+          <ScalarProperty Name="FloatType1" ColumnName="FloatType1" />
+          <ScalarProperty Name="Layer3" ColumnName="Layer3" />
+          <ScalarProperty Name="Layer4" ColumnName="Layer4" />
+          <ScalarProperty Name="FloatType2" ColumnName="FloatType2" />
+          <ScalarProperty Name="Layer5" ColumnName="Layer5" />
+          <ScalarProperty Name="BCT" ColumnName="BCT" />
+          <ScalarProperty Name="ECT" ColumnName="ECT" />
+          <ScalarProperty Name="Whosave" ColumnName="Whosave" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StandardInfoes">
+      <EntityTypeMapping TypeName="ParandCartondbModel.StandardInfo">
+        <MappingFragment StoreEntitySet="StandardInfo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="StandardId" ColumnName="StandardId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserInfoes">
+      <EntityTypeMapping TypeName="ParandCartondbModel.UserInfo">
+        <MappingFragment StoreEntitySet="UserInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserFamily" ColumnName="UserFamily" />
+          <ScalarProperty Name="UserAccess" ColumnName="UserAccess" />
+          <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResultViews">
+      <EntityTypeMapping TypeName="ParandCartondbModel.ResultView">
+        <MappingFragment StoreEntitySet="ResultView">
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="SaleExpertCode" ColumnName="SaleExpertCode" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="SaleExpertName" ColumnName="SaleExpertName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="EnterPriceInterfaceName" ColumnName="EnterPriceInterfaceName" />
+          <ScalarProperty Name="EnconomicCode" ColumnName="EnconomicCode" />
+          <ScalarProperty Name="Tell" ColumnName="Tell" />
+          <ScalarProperty Name="EnterPriceInterfaceTell" ColumnName="EnterPriceInterfaceTell" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Whosave" ColumnName="Whosave" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="CartonType" ColumnName="CartonType" />
+          <ScalarProperty Name="CartonCount" ColumnName="CartonCount" />
+          <ScalarProperty Name="CartonLength" ColumnName="CartonLength" />
+          <ScalarProperty Name="CartonWidth" ColumnName="CartonWidth" />
+          <ScalarProperty Name="CartonHeight" ColumnName="CartonHeight" />
+          <ScalarProperty Name="CartonWeight" ColumnName="CartonWeight" />
+          <ScalarProperty Name="IsCold" ColumnName="IsCold" />
+          <ScalarProperty Name="IsTemplate" ColumnName="IsTemplate" />
+          <ScalarProperty Name="CartonEmpty" ColumnName="CartonEmpty" />
+          <ScalarProperty Name="ConnectorType" ColumnName="ConnectorType" />
+          <ScalarProperty Name="CartonInsideType" ColumnName="CartonInsideType" />
+          <ScalarProperty Name="SheatCount" ColumnName="SheatCount" />
+          <ScalarProperty Name="SheatLength" ColumnName="SheatLength" />
+          <ScalarProperty Name="SheatWidth" ColumnName="SheatWidth" />
+          <ScalarProperty Name="SheatType" ColumnName="SheatType" />
+          <ScalarProperty Name="PrintType" ColumnName="PrintType" />
+          <ScalarProperty Name="CartonTechnicalId" ColumnName="CartonTechnicalId" />
+          <ScalarProperty Name="ColorCount" ColumnName="ColorCount" />
+          <ScalarProperty Name="PrintTypeSelection" ColumnName="PrintTypeSelection" />
+          <ScalarProperty Name="PrintAmount" ColumnName="PrintAmount" />
+          <ScalarProperty Name="IsKelishe" ColumnName="IsKelishe" />
+          <ScalarProperty Name="PrintIsTemplate" ColumnName="PrintIsTemplate" />
+          <ScalarProperty Name="kelisheNum" ColumnName="kelisheNum" />
+          <ScalarProperty Name="TemplateNum" ColumnName="TemplateNum" />
+          <ScalarProperty Name="LayoutType" ColumnName="LayoutType" />
+          <ScalarProperty Name="LayoutCount" ColumnName="LayoutCount" />
+          <ScalarProperty Name="TypeOfUse" ColumnName="TypeOfUse" />
+          <ScalarProperty Name="ProductDistance" ColumnName="ProductDistance" />
+          <ScalarProperty Name="DeliveryMethod" ColumnName="DeliveryMethod" />
+          <ScalarProperty Name="AnbareshTime" ColumnName="AnbareshTime" />
+          <ScalarProperty Name="SendMethod" ColumnName="SendMethod" />
+          <ScalarProperty Name="LogesticTypeSelection" ColumnName="LogesticTypeSelection" />
+          <ScalarProperty Name="Humidity" ColumnName="Humidity" />
+          <ScalarProperty Name="UseAddress" ColumnName="UseAddress" />
+          <ScalarProperty Name="OtherAddress" ColumnName="OtherAddress" />
+          <ScalarProperty Name="TheAmountOfSheetsUsedForEachCarton" ColumnName="TheAmountOfSheetsUsedForEachCarton" />
+          <ScalarProperty Name="MinimumBCT" ColumnName="MinimumBCT" />
+          <ScalarProperty Name="WasteRate" ColumnName="WasteRate" />
+          <ScalarProperty Name="DeliverTime" ColumnName="DeliverTime" />
+          <ScalarProperty Name="LayerCount" ColumnName="LayerCount" />
+          <ScalarProperty Name="Layer1" ColumnName="Layer1" />
+          <ScalarProperty Name="Layer2" ColumnName="Layer2" />
+          <ScalarProperty Name="FloatType1" ColumnName="FloatType1" />
+          <ScalarProperty Name="Layer3" ColumnName="Layer3" />
+          <ScalarProperty Name="Layer4" ColumnName="Layer4" />
+          <ScalarProperty Name="FloatType2" ColumnName="FloatType2" />
+          <ScalarProperty Name="BCT" ColumnName="BCT" />
+          <ScalarProperty Name="Layer5" ColumnName="Layer5" />
+          <ScalarProperty Name="ECT" ColumnName="ECT" />
+          <ScalarProperty Name="costpervaragh" ColumnName="costpervaragh" />
+          <ScalarProperty Name="costofall" ColumnName="costofall" />
+          <ScalarProperty Name="malyat" ColumnName="malyat" />
+          <ScalarProperty Name="takhfif" ColumnName="takhfif" />
+          <ScalarProperty Name="sumofall" ColumnName="sumofall" />
+          <ScalarProperty Name="ProductInfoId" ColumnName="ProductInfoId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ColorCode5" ColumnName="ColorCode5" />
+          <ScalarProperty Name="ColorCode4" ColumnName="ColorCode4" />
+          <ScalarProperty Name="ColorCode3" ColumnName="ColorCode3" />
+          <ScalarProperty Name="ColorCode2" ColumnName="ColorCode2" />
+          <ScalarProperty Name="ColorCode1" ColumnName="ColorCode1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Layers">
+      <EntityTypeMapping TypeName="ParandCartondbModel.Layer">
+        <MappingFragment StoreEntitySet="Layers">
+          <ScalarProperty Name="IsAvailabe" ColumnName="IsAvailabe" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Garmazh" ColumnName="Garmazh" />
+          <ScalarProperty Name="RCT" ColumnName="RCT" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CartonTypes">
+      <EntityTypeMapping TypeName="ParandCartondbModel.CartonType">
+        <MappingFragment StoreEntitySet="CartonType">
+          <ScalarProperty Name="CartonTypeName" ColumnName="CartonTypeName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KelisheForms">
+      <EntityTypeMapping TypeName="ParandCartondbModel.KelisheForm">
+        <MappingFragment StoreEntitySet="KelisheForm">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

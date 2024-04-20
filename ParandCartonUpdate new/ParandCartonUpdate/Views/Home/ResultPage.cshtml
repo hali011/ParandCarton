@@ -516,6 +516,132 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                @if (Model.ColorCount != "بدون چاپ")
+                {
+                    if (Model.ColorCount == "یک")
+                    {
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ اول</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode1" />
+                            </div>
+                        </div>
+                    }
+                    if (Model.ColorCount == "دو")
+                    {
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ اول</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode1" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ دوم</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode2" />
+                            </div>
+                        </div>
+                    }
+                    if (Model.ColorCount == "سه")
+                    {
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ اول</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode1" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ دوم</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode2" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ سوم</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode3" />
+                            </div>
+                        </div>
+                    }
+                    if (Model.ColorCount == "چهار")
+                    {
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ اول</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode1" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ دوم</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode2" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ سوم</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode3" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ چهار</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode4" />
+                            </div>
+                        </div>
+                    }
+                    if (Model.ColorCount == "پنج")
+                    {
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ اول</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode1" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ دوم</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode2" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ سوم</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode3" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ چهار</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode4" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ پنج</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode5" />
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
             <br />
             <div class="row">
                 <div class="col-md-1"></div>
