@@ -3,24 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Ali\\Desktop\\ParandCartomProject\\ParandCartonUpdate new\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|c:\\users\\ali\\desktop\\parandcartomproject\\parandcartonupdate new\\parandcartonupdate\\views\\home\\form.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|solutionrelative:parandcartonupdate\\views\\home\\form.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|c:\\users\\ali\\desktop\\parandcartomproject\\parandcartonupdate new\\parandcartonupdate\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|solutionrelative:parandcartonupdate\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|c:\\users\\ali\\desktop\\parandcartomproject\\parandcartonupdate new\\parandcartonupdate\\views\\home\\resultpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|solutionrelative:parandcartonupdate\\views\\home\\resultpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|c:\\users\\ali\\desktop\\parandcartomproject\\parandcartonupdate new\\parandcartonupdate\\views\\home\\printinformation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|solutionrelative:parandcartonupdate\\views\\home\\printinformation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|C:\\Users\\Ali\\Desktop\\ParandCartomProject\\ParandCartonUpdate new\\parandcartonupdate\\views\\home\\form.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|solutionrelative:parandcartonupdate\\views\\home\\form.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|c:\\users\\ali\\desktop\\parandcartomproject\\parandcartonupdate new\\parandcartonupdate\\views\\home\\logesticinformation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|solutionrelative:parandcartonupdate\\views\\home\\logesticinformation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|c:\\users\\ali\\desktop\\parandcartomproject\\parandcartonupdate new\\parandcartonupdate\\models\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
-      "RelativeMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|solutionrelative:parandcartonupdate\\models\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+      "AbsoluteMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|c:\\users\\ali\\desktop\\parandcartomproject\\parandcartonupdate new\\parandcartonupdate\\content\\javascript.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{1BCAAB0D-D114-4C51-AEFB-8E45C678230A}|ParandCartonUpdate\\ParandCartonUpdate.csproj|solutionrelative:parandcartonupdate\\content\\javascript.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,70 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Model1.edmx [Diagram1]",
-              "DocumentMoniker": "C:\\Users\\Ali\\Desktop\\ParandCartomProject\\ParandCartonUpdate new\\ParandCartonUpdate\\Models\\Model1.edmx",
-              "RelativeDocumentMoniker": "ParandCartonUpdate\\Models\\Model1.edmx",
-              "ToolTip": "C:\\Users\\Ali\\Desktop\\ParandCartomProject\\ParandCartonUpdate new\\ParandCartonUpdate\\Models\\Model1.edmx [Diagram1]",
-              "RelativeToolTip": "ParandCartonUpdate\\Models\\Model1.edmx [Diagram1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2024-04-20T13:32:10.321Z",
-              "EditorCaption": " [Diagram1]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\Ali\\Desktop\\ParandCartomProject\\ParandCartonUpdate new\\ParandCartonUpdate\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "ParandCartonUpdate\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\Ali\\Desktop\\ParandCartomProject\\ParandCartonUpdate new\\ParandCartonUpdate\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "ParandCartonUpdate\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAGwCAAAAAAAAAAAAwIYCAABQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-20T13:03:28.24Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "LogesticInformation.cshtml",
-              "DocumentMoniker": "C:\\Users\\Ali\\Desktop\\ParandCartomProject\\ParandCartonUpdate new\\ParandCartonUpdate\\Views\\Home\\LogesticInformation.cshtml",
-              "RelativeDocumentMoniker": "ParandCartonUpdate\\Views\\Home\\LogesticInformation.cshtml",
-              "ToolTip": "C:\\Users\\Ali\\Desktop\\ParandCartomProject\\ParandCartonUpdate new\\ParandCartonUpdate\\Views\\Home\\LogesticInformation.cshtml",
-              "RelativeToolTip": "ParandCartonUpdate\\Views\\Home\\LogesticInformation.cshtml",
-              "ViewState": "AQIAACgAAAAAAAAAAAAUwDgAAABiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-20T12:12:45.533Z",
+              "Title": "JavaScript.js",
+              "DocumentMoniker": "C:\\Users\\Ali\\Desktop\\ParandCartomProject\\ParandCartonUpdate new\\ParandCartonUpdate\\Content\\JavaScript.js",
+              "RelativeDocumentMoniker": "ParandCartonUpdate\\Content\\JavaScript.js",
+              "ToolTip": "C:\\Users\\Ali\\Desktop\\ParandCartomProject\\ParandCartonUpdate new\\ParandCartonUpdate\\Content\\JavaScript.js",
+              "RelativeToolTip": "ParandCartonUpdate\\Content\\JavaScript.js",
+              "ViewState": "AQIAABMBAAAAAAAAAAAzwBoBAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-04-20T20:10:26.726Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "PrintInformation.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ali\\Desktop\\ParandCartomProject\\ParandCartonUpdate new\\ParandCartonUpdate\\Views\\Home\\PrintInformation.cshtml",
+              "RelativeDocumentMoniker": "ParandCartonUpdate\\Views\\Home\\PrintInformation.cshtml",
+              "ToolTip": "C:\\Users\\Ali\\Desktop\\ParandCartomProject\\ParandCartonUpdate new\\ParandCartonUpdate\\Views\\Home\\PrintInformation.cshtml",
+              "RelativeToolTip": "ParandCartonUpdate\\Views\\Home\\PrintInformation.cshtml",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-20T20:08:43.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "form.cshtml",
               "DocumentMoniker": "C:\\Users\\Ali\\Desktop\\ParandCartomProject\\ParandCartonUpdate new\\ParandCartonUpdate\\Views\\Home\\form.cshtml",
               "RelativeDocumentMoniker": "ParandCartonUpdate\\Views\\Home\\form.cshtml",
               "ToolTip": "C:\\Users\\Ali\\Desktop\\ParandCartomProject\\ParandCartonUpdate new\\ParandCartonUpdate\\Views\\Home\\form.cshtml",
               "RelativeToolTip": "ParandCartonUpdate\\Views\\Home\\form.cshtml",
-              "ViewState": "AQIAAPwAAAAAAAAAAAAAABMBAAA/AAAA",
+              "ViewState": "AQIAAG0BAAAAAAAAAAAAAHMBAAA/AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-17T09:53:55.789Z",
+              "WhenOpened": "2024-04-20T20:07:46.67Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ResultPage.cshtml",
-              "DocumentMoniker": "C:\\Users\\Ali\\Desktop\\ParandCartomProject\\ParandCartonUpdate new\\ParandCartonUpdate\\Views\\Home\\ResultPage.cshtml",
-              "RelativeDocumentMoniker": "ParandCartonUpdate\\Views\\Home\\ResultPage.cshtml",
-              "ToolTip": "C:\\Users\\Ali\\Desktop\\ParandCartomProject\\ParandCartonUpdate new\\ParandCartonUpdate\\Views\\Home\\ResultPage.cshtml",
-              "RelativeToolTip": "ParandCartonUpdate\\Views\\Home\\ResultPage.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAF4AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-17T09:40:23.568Z",
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Ali\\Desktop\\ParandCartomProject\\ParandCartonUpdate new\\ParandCartonUpdate\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "ParandCartonUpdate\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Ali\\Desktop\\ParandCartomProject\\ParandCartonUpdate new\\ParandCartonUpdate\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "ParandCartonUpdate\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAgCAAAAAAAAAAAmwPICAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T13:03:28.24Z",
               "EditorCaption": ""
             }
           ]

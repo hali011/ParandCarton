@@ -88,6 +88,7 @@
           <Property Name="Countofkafchin" Type="numeric" Precision="18" Scale="0" />
           <Property Name="CountinBox" Type="numeric" Precision="18" Scale="0" />
           <Property Name="CountinRise" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="CountofPalet" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="OrderInfo">
           <Key>
@@ -280,6 +281,7 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
           <Property Name="Countofkafchin" Type="numeric" Precision="18" Scale="0" />
           <Property Name="CountinRise" Type="numeric" Precision="18" Scale="0" />
           <Property Name="CountinBox" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="CountofPalet" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK_CartonTechnicalInfo_CartonTechnicalInfo">
           <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
@@ -431,7 +433,8 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
     [ResultView].[ColorCode1] AS [ColorCode1], 
     [ResultView].[Countofkafchin] AS [Countofkafchin], 
     [ResultView].[CountinRise] AS [CountinRise], 
-    [ResultView].[CountinBox] AS [CountinBox]
+    [ResultView].[CountinBox] AS [CountinBox], 
+    [ResultView].[CountofPalet] AS [CountofPalet]
     FROM [dbo].[ResultView] AS [ResultView]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_CartonTechnicalInfo_CartonTechnicalInfo" Association="Self.FK_CartonTechnicalInfo_CartonTechnicalInfo">
@@ -717,6 +720,7 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
           <Property Name="Countofkafchin" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="CountinBox" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="CountinRise" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CountofPalet" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="OrderInfo" Relationship="ParandCartondbModel.FK_LogesticInfo_OrderInfo" FromRole="LogesticInfo" ToRole="OrderInfo" />
         </EntityType>
         <EntityType Name="ResultView">
@@ -807,6 +811,7 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
           <Property Name="Countofkafchin" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="CountinRise" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="CountinBox" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CountofPalet" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK_LogesticInfo_OrderInfo">
           <End Type="ParandCartondbModel.OrderInfo" Role="OrderInfo" Multiplicity="1">
@@ -1004,6 +1009,7 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
           <EntitySetMapping Name="LogesticInfoes">
             <EntityTypeMapping TypeName="ParandCartondbModel.LogesticInfo">
               <MappingFragment StoreEntitySet="LogesticInfo">
+                <ScalarProperty Name="CountofPalet" ColumnName="CountofPalet" />
                 <ScalarProperty Name="CountinRise" ColumnName="CountinRise" />
                 <ScalarProperty Name="CountinBox" ColumnName="CountinBox" />
                 <ScalarProperty Name="Countofkafchin" ColumnName="Countofkafchin" />
@@ -1028,6 +1034,7 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
           <EntitySetMapping Name="ResultViews">
             <EntityTypeMapping TypeName="ParandCartondbModel.ResultView">
               <MappingFragment StoreEntitySet="ResultView">
+                <ScalarProperty Name="CountofPalet" ColumnName="CountofPalet" />
                 <ScalarProperty Name="CountinBox" ColumnName="CountinBox" />
                 <ScalarProperty Name="CountinRise" ColumnName="CountinRise" />
                 <ScalarProperty Name="Countofkafchin" ColumnName="Countofkafchin" />

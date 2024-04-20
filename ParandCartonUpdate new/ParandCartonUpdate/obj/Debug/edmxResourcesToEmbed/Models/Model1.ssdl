@@ -80,6 +80,10 @@
     <Property Name="UseAddress" Type="bit" />
     <Property Name="OtherAddress" Type="nvarchar(max)" />
     <Property Name="WhoSave" Type="int" />
+    <Property Name="Countofkafchin" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="CountinBox" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="CountinRise" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="CountofPalet" Type="numeric" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="OrderInfo">
     <Key>
@@ -269,6 +273,10 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
     <Property Name="ColorCode3" Type="nvarchar" MaxLength="50" />
     <Property Name="ColorCode2" Type="nvarchar" MaxLength="50" />
     <Property Name="ColorCode1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Countofkafchin" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="CountinRise" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="CountinBox" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="CountofPalet" Type="numeric" Precision="18" Scale="0" />
   </EntityType>
   <Association Name="FK_CartonTechnicalInfo_CartonTechnicalInfo">
     <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
@@ -417,7 +425,11 @@ warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a pri
     [ResultView].[ColorCode4] AS [ColorCode4], 
     [ResultView].[ColorCode3] AS [ColorCode3], 
     [ResultView].[ColorCode2] AS [ColorCode2], 
-    [ResultView].[ColorCode1] AS [ColorCode1]
+    [ResultView].[ColorCode1] AS [ColorCode1], 
+    [ResultView].[Countofkafchin] AS [Countofkafchin], 
+    [ResultView].[CountinRise] AS [CountinRise], 
+    [ResultView].[CountinBox] AS [CountinBox], 
+    [ResultView].[CountofPalet] AS [CountofPalet]
     FROM [dbo].[ResultView] AS [ResultView]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_CartonTechnicalInfo_CartonTechnicalInfo" Association="Self.FK_CartonTechnicalInfo_CartonTechnicalInfo">

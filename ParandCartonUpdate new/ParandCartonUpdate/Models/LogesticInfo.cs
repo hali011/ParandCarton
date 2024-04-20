@@ -32,6 +32,7 @@ namespace ParandCartonUpdate.Models
         public Nullable<decimal> Countofkafchin { get; set; }
         public Nullable<decimal> CountinBox { get; set; }
         public Nullable<decimal> CountinRise { get; set; }
+        public Nullable<decimal> CountofPalet { get; set; }
     
         public virtual OrderInfo OrderInfo { get; set; }
     }

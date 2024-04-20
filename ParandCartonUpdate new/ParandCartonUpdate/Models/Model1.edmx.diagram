@@ -19,8 +19,8 @@
         <EntityTypeShape EntityType="ParandCartondbModel.Layer" Width="1.5" PointX="5.375" PointY="10.75" />
         <EntityTypeShape EntityType="ParandCartondbModel.CartonType" Width="1.5" PointX="12.375" PointY="0.75" />
         <EntityTypeShape EntityType="ParandCartondbModel.KelisheForm" Width="1.5" PointX="12.375" PointY="3.75" />
-        <EntityTypeShape EntityType="ParandCartondbModel.LogesticInfo" Width="1.5" PointX="3.25" PointY="7.5" />
-        <EntityTypeShape EntityType="ParandCartondbModel.ResultView" Width="1.5" PointX="15.5" PointY="0.625" />
+        <EntityTypeShape EntityType="ParandCartondbModel.LogesticInfo" Width="1.5" PointX="3" PointY="19" />
+        <EntityTypeShape EntityType="ParandCartondbModel.ResultView" Width="1.5" PointX="10.375" PointY="6.75" />
         <AssociationConnector Association="ParandCartondbModel.FK_LogesticInfo_OrderInfo" />
       </Diagram>
     </edmx:Diagrams>

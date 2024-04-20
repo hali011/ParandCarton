@@ -33,27 +33,6 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
-  <EntityType Name="LogesticInfo">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="OrderInfoId" Type="Int32" Nullable="false" />
-    <Property Name="PrintInfoId" Type="Int32" Nullable="false" />
-    <Property Name="LayoutType" Type="Boolean" />
-    <Property Name="LayoutCount" Type="Int32" />
-    <Property Name="TypeOfUse" Type="Boolean" />
-    <Property Name="ProductDistance" Type="Int32" />
-    <Property Name="DeliveryMethod" Type="Boolean" />
-    <Property Name="AnbareshTime" Type="Int32" />
-    <Property Name="SendMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="LogesticTypeSelection" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Humidity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="UseAddress" Type="Boolean" />
-    <Property Name="OtherAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="WhoSave" Type="Int32" />
-    <NavigationProperty Name="OrderInfo" Relationship="Self.FK_LogesticInfo_OrderInfo" FromRole="LogesticInfo" ToRole="OrderInfo" />
-  </EntityType>
   <EntityType Name="OrderInfo">
     <Key>
       <PropertyRef Name="Id" />
@@ -77,8 +56,8 @@
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Whosave" Type="Int32" Nullable="false" />
     <NavigationProperty Name="CartonTechnicalInfoes" Relationship="Self.FK_CartonTechnicalInfo_CartonTechnicalInfo" FromRole="OrderInfo" ToRole="CartonTechnicalInfo" />
-    <NavigationProperty Name="LogesticInfoes" Relationship="Self.FK_LogesticInfo_OrderInfo" FromRole="OrderInfo" ToRole="LogesticInfo" />
     <NavigationProperty Name="PrintInfoes" Relationship="Self.FK_PrintInfo_OrderInfo" FromRole="OrderInfo" ToRole="PrintInfo" />
+    <NavigationProperty Name="LogesticInfoes" Relationship="ParandCartondbModel.FK_LogesticInfo_OrderInfo" FromRole="OrderInfo" ToRole="LogesticInfo" />
   </EntityType>
   <EntityType Name="PriceInfo">
     <Key>
@@ -160,6 +139,131 @@
     <Property Name="NationalCode" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_CartonTechnicalInfo_CartonTechnicalInfo">
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CartonTechnicalInfo" Type="Self.CartonTechnicalInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CartonTechnicalInfo">
+        <PropertyRef Name="OrderInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrintInfo_OrderInfo">
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PrintInfo" Type="Self.PrintInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrintInfo">
+        <PropertyRef Name="OrderInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrintInfo_PrintInfo">
+    <End Role="PrintInfo" Type="Self.PrintInfo" Multiplicity="1" />
+    <End Role="PrintInfo1" Type="Self.PrintInfo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="PrintInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrintInfo1">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ParandCartondbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CartonTechnicalInfoes" EntityType="Self.CartonTechnicalInfo" />
+    <EntitySet Name="InsideProducts" EntityType="Self.InsideProduct" />
+    <EntitySet Name="OrderInfoes" EntityType="Self.OrderInfo" />
+    <EntitySet Name="PriceInfoes" EntityType="Self.PriceInfo" />
+    <EntitySet Name="PrintInfoes" EntityType="Self.PrintInfo" />
+    <EntitySet Name="ProductInfoes" EntityType="Self.ProductInfo" />
+    <EntitySet Name="StandardInfoes" EntityType="Self.StandardInfo" />
+    <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
+    <AssociationSet Name="FK_CartonTechnicalInfo_CartonTechnicalInfo" Association="Self.FK_CartonTechnicalInfo_CartonTechnicalInfo">
+      <End Role="OrderInfo" EntitySet="OrderInfoes" />
+      <End Role="CartonTechnicalInfo" EntitySet="CartonTechnicalInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrintInfo_OrderInfo" Association="Self.FK_PrintInfo_OrderInfo">
+      <End Role="OrderInfo" EntitySet="OrderInfoes" />
+      <End Role="PrintInfo" EntitySet="PrintInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrintInfo_PrintInfo" Association="Self.FK_PrintInfo_PrintInfo">
+      <End Role="PrintInfo" EntitySet="PrintInfoes" />
+      <End Role="PrintInfo1" EntitySet="PrintInfoes" />
+    </AssociationSet>
+    <EntitySet Name="Layers" EntityType="ParandCartondbModel.Layer" />
+    <EntitySet Name="CartonTypes" EntityType="ParandCartondbModel.CartonType" />
+    <EntitySet Name="KelisheForms" EntityType="ParandCartondbModel.KelisheForm" />
+    <EntitySet Name="LogesticInfoes" EntityType="ParandCartondbModel.LogesticInfo" />
+    <EntitySet Name="ResultViews" EntityType="ParandCartondbModel.ResultView" />
+    <AssociationSet Name="FK_LogesticInfo_OrderInfo" Association="ParandCartondbModel.FK_LogesticInfo_OrderInfo">
+      <End Role="OrderInfo" EntitySet="OrderInfoes" />
+      <End Role="LogesticInfo" EntitySet="LogesticInfoes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Layer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RCT" Type="Double" Nullable="false" />
+    <Property Name="Garmazh" Type="Int32" Nullable="false" />
+    <Property Name="Width" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="IsAvailabe" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CartonType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CartonTypeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="KelisheForm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LogesticInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderInfoId" Type="Int32" Nullable="false" />
+    <Property Name="PrintInfoId" Type="Int32" Nullable="false" />
+    <Property Name="LayoutType" Type="Boolean" />
+    <Property Name="LayoutCount" Type="Int32" />
+    <Property Name="TypeOfUse" Type="Boolean" />
+    <Property Name="ProductDistance" Type="Int32" />
+    <Property Name="DeliveryMethod" Type="Boolean" />
+    <Property Name="AnbareshTime" Type="Int32" />
+    <Property Name="SendMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LogesticTypeSelection" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Humidity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UseAddress" Type="Boolean" />
+    <Property Name="OtherAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WhoSave" Type="Int32" />
+    <Property Name="Countofkafchin" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CountinBox" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CountinRise" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CountofPalet" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="OrderInfo" Relationship="ParandCartondbModel.FK_LogesticInfo_OrderInfo" FromRole="LogesticInfo" ToRole="OrderInfo" />
   </EntityType>
   <EntityType Name="ResultView">
     <Key>
@@ -246,26 +350,16 @@
     <Property Name="ColorCode3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ColorCode2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ColorCode1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Countofkafchin" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CountinRise" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CountinBox" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CountofPalet" Type="Decimal" Precision="18" Scale="0" />
   </EntityType>
-  <Association Name="FK_CartonTechnicalInfo_CartonTechnicalInfo">
-    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="CartonTechnicalInfo" Type="Self.CartonTechnicalInfo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="OrderInfo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CartonTechnicalInfo">
-        <PropertyRef Name="OrderInfoId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_LogesticInfo_OrderInfo">
-    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
+    <End Type="ParandCartondbModel.OrderInfo" Role="OrderInfo" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="LogesticInfo" Type="Self.LogesticInfo" Multiplicity="*" />
+    <End Type="ParandCartondbModel.LogesticInfo" Role="LogesticInfo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="OrderInfo">
         <PropertyRef Name="Id" />
@@ -275,90 +369,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PrintInfo_OrderInfo">
-    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="PrintInfo" Type="Self.PrintInfo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="OrderInfo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PrintInfo">
-        <PropertyRef Name="OrderInfoId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PrintInfo_PrintInfo">
-    <End Role="PrintInfo" Type="Self.PrintInfo" Multiplicity="1" />
-    <End Role="PrintInfo1" Type="Self.PrintInfo" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="PrintInfo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PrintInfo1">
-        <PropertyRef Name="Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityContainer Name="ParandCartondbEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="CartonTechnicalInfoes" EntityType="Self.CartonTechnicalInfo" />
-    <EntitySet Name="InsideProducts" EntityType="Self.InsideProduct" />
-    <EntitySet Name="LogesticInfoes" EntityType="Self.LogesticInfo" />
-    <EntitySet Name="OrderInfoes" EntityType="Self.OrderInfo" />
-    <EntitySet Name="PriceInfoes" EntityType="Self.PriceInfo" />
-    <EntitySet Name="PrintInfoes" EntityType="Self.PrintInfo" />
-    <EntitySet Name="ProductInfoes" EntityType="Self.ProductInfo" />
-    <EntitySet Name="StandardInfoes" EntityType="Self.StandardInfo" />
-    <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
-    <EntitySet Name="ResultViews" EntityType="Self.ResultView" />
-    <AssociationSet Name="FK_CartonTechnicalInfo_CartonTechnicalInfo" Association="Self.FK_CartonTechnicalInfo_CartonTechnicalInfo">
-      <End Role="OrderInfo" EntitySet="OrderInfoes" />
-      <End Role="CartonTechnicalInfo" EntitySet="CartonTechnicalInfoes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_LogesticInfo_OrderInfo" Association="Self.FK_LogesticInfo_OrderInfo">
-      <End Role="OrderInfo" EntitySet="OrderInfoes" />
-      <End Role="LogesticInfo" EntitySet="LogesticInfoes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PrintInfo_OrderInfo" Association="Self.FK_PrintInfo_OrderInfo">
-      <End Role="OrderInfo" EntitySet="OrderInfoes" />
-      <End Role="PrintInfo" EntitySet="PrintInfoes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PrintInfo_PrintInfo" Association="Self.FK_PrintInfo_PrintInfo">
-      <End Role="PrintInfo" EntitySet="PrintInfoes" />
-      <End Role="PrintInfo1" EntitySet="PrintInfoes" />
-    </AssociationSet>
-    <EntitySet Name="Layers" EntityType="ParandCartondbModel.Layer" />
-    <EntitySet Name="CartonTypes" EntityType="ParandCartondbModel.CartonType" />
-    <EntitySet Name="KelisheForms" EntityType="ParandCartondbModel.KelisheForm" />
-  </EntityContainer>
-  <EntityType Name="Layer">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="RCT" Type="Double" Nullable="false" />
-    <Property Name="Garmazh" Type="Int32" Nullable="false" />
-    <Property Name="Width" Type="Int32" Nullable="false" />
-    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-    <Property Name="IsAvailabe" Type="Boolean" Nullable="false" />
-  </EntityType>
-  <EntityType Name="CartonType">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CartonTypeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="KelisheForm">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Type" Type="Boolean" Nullable="false" />
-  </EntityType>
 </Schema>
