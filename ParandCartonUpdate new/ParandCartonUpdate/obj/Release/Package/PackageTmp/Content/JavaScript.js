@@ -204,58 +204,6 @@ function printtype(x) {
             break;
     }
 }
-function countofpaint(x) {
-    switch (x) {
-        case 0:
-            $("#nonepaint").prop('checked', true);
-            $("#onepaint").prop('checked', false);
-            $("#twopaint").prop('checked', false);
-            $("#threepaint").prop('checked', false);
-            $("#fourpaint").prop('checked', false);
-            $("#fivepaint").prop('checked', false);
-            break;
-        case 1:
-            $("#nonepaint").prop('checked', false);
-            $("#onepaint").prop('checked', true);
-            $("#twopaint").prop('checked', false);
-            $("#threepaint").prop('checked', false);
-            $("#fourpaint").prop('checked', false);
-            $("#fivepaint").prop('checked', false);
-            break;
-        case 2:
-            $("#nonepaint").prop('checked', false);
-            $("#onepaint").prop('checked', false);
-            $("#twopaint").prop('checked', true);
-            $("#threepaint").prop('checked', false);
-            $("#fourpaint").prop('checked', false);
-            $("#fivepaint").prop('checked', false);
-            break;
-        case 3:
-            $("#nonepaint").prop('checked', false);
-            $("#onepaint").prop('checked', false);
-            $("#twopaint").prop('checked', false);
-            $("#threepaint").prop('checked', true);
-            $("#fourpaint").prop('checked', false);
-            $("#fivepaint").prop('checked', false);
-            break;
-        case 4:
-            $("#nonepaint").prop('checked', false);
-            $("#onepaint").prop('checked', false);
-            $("#twopaint").prop('checked', false);
-            $("#threepaint").prop('checked', false);
-            $("#fourpaint").prop('checked', true);
-            $("#fivepaint").prop('checked', false);
-            break;
-        case 5:
-            $("#nonepaint").prop('checked', false);
-            $("#onepaint").prop('checked', false);
-            $("#twopaint").prop('checked', false);
-            $("#threepaint").prop('checked', false);
-            $("#fourpaint").prop('checked', false);
-            $("#fivepaint").prop('checked', true);
-            break;
-    }
-}
 function mizanechap(x) {
     switch (x) {
         case 0:
@@ -655,8 +603,11 @@ function getpalet() {
     if ($("#sherink").is(':checked', true)) {
         str.push($("#sherink").val());
     }
-    if ($("#tasme").is(':checked', true)) {
-        str.push($("#tasme").val());
+    if ($("#tasme16").is(':checked', true)) {
+        str.push($("#tasme16").val());
+    }
+    if ($("#tasme9").is(':checked', true)) {
+        str.push($("#tasme9").val());
     }
     if ($("#palet").is(':checked', true)) {
         str.push($("#palet").val());

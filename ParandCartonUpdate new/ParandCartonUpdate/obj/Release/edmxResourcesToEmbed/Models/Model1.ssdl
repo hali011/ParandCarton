@@ -1,0 +1,452 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ParandCartondbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CartonTechnicalInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderInfoId" Type="int" Nullable="false" />
+    <Property Name="type" Type="bit" />
+    <Property Name="CartonType" Type="nvarchar" MaxLength="50" />
+    <Property Name="CartonCount" Type="int" />
+    <Property Name="CartonLength" Type="int" />
+    <Property Name="CartonWidth" Type="int" />
+    <Property Name="CartonHeight" Type="int" />
+    <Property Name="CartonWeight" Type="int" />
+    <Property Name="IsCold" Type="bit" />
+    <Property Name="IsTemplate" Type="bit" />
+    <Property Name="CartonEmpty" Type="bit" />
+    <Property Name="ConnectorType" Type="int" />
+    <Property Name="Whosave" Type="int" Nullable="false" />
+    <Property Name="CartonInsideType" Type="nvarchar" MaxLength="50" />
+    <Property Name="SheatCount" Type="int" />
+    <Property Name="SheatLength" Type="int" />
+    <Property Name="SheatWidth" Type="int" />
+    <Property Name="SheatType" Type="nvarchar" MaxLength="50" />
+    <Property Name="SheatWeight" Type="int" />
+  </EntityType>
+  <EntityType Name="CartonType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CartonTypeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InsideProducts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KelisheForm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Layers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RCT" Type="float" Nullable="false" />
+    <Property Name="Garmazh" Type="int" Nullable="false" />
+    <Property Name="Width" Type="int" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="IsAvailabe" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LogesticInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderInfoId" Type="int" Nullable="false" />
+    <Property Name="PrintInfoId" Type="int" Nullable="false" />
+    <Property Name="LayoutType" Type="bit" />
+    <Property Name="LayoutCount" Type="int" />
+    <Property Name="TypeOfUse" Type="bit" />
+    <Property Name="ProductDistance" Type="int" />
+    <Property Name="DeliveryMethod" Type="bit" />
+    <Property Name="AnbareshTime" Type="int" />
+    <Property Name="SendMethod" Type="nvarchar" MaxLength="50" />
+    <Property Name="LogesticTypeSelection" Type="nvarchar" MaxLength="50" />
+    <Property Name="Humidity" Type="nvarchar" MaxLength="50" />
+    <Property Name="UseAddress" Type="bit" />
+    <Property Name="OtherAddress" Type="nvarchar(max)" />
+    <Property Name="WhoSave" Type="int" />
+    <Property Name="Countofkafchin" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="CountinBox" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="CountinRise" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="CountofPalet" Type="numeric" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="OrderInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderCode" Type="varchar" MaxLength="15" StoreGeneratedPattern="Computed" />
+    <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SaleExpertCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProductCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SaleExpertName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="NationalCode" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="PostalCode" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="EnterPriceInterfaceName" Type="nvarchar" MaxLength="100" />
+    <Property Name="EnconomicCode" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Tell" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="EnterPriceInterfaceTell" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Whosave" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PriceInfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="whosave" Type="int" Nullable="false" />
+    <Property Name="costpervaragh" Type="float" />
+    <Property Name="costofall" Type="float" />
+    <Property Name="malyat" Type="float" />
+    <Property Name="takhfif" Type="float" />
+    <Property Name="sumofall" Type="float" />
+    <Property Name="ProductInfoId" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="PrintInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderInfoId" Type="int" Nullable="false" />
+    <Property Name="CartonTechnicalId" Type="int" Nullable="false" />
+    <Property Name="PrintType" Type="nvarchar" MaxLength="50" />
+    <Property Name="ColorCount" Type="nvarchar" MaxLength="50" />
+    <Property Name="PrintTypeSelection" Type="nvarchar(max)" />
+    <Property Name="PrintAmount" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsKelishe" Type="bit" />
+    <Property Name="IsTemplate" Type="bit" />
+    <Property Name="kelisheNum" Type="nvarchar" MaxLength="50" />
+    <Property Name="TemplateNum" Type="nvarchar" MaxLength="50" />
+    <Property Name="Whosave" Type="int" Nullable="false" />
+    <Property Name="ColorCode1" Type="nvarchar" MaxLength="50" />
+    <Property Name="ColorCode2" Type="nvarchar" MaxLength="50" />
+    <Property Name="ColorCode3" Type="nvarchar" MaxLength="50" />
+    <Property Name="ColorCode4" Type="nvarchar" MaxLength="50" />
+    <Property Name="ColorCode5" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ProductInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LogesticInfoId" Type="int" Nullable="false" />
+    <Property Name="TheAmountOfSheetsUsedForEachCarton" Type="float" />
+    <Property Name="MinimumBCT" Type="float" />
+    <Property Name="WasteRate" Type="float" />
+    <Property Name="DeliverTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="LayerCount" Type="bit" />
+    <Property Name="Layer1" Type="int" />
+    <Property Name="Layer2" Type="int" />
+    <Property Name="FloatType1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Layer3" Type="int" />
+    <Property Name="Layer4" Type="int" />
+    <Property Name="FloatType2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Layer5" Type="int" />
+    <Property Name="BCT" Type="float" />
+    <Property Name="ECT" Type="float" />
+    <Property Name="Whosave" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StandardInfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StandardId" Type="nvarchar" MaxLength="50" />
+    <Property Name="OrderId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserFamily" Type="nvarchar(max)" />
+    <Property Name="UserAccess" Type="int" />
+    <Property Name="NationalCode" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Department" Type="nvarchar(max)" />
+    <Property Name="Password" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ParandCartondb.dbo.ResultView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ResultView">
+    <Key>
+      <PropertyRef Name="Whosave" />
+      <PropertyRef Name="CartonTechnicalId" />
+      <PropertyRef Name="ProductInfoId" />
+    </Key>
+    <Property Name="OrderCode" Type="varchar" MaxLength="15" />
+    <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SaleExpertCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProductCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SaleExpertName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="NationalCode" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="PostalCode" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="EnterPriceInterfaceName" Type="nvarchar" MaxLength="100" />
+    <Property Name="EnconomicCode" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Tell" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="EnterPriceInterfaceTell" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Whosave" Type="int" Nullable="false" />
+    <Property Name="type" Type="bit" />
+    <Property Name="CartonType" Type="nvarchar" MaxLength="50" />
+    <Property Name="CartonCount" Type="int" />
+    <Property Name="CartonLength" Type="int" />
+    <Property Name="CartonWidth" Type="int" />
+    <Property Name="CartonHeight" Type="int" />
+    <Property Name="CartonWeight" Type="int" />
+    <Property Name="IsCold" Type="bit" />
+    <Property Name="IsTemplate" Type="bit" />
+    <Property Name="CartonEmpty" Type="bit" />
+    <Property Name="ConnectorType" Type="int" />
+    <Property Name="CartonInsideType" Type="nvarchar" MaxLength="50" />
+    <Property Name="SheatCount" Type="int" />
+    <Property Name="SheatLength" Type="int" />
+    <Property Name="SheatWidth" Type="int" />
+    <Property Name="SheatType" Type="nvarchar" MaxLength="50" />
+    <Property Name="PrintType" Type="nvarchar" MaxLength="50" />
+    <Property Name="CartonTechnicalId" Type="int" Nullable="false" />
+    <Property Name="ColorCount" Type="nvarchar" MaxLength="50" />
+    <Property Name="PrintTypeSelection" Type="nvarchar(max)" />
+    <Property Name="PrintAmount" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsKelishe" Type="bit" />
+    <Property Name="PrintIsTemplate" Type="bit" />
+    <Property Name="kelisheNum" Type="nvarchar" MaxLength="50" />
+    <Property Name="TemplateNum" Type="nvarchar" MaxLength="50" />
+    <Property Name="LayoutType" Type="bit" />
+    <Property Name="LayoutCount" Type="int" />
+    <Property Name="TypeOfUse" Type="bit" />
+    <Property Name="ProductDistance" Type="int" />
+    <Property Name="DeliveryMethod" Type="bit" />
+    <Property Name="AnbareshTime" Type="int" />
+    <Property Name="SendMethod" Type="nvarchar" MaxLength="50" />
+    <Property Name="LogesticTypeSelection" Type="nvarchar" MaxLength="50" />
+    <Property Name="Humidity" Type="nvarchar" MaxLength="50" />
+    <Property Name="UseAddress" Type="bit" />
+    <Property Name="OtherAddress" Type="nvarchar(max)" />
+    <Property Name="TheAmountOfSheetsUsedForEachCarton" Type="float" />
+    <Property Name="MinimumBCT" Type="float" />
+    <Property Name="WasteRate" Type="float" />
+    <Property Name="DeliverTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="LayerCount" Type="bit" />
+    <Property Name="Layer1" Type="int" />
+    <Property Name="Layer2" Type="int" />
+    <Property Name="FloatType1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Layer3" Type="int" />
+    <Property Name="Layer4" Type="int" />
+    <Property Name="FloatType2" Type="nvarchar" MaxLength="50" />
+    <Property Name="BCT" Type="float" />
+    <Property Name="Layer5" Type="int" />
+    <Property Name="ECT" Type="float" />
+    <Property Name="costpervaragh" Type="float" />
+    <Property Name="costofall" Type="float" />
+    <Property Name="malyat" Type="float" />
+    <Property Name="takhfif" Type="float" />
+    <Property Name="sumofall" Type="float" />
+    <Property Name="ProductInfoId" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="ColorCode5" Type="nvarchar" MaxLength="50" />
+    <Property Name="ColorCode4" Type="nvarchar" MaxLength="50" />
+    <Property Name="ColorCode3" Type="nvarchar" MaxLength="50" />
+    <Property Name="ColorCode2" Type="nvarchar" MaxLength="50" />
+    <Property Name="ColorCode1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Countofkafchin" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="CountinRise" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="CountinBox" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="CountofPalet" Type="numeric" Precision="18" Scale="0" />
+  </EntityType>
+  <Association Name="FK_CartonTechnicalInfo_CartonTechnicalInfo">
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CartonTechnicalInfo" Type="Self.CartonTechnicalInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CartonTechnicalInfo">
+        <PropertyRef Name="OrderInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LogesticInfo_OrderInfo">
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="LogesticInfo" Type="Self.LogesticInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LogesticInfo">
+        <PropertyRef Name="OrderInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrintInfo_OrderInfo">
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PrintInfo" Type="Self.PrintInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrintInfo">
+        <PropertyRef Name="OrderInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrintInfo_PrintInfo">
+    <End Role="PrintInfo" Type="Self.PrintInfo" Multiplicity="1" />
+    <End Role="PrintInfo1" Type="Self.PrintInfo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="PrintInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrintInfo1">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ParandCartondbModelStoreContainer">
+    <EntitySet Name="CartonTechnicalInfo" EntityType="Self.CartonTechnicalInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CartonType" EntityType="Self.CartonType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InsideProducts" EntityType="Self.InsideProducts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KelisheForm" EntityType="Self.KelisheForm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Layers" EntityType="Self.Layers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogesticInfo" EntityType="Self.LogesticInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderInfo" EntityType="Self.OrderInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PriceInfo" EntityType="Self.PriceInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PrintInfo" EntityType="Self.PrintInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductInfo" EntityType="Self.ProductInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StandardInfo" EntityType="Self.StandardInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResultView" EntityType="Self.ResultView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ResultView].[OrderCode] AS [OrderCode], 
+    [ResultView].[CreateDate] AS [CreateDate], 
+    [ResultView].[CustomerCode] AS [CustomerCode], 
+    [ResultView].[CustomerName] AS [CustomerName], 
+    [ResultView].[SaleExpertCode] AS [SaleExpertCode], 
+    [ResultView].[ProductCode] AS [ProductCode], 
+    [ResultView].[ProductName] AS [ProductName], 
+    [ResultView].[SaleExpertName] AS [SaleExpertName], 
+    [ResultView].[Address] AS [Address], 
+    [ResultView].[NationalCode] AS [NationalCode], 
+    [ResultView].[PostalCode] AS [PostalCode], 
+    [ResultView].[EnterPriceInterfaceName] AS [EnterPriceInterfaceName], 
+    [ResultView].[EnconomicCode] AS [EnconomicCode], 
+    [ResultView].[Tell] AS [Tell], 
+    [ResultView].[EnterPriceInterfaceTell] AS [EnterPriceInterfaceTell], 
+    [ResultView].[Email] AS [Email], 
+    [ResultView].[Whosave] AS [Whosave], 
+    [ResultView].[type] AS [type], 
+    [ResultView].[CartonType] AS [CartonType], 
+    [ResultView].[CartonCount] AS [CartonCount], 
+    [ResultView].[CartonLength] AS [CartonLength], 
+    [ResultView].[CartonWidth] AS [CartonWidth], 
+    [ResultView].[CartonHeight] AS [CartonHeight], 
+    [ResultView].[CartonWeight] AS [CartonWeight], 
+    [ResultView].[IsCold] AS [IsCold], 
+    [ResultView].[IsTemplate] AS [IsTemplate], 
+    [ResultView].[CartonEmpty] AS [CartonEmpty], 
+    [ResultView].[ConnectorType] AS [ConnectorType], 
+    [ResultView].[CartonInsideType] AS [CartonInsideType], 
+    [ResultView].[SheatCount] AS [SheatCount], 
+    [ResultView].[SheatLength] AS [SheatLength], 
+    [ResultView].[SheatWidth] AS [SheatWidth], 
+    [ResultView].[SheatType] AS [SheatType], 
+    [ResultView].[PrintType] AS [PrintType], 
+    [ResultView].[CartonTechnicalId] AS [CartonTechnicalId], 
+    [ResultView].[ColorCount] AS [ColorCount], 
+    [ResultView].[PrintTypeSelection] AS [PrintTypeSelection], 
+    [ResultView].[PrintAmount] AS [PrintAmount], 
+    [ResultView].[IsKelishe] AS [IsKelishe], 
+    [ResultView].[PrintIsTemplate] AS [PrintIsTemplate], 
+    [ResultView].[kelisheNum] AS [kelisheNum], 
+    [ResultView].[TemplateNum] AS [TemplateNum], 
+    [ResultView].[LayoutType] AS [LayoutType], 
+    [ResultView].[LayoutCount] AS [LayoutCount], 
+    [ResultView].[TypeOfUse] AS [TypeOfUse], 
+    [ResultView].[ProductDistance] AS [ProductDistance], 
+    [ResultView].[DeliveryMethod] AS [DeliveryMethod], 
+    [ResultView].[AnbareshTime] AS [AnbareshTime], 
+    [ResultView].[SendMethod] AS [SendMethod], 
+    [ResultView].[LogesticTypeSelection] AS [LogesticTypeSelection], 
+    [ResultView].[Humidity] AS [Humidity], 
+    [ResultView].[UseAddress] AS [UseAddress], 
+    [ResultView].[OtherAddress] AS [OtherAddress], 
+    [ResultView].[TheAmountOfSheetsUsedForEachCarton] AS [TheAmountOfSheetsUsedForEachCarton], 
+    [ResultView].[MinimumBCT] AS [MinimumBCT], 
+    [ResultView].[WasteRate] AS [WasteRate], 
+    [ResultView].[DeliverTime] AS [DeliverTime], 
+    [ResultView].[LayerCount] AS [LayerCount], 
+    [ResultView].[Layer1] AS [Layer1], 
+    [ResultView].[Layer2] AS [Layer2], 
+    [ResultView].[FloatType1] AS [FloatType1], 
+    [ResultView].[Layer3] AS [Layer3], 
+    [ResultView].[Layer4] AS [Layer4], 
+    [ResultView].[FloatType2] AS [FloatType2], 
+    [ResultView].[BCT] AS [BCT], 
+    [ResultView].[Layer5] AS [Layer5], 
+    [ResultView].[ECT] AS [ECT], 
+    [ResultView].[costpervaragh] AS [costpervaragh], 
+    [ResultView].[costofall] AS [costofall], 
+    [ResultView].[malyat] AS [malyat], 
+    [ResultView].[takhfif] AS [takhfif], 
+    [ResultView].[sumofall] AS [sumofall], 
+    [ResultView].[ProductInfoId] AS [ProductInfoId], 
+    [ResultView].[Description] AS [Description], 
+    [ResultView].[ColorCode5] AS [ColorCode5], 
+    [ResultView].[ColorCode4] AS [ColorCode4], 
+    [ResultView].[ColorCode3] AS [ColorCode3], 
+    [ResultView].[ColorCode2] AS [ColorCode2], 
+    [ResultView].[ColorCode1] AS [ColorCode1], 
+    [ResultView].[Countofkafchin] AS [Countofkafchin], 
+    [ResultView].[CountinRise] AS [CountinRise], 
+    [ResultView].[CountinBox] AS [CountinBox], 
+    [ResultView].[CountofPalet] AS [CountofPalet]
+    FROM [dbo].[ResultView] AS [ResultView]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_CartonTechnicalInfo_CartonTechnicalInfo" Association="Self.FK_CartonTechnicalInfo_CartonTechnicalInfo">
+      <End Role="OrderInfo" EntitySet="OrderInfo" />
+      <End Role="CartonTechnicalInfo" EntitySet="CartonTechnicalInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LogesticInfo_OrderInfo" Association="Self.FK_LogesticInfo_OrderInfo">
+      <End Role="OrderInfo" EntitySet="OrderInfo" />
+      <End Role="LogesticInfo" EntitySet="LogesticInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrintInfo_OrderInfo" Association="Self.FK_PrintInfo_OrderInfo">
+      <End Role="OrderInfo" EntitySet="OrderInfo" />
+      <End Role="PrintInfo" EntitySet="PrintInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrintInfo_PrintInfo" Association="Self.FK_PrintInfo_PrintInfo">
+      <End Role="PrintInfo" EntitySet="PrintInfo" />
+      <End Role="PrintInfo1" EntitySet="PrintInfo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

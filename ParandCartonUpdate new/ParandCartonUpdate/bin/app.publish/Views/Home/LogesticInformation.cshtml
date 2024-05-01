@@ -16,11 +16,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5"></div>
                 <div class="col-md-3 pull-right">
-                    <label>تعداد چیدمان ستونی روی هم:</label>
-                    <input readonly class="form-control border" type="number" id="txtColumnNumber" />
+                    <label>مسافت تقریبی ارسال کالا:</label>
+                    <input class="form-control border border-danger" id="txtDistance" type="number" placeholder="لطفا مسافت را وارد نمایید" />
                 </div>
+                <div class="col-md-2 pull-right">
+                    <label>مدت زمان انبارش:</label>
+                    <input class="form-control border border-danger" type="number" id="txtAnbareshTime" />
+                </div>
+                <div class="col-md-2 pull-right">
+                    <label>چیدمان ستونی روی هم:</label>
+                    <input readonly class="form-control border border-danger" type="number" id="txtColumnNumber" />
+                </div>
+                <div class="col-md-1"></div>
             </div>
             <br />
             <div class="row">
@@ -36,11 +44,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5"></div>
-                <div class="col-md-3 pull-right">
-                    <label>مسافت تقریبی ارسال کالا:</label>
-                    <input class="form-control border border-danger" id="txtDistance" type="number" placeholder="لطفا مسافت را وارد نمایید" />
+                <div class="col-md-2 pull-right">
+                    <label>تعداد کف چین:</label>
+                    <input class="form-control border border-danger" type="number" id="kafchin" />
                 </div>
+                <div class="col-md-2 pull-right">
+                    <label>تعداد در هر بسته:</label>
+                    <input class="form-control border border-danger" type="number" id="countinbox" />
+                </div>
+                <div class="col-md-2 pull-right">
+                    <label>تعداد محصول در ارتفاع:</label>
+                    <input class="form-control border border-danger" type="number" id="countinrise" />
+                </div>
+                <div class="col-md-1"></div>
+
             </div>
             <br />  
             <div class="row">
@@ -56,11 +73,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4"></div>
-                <div class="col-md-2 pull-right">
-                    <label>مدت زمان انبارش:</label>
-                    <input class="form-control border border-danger" type="number" id="txtAnbareshTime" />
+                <div class="col-md-4 pull-right">
+                    <div class="form-group">
+                        <label>:نحوه ارسال</label>
+                        <div>
+                            <input type="radio" checked onclick="radiowiththreeinput(0,0)" value="کامیونت" id="kamyonet" />
+                            <label for="kamyonet">کامیونت</label>
+                            <input type="radio" value="کامیون" onclick="radiowiththreeinput(1,0)" id="kamyon" />
+                            <label for="kamyon">کامیون</label>
+                            <input type="radio" value="تریلی" id="tereyli" onclick="radiowiththreeinput(2,0)" />
+                            <label for="tereyli">تریلی</label>
+                        </div>
+                    </div>
                 </div>
+                
             </div>
             <br />
             <div class="row">
@@ -84,9 +110,11 @@
                         <div Class="form-check form-check-inline">
                             <input type="checkbox" value="شیرینک" id="sherink" />
                             <label for="sherink">شیرینک</label>
-                            <input type="checkbox" style="margin-right:1rem;" value="تسمه" id="tasme" />
-                            <label for="tasme">تسمه</label>
-                            <input type="checkbox" style="margin-right:1rem;" value="پالت" id="palet" />
+                            <input type="checkbox" style="margin-right:1rem;" value="تسمه شانزده" id="tasme" />
+                            <label for="tasme16">تسمه16</label>
+                            <input type="checkbox" style="margin-right:1rem;" value="تسمه نه" id="tasme" />
+                            <label for="tasme9">تسمه9</label>
+                            <input type="checkbox" style="margin-right:1rem;" value="پالت" onchange="palet()" id="palet" />
                             <label for="palet">پالت</label>
                         </div>
                     </div>
@@ -94,7 +122,7 @@
             </div>
             <br />
             <div class="row">
-                <div class="col-md-4"></div>
+                <div class="col-md-2"></div>
                 <div class="col-md-3 pull-right">
                     <div class="form-group">
                         <label>میزان رطوبت :</label>
@@ -106,6 +134,13 @@
                             <option value="4">رطوبت سطح 80%</option>
                             <option value="5">رطوبت سطح 90%</option>
                         </select>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div id="divpaletcount" class="col-md-2">
+                    <div class="form-group">
+                        <label>تعداد محصول در هر پالت</label>
+                        <input class="form-control border" type="number" id="paletcount" />
                     </div>
                 </div>
             </div>
@@ -140,5 +175,13 @@
 <script type="text/javascript">
     $(document).ready(function () {
         adressf(0);
+        $("#divpaletcount").hide()
     });
+    function palet() {
+        if ($("#palet").is(':checked', true)) {
+            $("#divpaletcount").show()
+        } else {
+            $("#divpaletcount").hide()
+        }
+    }
 </script>

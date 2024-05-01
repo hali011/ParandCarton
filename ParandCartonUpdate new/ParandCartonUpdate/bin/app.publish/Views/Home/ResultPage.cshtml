@@ -71,7 +71,8 @@
 @{
     bool palet = false;
     bool sherink = false;
-    bool tasme = false;
+    bool tasme9 = false;
+    bool tasme16 = false;
     List<string> ispalet = new List<string>();
     if (Model.LogesticTypeSelection != "" && Model.LogesticTypeSelection != null)
     {
@@ -82,9 +83,13 @@
             {
                 sherink = true;
             }
-            if (ispalet[i] == "تسمه")
+            if (ispalet[i] == "تسمه9")
             {
-                tasme = true;
+                tasme9 = true;
+            }
+            if (ispalet[i] == "تسمه16")
+            {
+                tasme16 = true;
             }
             if (ispalet[i] == "پالت")
             {
@@ -164,13 +169,13 @@
                     </div>
                 </div>
                 <div class="col-md-2"></div>
-                <div class="col-md-2 pull-right">
+                <div class="col-md-3 pull-right">
                     <div class="form-group">
                         <label>نام مشتری:</label>
                         <input class="border form-control" readonly value="@Model.CustomerName" id="txtCustomerName" />
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-1">
 
                 </div>
 
@@ -189,13 +194,13 @@
                     </div>
                 </div>
                 <div class="col-md-2"></div>
-                <div class="col-md-2 pull-right">
+                <div class="col-md-3 pull-right">
                     <div class="form-group">
                         <label>نام محصول:</label>
                         <input id="txtProductName" class="border form-control" readonly value="@Model.ProductName" />
                     </div>
                 </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-1"></div>
                 <div class="col-md-2 pull-right">
                     <label>نام کارشناس فروش:</label>
                     <input class="form-control border" readonly id="txtSalePersonName" value="@Model.SaleExpertName" />
@@ -516,6 +521,132 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                @if (Model.ColorCount != "بدون چاپ")
+                {
+                    if (Model.ColorCount == "یک")
+                    {
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ اول</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode1" />
+                            </div>
+                        </div>
+                    }
+                    if (Model.ColorCount == "دو")
+                    {
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ اول</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode1" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ دوم</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode2" />
+                            </div>
+                        </div>
+                    }
+                    if (Model.ColorCount == "سه")
+                    {
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ اول</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode1" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ دوم</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode2" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ سوم</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode3" />
+                            </div>
+                        </div>
+                    }
+                    if (Model.ColorCount == "چهار")
+                    {
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ اول</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode1" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ دوم</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode2" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ سوم</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode3" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ چهار</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode4" />
+                            </div>
+                        </div>
+                    }
+                    if (Model.ColorCount == "پنج")
+                    {
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ اول</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode1" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ دوم</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode2" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ سوم</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode3" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ چهار</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode4" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 pull-right">
+                            <div class="form-group">
+                                <label> کد رنگ پنج</label>
+                                <input class="form-control border" readonly value="@Model.ColorCode5" />
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
             <br />
             <div class="row">
                 <div class="col-md-1"></div>
@@ -669,6 +800,23 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-3 pull-right">
+                    <label>مسافت تقریبی ارسال کالا:</label>
+                    <input class="form-control border" id="txtDistance" readonly value="@Model.ProductDistance" />
+                </div>
+                <div class="col-md-2 pull-right">
+                    <label>مدت زمان انبارش:</label>
+                    <input readonly class="form-control border " value="@Model.AnbareshTime" id="txtAnbareshTime" />
+                </div>
+                <div class="col-md-2 pull-right">
+                    <label>چیدمان ستونی روی هم:</label>
+                    <input readonly class="form-control border" value="@Model.LayoutCount" id="txtColumnNumber" />
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-1"></div>
                 <div class="col-md-2 pull-right">
                     <div class="form-group">
                         <label>نوع مصرف:</label>
@@ -686,6 +834,23 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-2 pull-right">
+                    <label>تعداد کف چین:</label>
+                    <input class="form-control border " readonly value="@Model.Countofkafchin" id="kafchin" />
+                </div>
+                <div class="col-md-2 pull-right">
+                    <label>تعداد در هر بسته:</label>
+                    <input class="form-control border " readonly value="@Model.CountinBox" id="countinbox" />
+                </div>
+                <div class="col-md-2 pull-right">
+                    <label>تعداد محصول در ارتفاع:</label>
+                    <input class="form-control border " readonly value="@Model.CountinRise" id="countinrise" />
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-1"></div>
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>نحوه تحویل:</label>
@@ -704,14 +869,6 @@
                     </div>
                 </div>
                 <div class="col-md-1"></div>
-                <div class="col-md-3 pull-right">
-                    <label>تعداد چیدمان ستونی روی هم:</label>
-                    <input readonly class="form-control border" value="@Model.LayoutCount" id="txtColumnNumber" />
-                </div>
-            </div>
-            <br />
-            <div class="row">
-                <div class="col-md-1"></div>
                 <div class="col-md-2">
                     <div class="form-group">
                         <div>
@@ -720,19 +877,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-3 pull-right">
-                    <label>مسافت تقریبی ارسال کالا:</label>
-                    <input class="form-control border" id="txtDistance" readonly value="@Model.ProductDistance" />
-                </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-2 pull-right">
-                    <label>مدت زمان انبارش:</label>
-                    <input readonly class="form-control border " value="@Model.AnbareshTime" id="txtAnbareshTime" />
-                </div>
-            </div>
-            <br />
-            <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-4 pull-right">
                     <div class="form-group" style="margin-top:1.5em">
@@ -747,15 +891,25 @@
                                 <input disabled type="checkbox" value="شیرینک" id="sherink" />
                                 <label for="sherink">شیرینک</label>
                             }
-                            @if (tasme == true)
+                            @if (tasme9 == true)
                             {
                                 <input type="checkbox" disabled checked style="margin-right:1rem;" value="تسمه" id="tasme" />
-                                <label for="tasme">تسمه</label>
+                                <label for="tasme">تسمه نه</label>
                             }
                             else
                             {
                                 <input type="checkbox" disabled style="margin-right:1rem;" value="تسمه" id="tasme" />
-                                <label for="tasme">تسمه</label>
+                                <label for="tasme">تسمه نه</label>
+                            }
+                            @if (tasme16 == true)
+                            {
+                                <input type="checkbox" disabled checked style="margin-right:1rem;" value="تسمه" id="tasme" />
+                                <label for="tasme">تسمه شانزده</label>
+                            }
+                            else
+                            {
+                                <input type="checkbox" disabled style="margin-right:1rem;" value="تسمه" id="tasme" />
+                                <label for="tasme">تسمه شانزده</label>
                             }
                             @if (palet == true)
                             {
@@ -770,6 +924,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-1"></div>
                 <div class="col-md-3 pull-right">
                     <div class="form-group">
                         <label>میزان رطوبت :</label>
@@ -793,7 +951,13 @@
                         }
                     </div>
                 </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-1"></div>
+                <div id="divpaletcount" class="col-md-2">
+                    <div class="form-group">
+                        <label>تعداد محصول در هر پالت</label>
+                        <input class="form-control border" type="number" value="@Model.CountofPalet" id="paletcount" />
+                    </div>
+                </div>
             </div>
             <br />
             <div class="row">
@@ -892,29 +1056,29 @@
                         @if (Model.LayerCount == false)
                         {
                             <div class="row">
-                                <div class="col-md-2"></div>
+                                <div class="col-md-1"></div>
                                 <div class="col-md-2">
                                     <label>ترکیب ورق  :</label>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-md-2"></div>
-                                <div class="col-md-2">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-3">
                                     <select id="layer1" class=" form-control  border dropdown">
                                         <option selected disabled>@layer1</option>
                                     </select>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <select id="layer2" class="bg-danger form-control border dropdown">
                                         <option selected disabled>@layer2</option>
                                     </select>
                                 </div>
-                                <div class="col-md-1">
+                                <div class="col-md-2">
                                     <select id="floottype1" class="bg-warning form-control border dropdown">
                                         <option selected disabled>@Model.FloatType1</option>
                                     </select>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <select id="layer3" class="form-control border dropdown">
                                         <option selected disabled>@layer3</option>
                                     </select>
@@ -923,43 +1087,55 @@
                         }
                         else
                         {
-                            <label>ترکیب ورق  :</label>
+                            <div class="row">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-2" >
+                                    <label>ترکیب ورق  :</label>
+                                </div>
+                            </div>
                             <div class="form-group row">
-                                <div class="col-md-2">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-3">
                                     <select id="layer1" class=" form-control  border dropdown">
                                         <option selected disabled>@layer1</option>
                                     </select>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <select id="layer2" class="bg-danger form-control border dropdown">
                                         <option selected disabled>@layer2</option>
                                     </select>
                                 </div>
-                                <div class="col-md-1">
+                                <div class="col-md-2">
                                     <select id="floottype1" class="bg-warning form-control border dropdown">
                                         <option selected disabled>@Model.FloatType1</option>
                                     </select>
                                 </div>
-                                <div class="col-md-2">
+                             </div>
+                             <div class="form-group row">
+                                 <div class="col-md-2"></div>
+                                <div class="col-md-3">
                                     <select id="layer3" class="form-control border dropdown">
                                         <option selected disabled>@layer3</option>
                                     </select>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <select id="layer4" class="bg-danger form-control border dropdown">
                                         <option selected disabled>@layer4</option>
                                     </select>
                                 </div>
-                                <div class="col-md-1">
+                                <div class="col-md-2">
                                     <select id="floottype2" class="bg-warning form-control border dropdown">
                                         <option selected disabled>@Model.FloatType2</option>
                                     </select>
                                 </div>
-                                <div class="col-md-2">
-                                    <select id="layer5" class="form-control border dropdown">
-                                        <option selected disabled>@layer5</option>
-                                    </select>
-                                </div>
+                              </div>
+                              <div class="form-group row">
+                                  <div class="col-md-5"></div>
+                                    <div class="col-md-3">
+                                        <select id="layer5" class="form-control border dropdown">
+                                            <option selected disabled>@layer5</option>
+                                        </select>
+                                    </div>
                             </div>
                         }
                     </div>

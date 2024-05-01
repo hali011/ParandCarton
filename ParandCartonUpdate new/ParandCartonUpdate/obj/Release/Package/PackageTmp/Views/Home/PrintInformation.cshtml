@@ -40,6 +40,24 @@
                     </div>
                 </div>
             </div>
+            <div id="colorcodediv" class="row">
+                <div class="col-md-1"></div>
+                <div id="colorcode1" class="col-md-2">
+                    <input class="border form-control" placeholder="لطفا کد رنگ اول را وارد کنید" />
+                </div>
+                <div id="colorcode2" class="col-md-2">
+                    <input class="border form-control" placeholder="لطفا کد رنگ دوم را وارد کنید"/>
+                </div>
+                <div id="colorcode3" class="col-md-2">
+                    <input class="border form-control" placeholder="لطفا کد رنگ سوم را وارد کنید"/>
+                </div>
+                <div id="colorcode4" class="col-md-2">
+                    <input class="border form-control" placeholder="لطفا کد رنگ چهارم را وارد کنید"/>
+                </div>
+                <div id="colorcode5" class="col-md-2">
+                    <input class="border form-control" placeholder="لطفا کد رنگ پنجم را وارد کنید"/>
+                </div>
+            </div>
             <br />
             <div class="row">
                 <div class="col-md-1"></div>
@@ -132,6 +150,7 @@
             /* BindCustomer();*/
             $(".ms-wikicontent").removeAttr("style");
             $("#canceleditPI").hide();
+            $("#colorcodediv").hide();
             loadmodal();
         });
     function loadmodal() {
